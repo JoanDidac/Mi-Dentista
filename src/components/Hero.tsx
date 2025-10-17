@@ -1,14 +1,26 @@
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
-import heroTeam from "@/assets/hero-team.jpg";
+import heroBackground from "@/assets/hero-background.png";
 
 const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
   return (
-    <div className="relative bg-background">
-      <div className="container mx-auto px-4 py-16 md:py-24">
+    <div className="relative bg-background overflow-hidden">
+      {/* Background Image with overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${heroBackground})`,
+          backgroundPosition: 'center 30%',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/60"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative container mx-auto px-4 py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 max-w-xl">
             <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
               Pioneros en
             </p>
@@ -17,7 +29,7 @@ const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
               <br />
               DIGITAL
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               Tratamientos de estética dental mínimamente invasivos con la ayuda de 
               la tecnología más avanzada.
             </p>
@@ -30,7 +42,7 @@ const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
               <Button 
                 onClick={onOpenBooking} 
                 size="lg" 
-                className="text-lg px-8 py-6 gap-2"
+                className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-shadow"
               >
                 <Calendar className="h-5 w-5" />
                 Pedir Cita
@@ -38,19 +50,13 @@ const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="relative">
-            <img 
-              src={heroTeam} 
-              alt="Equipo profesional de Mi Dentista" 
-              className="w-full h-auto rounded-lg shadow-strong"
-            />
-          </div>
+          {/* Right side - empty to show background image */}
+          <div className="hidden lg:block"></div>
         </div>
       </div>
 
       {/* Bottom Banner */}
-      <div className="bg-foreground text-background py-12">
+      <div className="relative bg-foreground text-background py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-center tracking-wide">
             CLÍNICA DENTAL EN BARCELONA

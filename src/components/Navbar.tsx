@@ -78,7 +78,7 @@ const Navbar = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
 
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-base">
-                    Implantes y Cirugía
+                    Implantes y Cirugia Oral
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="w-[500px] p-4">
@@ -168,7 +168,7 @@ const Navbar = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Implantes y Cirugía</h3>
+                <h3 className="font-semibold mb-2">Implantes y Cirugia Oral</h3>
                 <div className="space-y-2 pl-4">
                   {services.implantes.map((service) => (
                     <a

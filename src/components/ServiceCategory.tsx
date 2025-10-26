@@ -1,11 +1,29 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface Service {
   name: string;
   description: string;
   icon: LucideIcon;
 }
+
+const serviceRoutes: { [key: string]: string } = {
+  "Estética Dental": "/servicios/estetica-dental",
+  "Ortodoncia": "/servicios/ortodoncia",
+  "Periodoncia": "/servicios/periodoncia",
+  "Endodoncia": "/servicios/endodoncia",
+  "Odontología General": "/servicios/odontologia-general",
+  "Odontopediatría": "/servicios/odontopediatria",
+  "Oclusión y Rehabilitación": "/servicios/oclusion-rehabilitacion",
+  "Ronquido y Apnea": "/servicios/ronquido-apnea",
+  "Implantes Dentales": "/servicios/implantes-dentales",
+  "Cirugía Oral": "/servicios/cirugia-oral",
+  "Rehabilitación con Implantes": "/servicios/rehabilitacion-implantes",
+  "Patología ATM": "/servicios/patologia-atm",
+  "Medicina Estética Facial": "/servicios/medicina-estetica-facial",
+  "Estética Facial Avanzada": "/servicios/estetica-facial-avanzada",
+};
 
 interface ServiceCategoryProps {
   title: string;
@@ -16,6 +34,8 @@ interface ServiceCategoryProps {
 }
 
 const ServiceCategory = ({ title, subtitle, services, palette, id }: ServiceCategoryProps) => {
+  const navigate = useNavigate();
+  
   const paletteClasses = {
     a: {
       bg: "bg-[hsl(var(--palette-a-light))]",
@@ -52,10 +72,12 @@ const ServiceCategory = ({ title, subtitle, services, palette, id }: ServiceCate
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {services.map((service) => {
             const Icon = service.icon;
+            const route = serviceRoutes[service.name];
             return (
               <Card
                 key={service.name}
-                className={`group hover:shadow-medium transition-all duration-300 border-2 ${classes.border} hover:scale-105`}
+                onClick={() => route && navigate(route)}
+                className={`group hover:shadow-medium transition-all duration-300 border-2 ${classes.border} hover:scale-105 cursor-pointer`}
               >
                 <CardContent className="p-6 space-y-4">
                   <div
@@ -63,7 +85,7 @@ const ServiceCategory = ({ title, subtitle, services, palette, id }: ServiceCate
                   >
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="font-semibold text-lg">{service.name}</h3>
+                  <h3 className="font-semibold text-lg text-[hsl(0,0%,20%)]">{service.name}</h3>
                   <p className="text-sm text-muted-foreground">{service.description}</p>
                 </CardContent>
               </Card>

@@ -40,7 +40,7 @@ serve(async (req) => {
     // Google Sheets API endpoint
     // Replace SPREADSHEET_ID with the actual spreadsheet ID
     // The sheet name is "Mi Dentista Citas Web Form"
-    const spreadsheetId = 'YOUR_SPREADSHEET_ID'; // User needs to provide this
+    const spreadsheetId = '1S_D5rOcBwNywna7G0oy92TIchUK_DXKDfDbl88kV5Jg';
     const range = 'Mi Dentista Citas Web Form!A:H'; // Assuming columns A-H for the data
     
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}:append?valueInputOption=USER_ENTERED&key=${GOOGLE_SHEETS_API_KEY}`;

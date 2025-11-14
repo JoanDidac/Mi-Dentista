@@ -22,16 +22,16 @@ const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
           {/* Left Content */}
           <div className="space-y-6 max-w-xl">
             <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
-              Pioneros en
+              Mi Dentista
             </p>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight" style={{ color: '#691844' }}>
               ODONTOLOGÍA
               <br />
-              DIGITAL
+              FAMILIAR
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               Tratamientos de estética dental mínimamente invasivos con la ayuda de 
-              la tecnología más avanzada.
+              la tecnología más humana.
             </p>
             <div className="pt-4">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
@@ -43,6 +43,7 @@ const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
                 onClick={onOpenBooking} 
                 size="lg" 
                 className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-shadow"
+                style={{ backgroundColor: '#691844', color: 'white' }}
               >
                 <Calendar className="h-5 w-5" />
                 Pedir Cita

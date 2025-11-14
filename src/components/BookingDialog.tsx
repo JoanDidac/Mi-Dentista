@@ -54,13 +54,27 @@ const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    toast.success("¡Solicitud enviada!", {
-      description: "Te contactaremos pronto para confirmar tu cita.",
-    });
-    form.reset();
-    onOpenChange(false);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      
+      const { error } = await supabase.functions.invoke('submit-booking', {
+        body: values
+      });
+
+      if (error) throw error;
+
+      toast.success("¡Solicitud enviada!", {
+        description: "Te contactaremos pronto para confirmar tu cita.",
+      });
+      form.reset();
+      onOpenChange(false);
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      toast.error("Error al enviar la solicitud", {
+        description: "Por favor, inténtalo de nuevo o contáctanos directamente.",
+      });
+    }
   };
 
   const timeSlots = [

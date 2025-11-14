@@ -10,7 +10,7 @@ const Hero = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: `url(${heroBackground})`,
-          backgroundPosition: 'center 30%',
+          backgroundPosition: '60% 30%',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/60"></div>

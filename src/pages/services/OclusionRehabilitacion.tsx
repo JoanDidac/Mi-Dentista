@@ -3,13 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BookingDialog from "@/components/BookingDialog";
 import heroImage from "@/assets/services/oclusion-bg.jpg";
 
 const OclusionRehabilitacion = () => {
   const navigate = useNavigate();
   const [bookingOpen, setBookingOpen] = useState(false);
+
+  useEffect(() => {
+    const h1 = document.querySelector('h1');
+    if (h1) {
+      h1.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">

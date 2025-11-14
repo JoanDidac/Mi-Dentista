@@ -53,10 +53,10 @@ All colors MUST be HSL.
     --palette-b-light: 324 44% 95%;
     --palette-b-foreground: 0 0% 100%;
     
-    /* Paleta C - Secondary Mauve */
-    --palette-c: 330 5% 65%;
-    --palette-c-light: 330 5% 94%;
-    --palette-c-foreground: 324 47% 31%;
+    /* Paleta C - Deep Burgundy #691844 */
+    --palette-c: 322 63% 32%;
+    --palette-c-light: 322 63% 95%;
+    --palette-c-foreground: 0 0% 100%;
     
     /* Elegant Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(330 35% 63% / 0.95), hsl(324 44% 44% / 0.95));

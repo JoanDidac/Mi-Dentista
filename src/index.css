@@ -43,9 +43,9 @@ All colors MUST be HSL.
     --radius: 0.5rem;
     
     /* Service Category Colors */
-    /* Paleta A - Primary Pink */
-    --palette-a: 330 35% 63%;
-    --palette-a-light: 330 35% 96%;
+    /* Paleta A - Deep Burgundy #691844 */
+    --palette-a: 322 63% 32%;
+    --palette-a-light: 322 63% 95%;
     --palette-a-foreground: 0 0% 100%;
     
     /* Paleta B - Accent Dark */

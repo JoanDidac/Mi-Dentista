@@ -12,14 +12,14 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         {/* Overlay - Deep Purple Gradient to match reference */}
-        <div className="absolute inset-0 bg-brand-primary/80 mix-blend-multiply md:bg-brand-primary/70"></div>
+        <div className="absolute inset-0 bg-[#65153d]/80 mix-blend-multiply md:bg-[#65153d]/70"></div>
         {/* Additional gradient for text readability at the bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#8C3573]/90 via-transparent to-transparent"></div>
       </div>
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 flex flex-col justify-center items-start pt-20">
-        <div className="max-w-3xl space-y-8 animate-in slide-in-from-left-5 duration-1000">
+        <div className="pl-8 max-w-4xl space-y-8 animate-in slide-in-from-left-5 duration-1000">
 
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-sm font-medium border border-white/20 shadow-sm">
@@ -28,10 +28,10 @@ const Hero = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight font-montserrat drop-shadow-md">
-            Tu Sonrisa y la de Tu Familia, <br className="hidden md:block" />
-            <span className="text-white relative">
-              en Buenas Manos
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[#f0ede4] leading-tight font-montserrat drop-shadow-md tracking-tighter">
+            Tu Sonrisa <br className="hidden md:block" /> y la de tu Familia  <br className="hidden md:block" />
+            <span className="text-[#f0ede4] relative">
+              En Buenas Manos
               {/* Optional underline decoration */}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-light opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
@@ -46,10 +46,10 @@ const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button className="h-14 px-8 bg-white text-brand-primary hover:bg-brand-light hover:text-white rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1">
+            <Button className="h-14 px-8 bg-white/90 backdrop-blur-sm text-brand-primary hover:bg-brand-light hover:text-white rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1">
               Reserva Tu Cita Gratis
             </Button>
-            <Button variant="outline" className="h-14 px-8 border-white text-white hover:bg-white/20 backdrop-blur-sm rounded-full text-lg group">
+            <Button variant="outline" className="h-14 px-8 bg-brand-white border-brand-white text-brand-primary hover:text-brand-white hover:bg-white/20 backdrop-blur-sm rounded-full text-lg group">
               Conoce el Equipo
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>

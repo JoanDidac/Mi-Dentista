@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
+import logoTrial from "@/assets/logo-trial.png";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,8 +44,18 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className={cn("text-2xl font-bold flex items-center gap-2 font-montserrat transition-colors", isTransparent ? "text-white" : "text-brand-primary")}>
-          <span>Mi Dentista</span>
+        <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
+          {/* Use a filter to invert the logo color when on transparent dark background for better visibility if needed, 
+                 or just display it. Assuming the logo is dark text. width/height adjusted to fit. 
+                 If the user provided logo is black text, and we are on transparent (dark) bg, we might need a white version 
+                 or a filter. For this trial, I will try to use a filter invert if transparent, but the user just said 'use the image'. 
+                 I'll add a conditional brightness/invert if it's transparent, assuming the logo is dark. 
+                 Safest bet is just to show the image first as requested. */}
+          <img
+            src={logoTrial}
+            alt="Mi Dentista Logo"
+            className={cn("h-12 w-auto object-contain", isTransparent && "brightness-0 invert")}
+          />
         </Link>
 
         {/* Desktop Menu */}
@@ -71,7 +83,7 @@ const Navbar = () => {
           <a href="/#testimonios" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
             Opiniones
           </a>
-          <Button className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5", isTransparent ? "bg-white text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary hover:bg-brand-dark text-white")}>
+          <Button className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5", isTransparent ? "bg-white/80 text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary/90 hover:bg-brand-dark text-white")}>
             Reserva Tu Cita Gratis
           </Button>
         </div>
@@ -100,7 +112,7 @@ const Navbar = () => {
           >
             Nosotros
           </a>
-          <Button className="bg-brand-primary w-full text-white rounded-full mt-4">
+          <Button className="bg-brand-primary/90 w-full text-white rounded-full mt-4">
             Reserva Tu Cita Gratis
           </Button>
         </div>

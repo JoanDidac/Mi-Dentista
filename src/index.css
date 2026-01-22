@@ -8,37 +8,37 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 324 47% 31%;
+    --background: 275 100% 98%; /* Lightest Lavender */
+    --foreground: 275 21% 27%; /* Darkest Purple */
 
     --card: 0 0% 100%;
-    --card-foreground: 324 47% 31%;
+    --card-foreground: 275 21% 27%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 324 47% 31%;
+    --popover-foreground: 275 21% 27%;
 
-    /* Primary: #B06090 */
-    --primary: 330 35% 63%;
+    /* Primary: #8C3573 */
+    --primary: 317 45% 38%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: lighter mauve #c2bec0 */
-    --secondary: 330 5% 75%;
-    --secondary-foreground: 324 47% 31%;
+    /* Secondary: #AD5E99 */
+    --secondary: 315 33% 52%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Muted: very light */
-    --muted: 330 10% 96%;
-    --muted-foreground: 330 5% 50%;
+    /* Muted: very light lavender */
+    --muted: 275 100% 96%;
+    --muted-foreground: 317 20% 50%;
 
-    /* Accent: #a13f79 */
-    --accent: 324 44% 44%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: #f6e9ff */
+    --accent: 275 100% 96%;
+    --accent-foreground: 317 45% 38%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 330 5% 88%;
-    --input: 330 5% 94%;
-    --ring: 330 35% 63%;
+    --border: 315 20% 90%;
+    --input: 315 20% 94%;
+    --ring: 317 45% 38%;
 
     --radius: 0.5rem;
     

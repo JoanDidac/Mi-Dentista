@@ -1,216 +1,110 @@
-import { useState } from "react";
-import { Menu, X, Phone, Calendar } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import logo from "@/assets/logo-horizontal.jpg";
+import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
-const Navbar = ({ onOpenBooking }: { onOpenBooking: () => void }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
-  const services = {
-    saludEstetica: [
-      { name: "Estética Dental", desc: "Carillas, blanqueamiento, diseño de sonrisa" },
-      { name: "Ortodoncia", desc: "Invisalign®, brackets estéticos" },
-      { name: "Periodoncia", desc: "Tratamientos de encías" },
-      { name: "Endodoncia", desc: "Tratamiento de conductos" },
-      { name: "Odontología General", desc: "Empastes, limpiezas, revisiones" },
-      { name: "Odontopediatría", desc: "Atención específica para niños" },
-      { name: "Oclusión y Rehabilitación", desc: "Prótesis, coronas, férulas" },
-      { name: "Ronquido y Apnea", desc: "Dispositivos intraorales" },
-    ],
-    implantes: [
-      { name: "Implantes Dentales", desc: "Sustitución de piezas perdidas" },
-      { name: "Cirugía Oral", desc: "Extracción de muelas del juicio" },
-      { name: "Rehabilitación con Implantes", desc: "Prótesis sobre implantes" },
-      { name: "Patología ATM", desc: "Tratamiento del dolor mandibular" },
-    ],
-    esteticaFacial: [
-      { name: "Medicina Estética Facial", desc: "Ácido hialurónico, bótox" },
-      { name: "Estética Facial Avanzada", desc: "Armonización facial, peelings" },
-    ],
-  };
+  // Check if we are on the home page
+  const isHomePage = location.pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Determine navbar style based on scroll and page
+  // On home page: Transparent at top (dark bg underneath implies white text), Solid white when scrolled
+  // On other pages: Always solid white (standard behavior)
+  const isTransparent = isHomePage && !isScrolled;
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-      <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img src={logo} alt="Mi Dentista" className="h-12 w-auto" />
-          </div>
+    <nav
+      className={cn(
+        "fixed w-full z-50 transition-all duration-300 border-b",
+        isTransparent
+          ? "bg-transparent border-transparent py-6"
+          : "bg-white/95 backdrop-blur-md shadow-sm border-brand-light/20 py-4"
+      )}
+    >
+      <div className="container mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className={cn("text-2xl font-bold flex items-center gap-2 font-montserrat transition-colors", isTransparent ? "text-white" : "text-brand-primary")}>
+          <span>Mi Dentista</span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-base">
-                    Salud y Estética Dental
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[500px] p-4">
-                      <div className="mb-3 pb-3 border-b">
-                        <p className="text-sm text-muted-foreground">
-                          Servicios orientados a mantener y mejorar la salud bucodental
-                        </p>
-                      </div>
-                      <div className="grid gap-3">
-                        {services.saludEstetica.map((service) => (
-                          <a
-                            key={service.name}
-                            href={`#${service.name.toLowerCase().replace(/\s+/g, "-")}`}
-                            className="block rounded-lg p-3 hover:bg-accent/50 transition-colors"
-                          >
-                            <div className="font-medium">{service.name}</div>
-                            <div className="text-sm text-muted-foreground">{service.desc}</div>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-base">
-                    Implantes y Cirugia Oral
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[500px] p-4">
-                      <div className="grid gap-3">
-                        {services.implantes.map((service) => (
-                          <a
-                            key={service.name}
-                            href={`#${service.name.toLowerCase().replace(/\s+/g, "-")}`}
-                            className="block rounded-lg p-3 hover:bg-accent/50 transition-colors"
-                          >
-                            <div className="font-medium">{service.name}</div>
-                            <div className="text-sm text-muted-foreground">{service.desc}</div>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-base">
-                    Medicina y Estética Facial
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[500px] p-4">
-                      <div className="grid gap-3">
-                        {services.esteticaFacial.map((service) => (
-                          <a
-                            key={service.name}
-                            href={`#${service.name.toLowerCase().replace(/\s+/g, "-")}`}
-                            className="block rounded-lg p-3 hover:bg-accent/50 transition-colors"
-                          >
-                            <div className="font-medium">{service.name}</div>
-                            <div className="text-sm text-muted-foreground">{service.desc}</div>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-
-            <a href="#contacto" className="text-base hover:text-primary transition-colors">
-              Contacto
-            </a>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:934413664" className="flex items-center gap-2 text-sm hover:text-primary transition-colors">
-              <Phone className="h-4 w-4" />
-              <span className="font-medium">934 413 664</span>
-            </a>
-            <Button onClick={onOpenBooking} className="gap-2">
-              <Calendar className="h-4 w-4" />
-              Pedir Cita
-            </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t">
-            <div className="space-y-4">
-              <div>
-                <h3 className="font-semibold mb-2">Salud y Estética Dental</h3>
-                <div className="space-y-2 pl-4">
-                  {services.saludEstetica.map((service) => (
-                    <a
-                      key={service.name}
-                      href={`#${service.name.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="block text-sm text-muted-foreground hover:text-primary"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {service.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Implantes y Cirugia Oral</h3>
-                <div className="space-y-2 pl-4">
-                  {services.implantes.map((service) => (
-                    <a
-                      key={service.name}
-                      href={`#${service.name.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="block text-sm text-muted-foreground hover:text-primary"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {service.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Medicina y Estética Facial</h3>
-                <div className="space-y-2 pl-4">
-                  {services.esteticaFacial.map((service) => (
-                    <a
-                      key={service.name}
-                      href={`#${service.name.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="block text-sm text-muted-foreground hover:text-primary"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {service.name}
-                    </a>
-                  ))}
-                </div>
-              </div>
-              <div className="pt-4 space-y-3">
-                <a href="tel:934413664" className="flex items-center gap-2 text-primary font-medium">
-                  <Phone className="h-4 w-4" />
-                  934 413 664
-                </a>
-                <Button onClick={() => { onOpenBooking(); setMobileMenuOpen(false); }} className="w-full gap-2">
-                  <Calendar className="h-4 w-4" />
-                  Pedir Cita
-                </Button>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
+          <div className="relative group">
+            <button className={cn("transition-colors font-medium flex items-center gap-1", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+              Tratamientos <span className="text-xs">▼</span>
+            </button>
+            <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-xl p-4 hidden group-hover:block animate-in fade-in slide-in-from-top-2 border border-brand-light/20">
+              <div className="flex flex-col gap-2">
+                <Link to="/tratamientos/odontopediatria-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Odontopediatría</Link>
+                <Link to="/tratamientos/ortodoncia-invisible-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Ortodoncia Invisible</Link>
+                <Link to="/tratamientos/implantes-dentales-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Implantes Dentales</Link>
+                <Link to="/tratamientos/ortodoncia-convencional-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Ortodoncia Convencional</Link>
+                <Link to="/tratamientos/endodoncia-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Endodoncia</Link>
+                <Link to="/tratamientos/periodoncia-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Periodoncia</Link>
+                <Link to="/tratamientos/cirugia-oral-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Cirugía Oral</Link>
               </div>
             </div>
           </div>
-        )}
+
+          <a href="/#nosotros" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+            Nosotros
+          </a>
+          <a href="/#testimonios" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+            Opiniones
+          </a>
+          <Button className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5", isTransparent ? "bg-white text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary hover:bg-brand-dark text-white")}>
+            Reserva Tu Cita Gratis
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X className={cn(isTransparent ? "text-white" : "text-brand-primary")} /> : <Menu className={cn(isTransparent ? "text-white" : "text-brand-primary")} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full p-4 flex flex-col gap-4 shadow-lg animate-in slide-in-from-top-5 max-h-[80vh] overflow-y-auto top-full">
+          <div className="font-bold text-brand-primary mb-2">Tratamientos</div>
+          <Link to="/tratamientos/odontopediatria-barcelona" className="pl-4 text-sm text-gray-600 hover:text-brand-primary" onClick={() => setIsOpen(false)}>Odontopediatría</Link>
+          <Link to="/tratamientos/ortodoncia-invisible-barcelona" className="pl-4 text-sm text-gray-600 hover:text-brand-primary" onClick={() => setIsOpen(false)}>Ortodoncia Invisible</Link>
+          <Link to="/tratamientos/implantes-dentales-barcelona" className="pl-4 text-sm text-gray-600 hover:text-brand-primary" onClick={() => setIsOpen(false)}>Implantes Dentales</Link>
+          {/* Add more links as needed for mobile */}
+
+          <div className="h-px bg-gray-100 my-2"></div>
+
+          <a
+            href="/#nosotros"
+            className="text-gray-600 hover:text-brand-primary font-medium"
+            onClick={() => setIsOpen(false)}
+          >
+            Nosotros
+          </a>
+          <Button className="bg-brand-primary w-full text-white rounded-full mt-4">
+            Reserva Tu Cita Gratis
+          </Button>
+        </div>
+      )}
     </nav>
   );
 };

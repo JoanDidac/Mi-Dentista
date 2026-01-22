@@ -1,141 +1,55 @@
-import { useState } from "react";
-import {
-  Sparkles,
-  Smile,
-  Shield,
-  Zap,
-  Stethoscope,
-  Baby,
-  Activity,
-  Moon,
-  Syringe,
-  Scissors,
-  RefreshCw,
-  Heart,
-  Droplet,
-  Wind,
-} from "lucide-react";
+
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ServiceCategory from "@/components/ServiceCategory";
-import BookingDialog from "@/components/BookingDialog";
+import Services from "@/components/Services";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 const Index = () => {
-  const [bookingOpen, setBookingOpen] = useState(false);
-
-  const saludEsteticaServices = [
-    {
-      name: "Estética Dental",
-      description: "Carillas de porcelana o composite, blanqueamiento dental, diseño digital de sonrisa.",
-      icon: Sparkles,
-    },
-    {
-      name: "Ortodoncia",
-      description: "Invisalign® y brackets estéticos, ortodoncia infantil, férulas de retención.",
-      icon: Smile,
-    },
-    {
-      name: "Periodoncia",
-      description: "Tratamientos de encías, limpieza profunda, mantenimiento periodontal.",
-      icon: Shield,
-    },
-    {
-      name: "Endodoncia",
-      description: "Tratamiento de conductos, eliminación del dolor dental y conservación de piezas.",
-      icon: Zap,
-    },
-    {
-      name: "Odontología General",
-      description: "Empastes, limpiezas, revisiones, control de caries y bruxismo.",
-      icon: Stethoscope,
-    },
-    {
-      name: "Odontopediatría",
-      description: "Atención específica para niños, revisiones preventivas, selladores.",
-      icon: Baby,
-    },
-    {
-      name: "Oclusión y Rehabilitación",
-      description: "Prótesis, coronas, férulas de descarga, tratamientos de ATM.",
-      icon: Activity,
-    },
-    {
-      name: "Ronquido y Apnea",
-      description: "Dispositivos intraorales para mejorar el descanso y reducir el ronquido.",
-      icon: Moon,
-    },
-  ];
-
-  const implantesServices = [
-    {
-      name: "Implantes Dentales",
-      description: "Sustitución de piezas perdidas con técnicas guiadas y regeneración ósea.",
-      icon: Syringe,
-    },
-    {
-      name: "Cirugía Oral",
-      description: "Extracción de muelas del juicio, quistes, pequeños injertos óseos.",
-      icon: Scissors,
-    },
-    {
-      name: "Rehabilitación con Implantes",
-      description: "Prótesis sobre implantes, carga inmediata, restauración total.",
-      icon: RefreshCw,
-    },
-    {
-      name: "Patología ATM",
-      description: "Diagnóstico y tratamiento del dolor mandibular o disfunción de la articulación.",
-      icon: Activity,
-    },
-  ];
-
-  const esteticaFacialServices = [
-    {
-      name: "Medicina Estética Facial",
-      description: "Rejuvenecimiento con ácido hialurónico, bótox, vitaminas, mesoterapia facial.",
-      icon: Heart,
-    },
-    {
-      name: "Estética Facial Avanzada",
-      description: "Armonización facial sin cirugía, hidratación profunda, peelings médicos, revitalización.",
-      icon: Droplet,
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar onOpenBooking={() => setBookingOpen(true)} />
-      <Hero onOpenBooking={() => setBookingOpen(true)} />
-      
-      <div id="servicios">
-        <ServiceCategory
-          id="salud-estetica"
-          title="Salud y Estética Dental"
-          subtitle="Servicios orientados a mantener y mejorar la salud bucodental y la sonrisa de toda la familia"
-          services={saludEsteticaServices}
-          palette="a"
-        />
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <Hero />
+      <Services />
 
-        <ServiceCategory
-          id="implantes"
-          title="Implantes y Cirugía Oral"
-          subtitle="Soluciones avanzadas para recuperar tu sonrisa con técnicas modernas y seguras"
-          services={implantesServices}
-          palette="b"
-        />
+      {/* Testimonials Section - keeping it simple for now as part of Index or could be a component */}
+      <section id="testimonios" className="py-20 bg-brand-light/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-brand-primary font-semibold tracking-wide uppercase text-sm">Testimonios</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 font-montserrat">
+              Familias que confían en nosotros
+            </h2>
+          </div>
 
-        <ServiceCategory
-          id="estetica-facial"
-          title="Medicina y Estética Facial"
-          subtitle="Tratamientos faciales no quirúrgicos para realzar tu belleza natural"
-          services={esteticaFacialServices}
-          palette="c"
-        />
-      </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <div className="flex gap-1 mb-4">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <span key={s} className="text-yellow-400">★</span>
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-6 italic">
+                  "Llevé a mi hijo de 4 años y salió encantado. La doctora fue súper paciente y le explicó todo como un juego. ¡Repetiremos seguro!"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center font-bold text-brand-primary">
+                    M
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">María González</h4>
+                    <p className="text-xs text-gray-500">Madre de Leo (4 años)</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      <Contact />
       <Footer />
-      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </div>
   );
 };

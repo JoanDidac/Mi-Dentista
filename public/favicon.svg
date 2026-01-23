@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <!-- 
     Diagonal orientation: Top-Left to Bottom-Right (+45 degrees)
-    Handle: Wineish (#8C3573)
+    Handle: Wineish (#8C3573) - Extended to look continuous
     Bristles: Brand colors (#8C3573, #AD5E99, #B784A7, #62255f)
   -->
   <g transform="translate(16, 16) rotate(45) translate(-16, -16)">
     <!-- Main Handle (Top Bar) -->
-    <!-- Centered vertically appearing, wide enough to fill diagonal -->
-    <rect x="2" y="10" width="28" height="6" rx="2" fill="#8C3573" />
+    <!-- Extended starting X to -10 to imply continuity off-canvas -->
+    <rect x="-10" y="10" width="40" height="6" rx="2" fill="#8C3573" />
     
     <!-- Bristles -->
     <!-- Dropping down from the handle -->

@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import facility1 from "../assets/facilities/facility_1.png";
 
 const IMAGES = [
+    facility1,
     "https://images.unsplash.com/photo-1629909608135-ca29a002ceb6?auto=format&fit=crop&q=80&w=1000",
+    facility1,
     "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1000",
+    facility1,
     "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1000",
-    "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=1000",
-    "https://images.unsplash.com/photo-1445527266029-93917a967596?auto=format&fit=crop&q=80&w=1000",
-    "https://images.unsplash.com/photo-1516549221187-df7051fdfc79?auto=format&fit=crop&q=80&w=1000",
-    "https://images.unsplash.com/photo-1629909608135-ca29a002ceb6?auto=format&fit=crop&q=80&w=1000",
+    facility1,
 ];
 
 const FacilitiesSection = () => {
@@ -93,6 +94,8 @@ const FacilitiesSection = () => {
                             // End position: last image bottom at 100vh (top at 50vh)
                             // Translation: 300vh (last image initial top) - 50vh = 250vh
                             // Actually using 262vh to add a slight buffer for the ending
+                            // Translation: We need to move enough to see all images
+                            // 7 images * 40vh (new height approx)
                             transform: `translateY(calc(12vh - ${progress * 262}vh))`,
                         }}
                     >
@@ -102,7 +105,7 @@ const FacilitiesSection = () => {
                                 className="w-full h-[50vh] flex-shrink-0 flex items-center justify-center p-6 md:px-8 md:py-[2.5vh]"
                             >
                                 {/* 3:2 aspect ratio as requested, with max-h and max-w constraints */}
-                                <div className="relative w-full aspect-[3/2] max-w-[85%] max-h-[28.5vh] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
+                                <div className="relative w-full aspect-[3/4] max-h-[40vh] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
                                     <img
                                         src={src}
                                         alt={`Facility ${index + 1}`}

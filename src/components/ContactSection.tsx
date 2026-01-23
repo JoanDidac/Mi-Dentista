@@ -9,6 +9,8 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { submitFormToSheet } from "../utils/googleSheets";
+import { toast } from "sonner";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState({
@@ -19,11 +21,34 @@ const ContactSection = () => {
         reason: "",
         privacy: false,
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Here you would typically send the data to your backend
+        setIsSubmitting(true);
+
+        const success = await submitFormToSheet(formData);
+
+        if (success) {
+            toast.success("¡Mensaje enviado!", {
+                description: "Gracias por contactarnos. Te responderemos en breve.",
+                duration: 5000,
+                className: "bg-brand-primary text-white border-none",
+            });
+            setFormData({
+                name: "",
+                phone: "",
+                email: "",
+                treatment: "",
+                reason: "",
+                privacy: false,
+            });
+        } else {
+            toast.error("Algo salió mal", {
+                description: "No pudimos enviar tu mensaje. Por favor intenta más tarde.",
+            });
+        }
+        setIsSubmitting(false);
     };
 
     const handleChange = (field: string, value: string | boolean) => {
@@ -31,7 +56,7 @@ const ContactSection = () => {
     };
 
     return (
-        <section className="w-full bg-gradient-to-br from-[#8C3573] to-[#65153d] py-16 md:py-24">
+        <section id="contact" className="w-full bg-gradient-to-br from-[#8C3573] to-[#65153d] py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left Column: Text Content */}
@@ -53,8 +78,8 @@ const ContactSection = () => {
                                 prostodoncia.
                             </p>
                             <p>
-                                Diagnóstico personalizado y plan de tratamiento con pruebas
-                                digital 3D totalmente gratuitos con tu 1ª visita.
+                                Diagnóstico personalizado, plan de tratamiento con pruebas
+                                diagnosticas desde tu 1ª visita y seguimiento cercano desde el inicio.
                             </p>
                         </div>
                     </div>
@@ -159,7 +184,7 @@ const ContactSection = () => {
                                     Acepto la Política de Privacidad y todo lo que se dispone en ella.
                                     <br />
                                     <span className="opacity-70 text-[10px]">
-                                        Responsable: UNIC CLÍNICAS S.L. Finalidad: Dar respuesta a las consultas/gestión de citas...
+                                        Responsable: Mi Dentista. Finalidad: Dar respuesta a las consultas/gestión de citas...
                                     </span>
                                 </label>
                             </div>
@@ -167,9 +192,9 @@ const ContactSection = () => {
                             <Button
                                 type="submit"
                                 className="w-full md:w-auto px-8 h-12 bg-white text-brand-primary hover:bg-white/90 font-bold text-lg rounded-lg shadow-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
-                                disabled={!formData.privacy}
+                                disabled={!formData.privacy || isSubmitting}
                             >
-                                Pide Cita
+                                {isSubmitting ? "Enviando..." : "Pide Cita"}
                             </Button>
                         </form>
                     </div>

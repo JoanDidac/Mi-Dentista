@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/select";
 import { useState } from "react";
 import { MessageCircle, MapPin, Clock } from "lucide-react";
+import { submitFormToSheet } from "../utils/googleSheets";
+import { toast } from "sonner";
 
 const ContactLocationSection = () => {
     const [formData, setFormData] = useState({
@@ -21,11 +23,33 @@ const ContactLocationSection = () => {
         reason: "",
         privacy: false,
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Logic for form submission
+        setIsSubmitting(true);
+
+        const success = await submitFormToSheet(formData);
+
+        if (success) {
+            toast.success("¡Solicitud recibida!", {
+                description: "Nos pondremos en contacto contigo muy pronto.",
+                duration: 5000,
+            });
+            setFormData({
+                name: "",
+                phone: "",
+                email: "",
+                treatment: "",
+                reason: "",
+                privacy: false,
+            });
+        } else {
+            toast.error("Error al enviar", {
+                description: "Hubo un problema. Por favor, inténtalo de nuevo o llámanos.",
+            });
+        }
+        setIsSubmitting(false);
     };
 
     const handleChange = (field: string, value: string | boolean) => {
@@ -175,16 +199,16 @@ const ContactLocationSection = () => {
                                 </div>
 
                                 <p className="text-[9px] text-white/60 leading-tight">
-                                    Responsable: <span className="font-bold uppercase">Unic Clínicas S.L.</span> Finalidad: Dar respuesta a las consultas/gestión de citas/envío de boletín informativo o comunicaciones comerciales. Legitimación: Consentimiento del interesado. Destinatarios: No se cederán datos a terceros, salvo obligación legal. Derechos: Tiene derecho a acceder, rectificar y suprimir los datos, así como otros derechos, como se explica en la información adicional. Información adicional: Puede consultar la información adicional y detallada sobre Protección de Datos Personales en el Aviso Legal y Política de Privacidad.
+                                    Responsable: <span className="font-bold uppercase">Mi Dentista</span> Finalidad: Dar respuesta a las consultas/gestión de citas/envío de boletín informativo o comunicaciones comerciales. Legitimación: Consentimiento del interesado. Destinatarios: No se cederán datos a terceros, salvo obligación legal. Derechos: Tiene derecho a acceder, rectificar y suprimir los datos, así como otros derechos, como se explica en la información adicional. Información adicional: Puede consultar la información adicional y detallada sobre Protección de Datos Personales en el Aviso Legal y Política de Privacidad.
                                 </p>
                             </div>
 
                             <Button
                                 type="submit"
                                 className="px-10 h-14 bg-white text-[#8C3573] hover:bg-white/90 font-bold text-base rounded-lg shadow-lg uppercase tracking-wider transition-all"
-                                disabled={!formData.privacy}
+                                disabled={!formData.privacy || isSubmitting}
                             >
-                                Pide Cita
+                                {isSubmitting ? "Enviando..." : "Pide Cita"}
                             </Button>
                         </form>
                     </div>

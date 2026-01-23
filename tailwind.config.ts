@@ -17,6 +17,8 @@ export default {
       fontFamily: {
         sans: ["Montserrat", "system-ui", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
+        unbounded: ["Unbounded", "sans-serif"],
+        barlow: ["Barlow", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -81,6 +83,7 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "bounce-slow": "bounce 3s infinite",
       },
     },
   },

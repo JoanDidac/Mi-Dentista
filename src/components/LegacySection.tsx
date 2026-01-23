@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import founderImage from "../assets/founder_new.jpg";
 
 const LegacySection = () => {
     const [scrollY, setScrollY] = useState(0);
@@ -106,8 +107,8 @@ const LegacySection = () => {
                                 {/* Main Portrait Image */}
                                 <div className="absolute inset-0 overflow-hidden rounded-3xl">
                                     <img
-                                        src="/legacy-portrait.png"
-                                        alt="Fundador y propietaria actual de Mi Dentista"
+                                        src={founderImage}
+                                        alt="Fundadora de Mi Dentista"
                                         className="w-full h-full object-cover object-center"
                                         style={{
                                             objectPosition: 'center 20%',

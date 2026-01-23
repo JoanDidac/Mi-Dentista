@@ -56,13 +56,25 @@ const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      
-      const { error } = await supabase.functions.invoke('submit-booking', {
-        body: values
-      });
+      // Convert date/time objects to strings for the sheet
+      const payload = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        service: values.service,
+        date: values.date.toLocaleDateString(),
+        time: values.time,
+        comments: values.comments,
+        privacy: true // Implied by submission here
+      };
 
-      if (error) throw error;
+      // Submit to Google Sheets
+      const { submitFormToSheet } = await import("../utils/googleSheets");
+      const success = await submitFormToSheet(payload);
+
+      if (!success) throw new Error("Failed to submit to sheet");
+
+
 
       toast.success("¡Solicitud enviada!", {
         description: "Te contactaremos pronto para confirmar tu cita.",

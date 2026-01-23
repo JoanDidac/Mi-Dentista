@@ -1,32 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
   <!-- 
     Diagonal orientation: Top-Left to Bottom-Right (+45 degrees)
-    Configuration: Tip at TL, Handle extending to BR (Flipped from previous version)
-    
-    Handle: Wineish (#8C3573)
-    Bristles: Brand colors 
+    Configuration: Tip at Top-Left, Handle extends to Bottom-Right
+    Refinements: 
+      - Bristles closer to tip
+      - Thinner bristles (width 1.2)
+      - Tighter spacing (gap ~0.8)
   -->
   <g transform="translate(16, 16) rotate(45) translate(-16, -16)">
     <!-- Main Handle (Top Bar) -->
-    <!-- Starting from ~2 (Tip) to 40 (Handle extension off-screen right) -->
+    <!-- Tip starts at x=2 -->
     <rect x="2" y="10" width="40" height="6" rx="2" fill="#8C3573" />
     
     <!-- Bristles -->
-    <!-- Positioned relative to the visible head part (x=2 to x=28 approx) -->
+    <!-- Starting closer to tip (x=3.5) -->
+    <!-- Width: 1.2, Spacing: 0.8 -> Step: 2.0 -->
     
-    <!-- Bristle 1 (Near Tip) -->
-    <rect x="5" y="17" width="2" height="7" rx="0.5" fill="#AD5E99" />
+    <!-- Bristle 1 (Closest to Tip) -->
+    <rect x="3.5" y="17" width="1.2" height="7" rx="0.5" fill="#AD5E99" />
     <!-- Bristle 2 -->
-    <rect x="8.5" y="17" width="2" height="8" rx="0.5" fill="#8C3573" />
+    <rect x="5.5" y="17" width="1.2" height="8" rx="0.5" fill="#8C3573" />
     <!-- Bristle 3 -->
-    <rect x="12" y="17" width="2" height="7.5" rx="0.5" fill="#B784A7" />
+    <rect x="7.5" y="17" width="1.2" height="7.5" rx="0.5" fill="#B784A7" />
     <!-- Bristle 4 -->
-    <rect x="15.5" y="17" width="2" height="8" rx="0.5" fill="#62255f" />
+    <rect x="9.5" y="17" width="1.2" height="8" rx="0.5" fill="#62255f" />
     <!-- Bristle 5 -->
-    <rect x="19" y="17" width="2" height="7" rx="0.5" fill="#AD5E99" />
+    <rect x="11.5" y="17" width="1.2" height="7" rx="0.5" fill="#AD5E99" />
     <!-- Bristle 6 -->
-    <rect x="22.5" y="17" width="2" height="8" rx="0.5" fill="#8C3573" />
-    <!-- Bristle 7 (Towards Handle) -->
-    <rect x="26" y="17" width="2" height="7.5" rx="0.5" fill="#B784A7" />
+    <rect x="13.5" y="17" width="1.2" height="8" rx="0.5" fill="#8C3573" />
+    <!-- Bristle 7 -->
+    <rect x="15.5" y="17" width="1.2" height="7.5" rx="0.5" fill="#B784A7" />
+    <!-- Bristle 8 (Added one more due to tighter spacing) -->
+    <rect x="17.5" y="17" width="1.2" height="7" rx="0.5" fill="#62255f" />
   </g>
 </svg>

@@ -1,7 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Toothbrush Tip Icon -->
-  <path fill="#8C3573" d="M10 8C10 6.89543 10.8954 6 12 6H20C21.1046 6 22 6.89543 22 8V14C22 15.1046 21.1046 16 20 16H12C10.8954 16 10 15.1046 10 14V8Z" />
-  <path fill="#8C3573" d="M12 4C12 3.44772 12.4477 3 13 3H14C14.5523 3 15 3.44772 15 4V6H12V4Z" />
-  <path fill="#8C3573" d="M17 4C17 3.44772 17.4477 3 18 3H19C19.5523 3 20 3.44772 20 4V6H17V4Z" />
-  <path fill="#8C3573" d="M14 16V22C14 24.2091 15.7909 26 18 26H24V28H18C14.6863 28 12 25.3137 12 22V16H14Z" opacity="0.5"/>
+  <!-- 
+    Diagonal orientation: Top-Left to Bottom-Right (+45 degrees)
+    Handle: Wineish (#8C3573)
+    Bristles: Brand colors (#8C3573, #AD5E99, #B784A7, #62255f)
+  -->
+  <g transform="translate(16, 16) rotate(45) translate(-16, -16)">
+    <!-- Main Handle (Top Bar) -->
+    <!-- Centered vertically appearing, wide enough to fill diagonal -->
+    <rect x="2" y="10" width="28" height="6" rx="2" fill="#8C3573" />
+    
+    <!-- Bristles -->
+    <!-- Dropping down from the handle -->
+    <!-- Using brand palette: 
+         Primary: #8C3573
+         Secondary: #AD5E99
+         Light: #B784A7
+         Dark: #62255f
+    -->
+    
+    <!-- Bristle 1 -->
+    <rect x="4" y="17" width="2" height="8" rx="0.5" fill="#AD5E99" />
+    <!-- Bristle 2 -->
+    <rect x="7.5" y="17" width="2" height="7" rx="0.5" fill="#8C3573" />
+    <!-- Bristle 3 -->
+    <rect x="11" y="17" width="2" height="8" rx="0.5" fill="#B784A7" />
+    <!-- Bristle 4 -->
+    <rect x="14.5" y="17" width="2" height="7.5" rx="0.5" fill="#62255f" />
+    <!-- Bristle 5 -->
+    <rect x="18" y="17" width="2" height="8" rx="0.5" fill="#AD5E99" />
+    <!-- Bristle 6 -->
+    <rect x="21.5" y="17" width="2" height="7" rx="0.5" fill="#8C3573" />
+    <!-- Bristle 7 -->
+    <rect x="25" y="17" width="2" height="8" rx="0.5" fill="#B784A7" />
+  </g>
 </svg>

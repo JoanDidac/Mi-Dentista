@@ -1,73 +1,78 @@
-# Welcome to your Lovable project
+# Mi Dentista - Clínica Dental Modern Website
 
-## Project info
+A modern, responsive, and performant dental clinic website built with the latest web technologies. This project focuses on providing a premium user experience, seamless navigation, and easy contact integration.
 
-**URL**: https://lovable.dev/projects/bfc2502d-8809-4aa9-8dad-31604430a6f9
+## 🚀 Technologies
 
-## How can I edit this code?
+This project is built with a modern frontend stack:
 
-There are several ways of editing your application.
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/) for fast development and building.
+- **Language**: [TypeScript](https://www.typescriptlang.org/) for type safety and better developer experience.
+- **Components**: [shadcn/ui](https://ui.shadcn.com/) for high-quality, accessible UI components.
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) for rapid and consistent styling.
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) for smooth, complex animations.
+- **Icons**: [Lucide React](https://lucide.dev/) for crisp, uniform iconography.
+- **Notifications**: [Sonner](https://sonner.emilkowal.ski/) for elegant toast notifications.
 
-**Use Lovable**
+## 🛠️ Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bfc2502d-8809-4aa9-8dad-31604430a6f9) and start prompting.
+To get a local copy up and running, follow these simple steps.
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+Ensure you have Node.js and npm installed on your machine.
+- [Node.js](https://nodejs.org/en/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1.  **Clone the repository**
+    ```sh
+    git clone https://github.com/JoanDidac/Mi-Dentista.git
+    cd Mi-Dentista
+    ```
 
-Follow these steps:
+2.  **Install dependencies**
+    ```sh
+    npm install
+    # or
+    bun install
+    ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3.  **Start the development server**
+    ```sh
+    npm run dev
+    ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4.  Open [http://localhost:8080](http://localhost:8080) with your browser to see the result.
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🔌 Features & Integration
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+-   **Contact Forms**: Integrated with Google Apps Script to save submissions directly to a Google Sheet.
+    -   *Configuration*: Update `src/utils/googleSheets.ts` with your deployed Web App URL.
+-   **Responsive Design**: Fully responsive layout optimized for mobile, tablet, and desktop.
+-   **Interactive Elements**: Smooth scrolling, hover effects, and animated transitions.
+
+## 📁 Project Structure
+
+```
+├── src
+│   ├── components  # Reusable UI components
+│   ├── assets      # Static assets (images, icons)
+│   ├── utils       # Utility functions (Google Sheets integration)
+│   ├── App.tsx     # Main application component
+│   └── main.tsx    # Entry point
 ```
 
-**Edit a file directly in GitHub**
+## 🤝 Contributing
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-**Use GitHub Codespaces**
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📄 License
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/bfc2502d-8809-4aa9-8dad-31604430a6f9) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Distributed under the MIT License.

@@ -10,7 +10,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import { MessageCircle, MapPin, Clock } from "lucide-react";
+import { MessageCircle, MapPin, Clock, Check } from "lucide-react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
 
@@ -35,6 +35,8 @@ const ContactLocationSection = () => {
             toast.success("¡Solicitud recibida!", {
                 description: "Nos pondremos en contacto contigo muy pronto.",
                 duration: 5000,
+                className: "bg-white text-brand-primary border-brand-primary/20",
+                icon: <Check className="text-[#84cc16] w-5 h-5" />,
             });
             setFormData({
                 name: "",

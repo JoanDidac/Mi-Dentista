@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
+import { Check } from "lucide-react";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState({
@@ -33,7 +34,8 @@ const ContactSection = () => {
             toast.success("¡Mensaje enviado!", {
                 description: "Gracias por contactarnos. Te responderemos en breve.",
                 duration: 5000,
-                className: "bg-brand-primary text-white border-none",
+                className: "bg-white text-brand-primary border-brand-primary/20",
+                icon: <Check className="text-[#84cc16] w-5 h-5" />,
             });
             setFormData({
                 name: "",

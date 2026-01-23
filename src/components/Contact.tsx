@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Calendar, MapPin, Phone } from "lucide-react";
+import { MessageSquare, Calendar, MapPin, Phone, Check } from "lucide-react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
 
@@ -32,6 +32,8 @@ const Contact = () => {
             toast.success("¡Solicitud enviada!", {
                 description: "Te contactaremos en breve.",
                 duration: 5000,
+                className: "bg-white text-brand-primary border-brand-primary/20",
+                icon: <Check className="text-[#84cc16] w-5 h-5" />,
             });
             setFormData(prev => ({ ...prev, name: "", phone: "" }));
         } else {

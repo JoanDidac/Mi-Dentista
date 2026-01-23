@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Calendar as CalendarIcon, Clock } from "lucide-react";
+import { Calendar as CalendarIcon, Clock, Check } from "lucide-react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { cn } from "@/lib/utils";
@@ -78,6 +78,8 @@ const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
 
       toast.success("¡Solicitud enviada!", {
         description: "Te contactaremos pronto para confirmar tu cita.",
+        className: "bg-white text-brand-primary border-brand-primary/20",
+        icon: <Check className="text-[#84cc16] w-5 h-5" />,
       });
       form.reset();
       onOpenChange(false);

@@ -71,7 +71,7 @@ const ContactLocationSection = () => {
                             </h2>
                             <p className="text-gray-600 text-lg leading-relaxed max-w-xl">
                                 Puedes contactar con nuestro equipo rellenando el formulario,
-                                llamando al <span className="font-bold text-brand-primary">674 592 433</span> o escribiendo
+                                llamando al <span className="font-bold text-brand-primary">93 441 36 64</span> o escribiendo
                                 un mensaje de WhatsApp haciendo clic en el botón.
                             </p>
 
@@ -86,9 +86,16 @@ const ContactLocationSection = () => {
                                 <h3 className="text-brand-primary font-bold text-lg flex items-center gap-2">
                                     Dirección
                                 </h3>
-                                <p className="text-gray-600 font-medium">
-                                    C/Blai n45 08004 Poble Sec, Barcelona
-                                </p>
+                                <a
+                                    href="#map-location"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById('map-location')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    }}
+                                    className="text-gray-600 font-medium hover:text-brand-primary hover:scale-105 hover:uppercase transition-all duration-300 cursor-pointer block origin-left"
+                                >
+                                    C/Blai Nº 45 08004 Poble Sec, Barcelona
+                                </a>
                             </div>
                             <div className="space-y-3">
                                 <h3 className="text-brand-primary font-bold text-lg flex items-center gap-2">
@@ -217,7 +224,7 @@ const ContactLocationSection = () => {
                 </div>
 
                 {/* Map Section */}
-                <div className="mt-20 rounded-[40px] overflow-hidden shadow-xl border border-gray-100 h-[400px] relative">
+                <div id="map-location" className="mt-20 rounded-[40px] overflow-hidden shadow-xl border border-gray-100 h-[400px] relative">
                     <iframe
                         src="https://maps.google.com/maps?q=Carrer+de+Blai+45+08004+Barcelona&t=&z=16&ie=UTF8&iwloc=&output=embed"
                         width="100%"

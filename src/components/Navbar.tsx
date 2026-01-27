@@ -77,15 +77,17 @@ const Navbar = () => {
             </div>
           </div>
 
-          <a href="/#nosotros" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+          <a href="/#historia" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
             Nosotros
           </a>
           <a href="/#testimonios" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
             Opiniones
           </a>
-          <Button className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5", isTransparent ? "bg-white/80 text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary/90 hover:bg-brand-dark text-white")}>
-            Reserva Tu Cita Gratis
-          </Button>
+          <a href="/#contact">
+            <Button className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5", isTransparent ? "bg-white/80 text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary/90 hover:bg-brand-dark text-white")}>
+              Reserva Tu Cita Gratis
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -106,15 +108,17 @@ const Navbar = () => {
           <div className="h-px bg-gray-100 my-2"></div>
 
           <a
-            href="/#nosotros"
+            href="/#historia"
             className="text-gray-600 hover:text-brand-primary font-medium"
             onClick={() => setIsOpen(false)}
           >
             Nosotros
           </a>
-          <Button className="bg-brand-primary/90 w-full text-white rounded-full mt-4">
-            Reserva Tu Cita Gratis
-          </Button>
+          <a href="/#contact" onClick={() => setIsOpen(false)}>
+            <Button className="bg-brand-primary/90 w-full text-white rounded-full mt-4">
+              Reserva Tu Cita Gratis
+            </Button>
+          </a>
         </div>
       )}
     </nav>

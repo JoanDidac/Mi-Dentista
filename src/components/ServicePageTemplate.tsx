@@ -103,7 +103,7 @@ const ServicePageTemplate = ({ data }: Props) => {
                         <div className="relative sticky top-32 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer aspect-video lg:aspect-[4/3] w-full max-w-xl">
                             <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/0 transition-all duration-500 z-10 pointer-events-none"></div>
                             <video
-                                src="/Endodoncia%20Videograma%20Mi%20Dentista%20.mp4"
+                                src={data.videogram}
                                 autoPlay
                                 loop
                                 muted

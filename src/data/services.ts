@@ -16,6 +16,8 @@ import pedsHero from "../assets/odontopediatria.png";
 import orthoConvHero from "../assets/ortodoncia-convencional.png";
 import endoHero from "../assets/endodoncia-trial.png";
 import endoHeroReal from "../assets/endodoncia-hero.png";
+import perioHeroReal from "../assets/periodoncia-hero.png";
+import surgeryHeroReal from "../assets/cirugia-oral-hero.png";
 
 export interface ServiceData {
     slug: string;
@@ -28,6 +30,7 @@ export interface ServiceData {
     imagePrompt: string;
     techSpecs: { label: string; value: string }[];
     image: string;
+    videogram?: string;
 }
 
 export const servicesData: ServiceData[] = [
@@ -126,10 +129,10 @@ export const servicesData: ServiceData[] = [
             "Mejora la autoestima y la fonética",
         ],
         process: [
-            { title: "Diagnóstico 3D", desc: "CBCT para evaluar el hueso disponible." },
-            { title: "Colocación", desc: "Intervención indolora con anestesia local." },
-            { title: "Integración", desc: "Periodo de curación (3-4 meses)." },
-            { title: "Diente Final", desc: "Colocación de la corona de cerámica." },
+            { title: "Diagnóstico 3D", desc: "Valoramos tu caso con tecnología digital de última generación para planificar el tratamiento más adecuado y seguro." },
+            { title: "Colocación", desc: "Utilizamos implantes de titanio o zirconio según tu necesidad, aplicando técnicas avanzadas como la carga inmediata." },
+            { title: "Integración", desc: "Respetamos los tiempos biológicos de cicatrización para asegurar una base sólida, biocompatible y duradera." },
+            { title: "Diente Final", desc: "Diseñamos tu nueva sonrisa con una estética natural y funcionalidad perfecta, indistinguible de tus dientes reales." },
         ],
         imagePrompt: "Macro shot of a high-quality dental implant model on a clean reflective surface. Professional, medical, sterile but warm lighting. Purple accent.",
         techSpecs: [
@@ -137,7 +140,8 @@ export const servicesData: ServiceData[] = [
             { label: "Garantía", value: "De por vida (Implant System)" },
             { label: "Técnica", value: "Cirugía Guiada por Ordenador" },
         ],
-        image: implantHero
+        image: implantHero,
+        videogram: "/Implantes%20videograma%20Mi%20Dentista.mp4"
     },
     {
         slug: "endodoncia-barcelona",
@@ -153,10 +157,10 @@ export const servicesData: ServiceData[] = [
             "Tratamiento seguro y predecible",
         ],
         process: [
-            { title: "Apertura", desc: "Acceso a la cámara pulpar bajo anestesia." },
-            { title: "Limpieza", desc: "Instrumentación y desinfección de conductos." },
-            { title: "Sellado", desc: "Relleno termoplástico para evitar reinfecciones." },
-            { title: "Reconstrucción", desc: "Restauración de la forma del diente." },
+            { title: "Diagnóstico y Acceso", desc: "Examinamos tu caso para salvar el diente original, evitando la extracción y preservando al máximo su estructura natural." },
+            { title: "Desinfección", desc: "Tratamos la infección desde la raíz, eliminando bacterias para evitar su propagación al hueso maxilar o tejidos cercanos." },
+            { title: "Sellado", desc: "Realizamos un sellado hermético de los conductos que protege el diente y evita futuras reinfecciones." },
+            { title: "Restauración", desc: "Recuperamos la funcionalidad y estética natural mediante una reconstrucción o corona que se integra perfectamente en tu boca." },
         ],
         imagePrompt: "Digital illustration or close-up photo representing dental precision. Microscope view concept. Clean, technological feel with purple tones.",
         techSpecs: [
@@ -164,7 +168,8 @@ export const servicesData: ServiceData[] = [
             { label: "Visualización", value: "Microscopio Dental" },
             { label: "Precisión", value: "Localizador de Ápices Electrónico" },
         ],
-        image: endoHeroReal
+        image: endoHeroReal,
+        videogram: "/Endodoncia%20Videograma%20Mi%20Dentista%20.mp4"
 
     },
     {
@@ -191,7 +196,8 @@ export const servicesData: ServiceData[] = [
             { label: "Tratamiento", value: "Ultrasonidos y Air-Flow" },
             { label: "Seguimiento", value: "Protocolo EMS" },
         ],
-        image: defaultHero
+        image: perioHeroReal,
+        videogram: "/Periodoncia%20videograma%20Mi%20DEntista.mp4"
     },
     {
         slug: "cirugia-oral-barcelona",
@@ -207,9 +213,10 @@ export const servicesData: ServiceData[] = [
             "Sedación disponible para tu tranquilidad",
         ],
         process: [
-            { title: "Planificación", desc: "Estudio radiológico 3D." },
-            { title: "Intervención", desc: "Procedimiento estéril y controlado." },
-            { title: "Postoperatorio", desc: "Seguimiento cercano y medicación." },
+            { title: "Diagnóstico Avanzado", desc: "Utilizamos escáneres 3D y CBCT para evaluar la anatomía exacta y diseñar un plan quirúrgico preciso y personalizado." },
+            { title: "Preparación y Confort", desc: "Priorizamos tu tranquilidad aplicando la anestesia más adecuada y resolviendo todas tus dudas antes de iniciar." },
+            { title: "Intervención Segura", desc: "Ejecutamos el procedimiento bajo estrictos protocolos estériles para eliminar patologías o preparar tu boca para futuros tratamientos." },
+            { title: "Cura y Seguimiento", desc: "Aseguramos una recuperación rápida con instrucciones detalladas, medicación específica y revisiones de control postoperatorias." },
         ],
         imagePrompt: "Modern dental surgical suite. Clean, sterile, reassuring atmosphere. Not scary. Professional equipment in background.",
         techSpecs: [
@@ -217,6 +224,7 @@ export const servicesData: ServiceData[] = [
             { label: "Diagnóstico", value: "CBCT 3D" },
             { label: "Confort", value: "Sedación Consciente" },
         ],
-        image: defaultHero
+        image: surgeryHeroReal,
+        videogram: "/Cirugia%20Oral%20Videograma%20Mi%20Dentista.mp4"
     },
 ];

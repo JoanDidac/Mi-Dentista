@@ -102,10 +102,10 @@ export const servicesData: ServiceData[] = [
             "Resultados estables y duraderos",
         ],
         process: [
-            { title: "Estudio", desc: "Radiografías y fotos para el diagnóstico." },
-            { title: "Colocación", desc: "Cementado de los brackets en una sesión." },
-            { title: "Ajustes", desc: "Revisiones mensuales para activar el movimiento." },
-            { title: "Retención", desc: "Mantenedores para fijar el resultado final." },
+            { title: "Diagnóstico y Selección", desc: "Elegimos entre brackets metálicos (resistencia probada) o estéticos de zafiro (discreción total), según tus prioridades estéticas y funcionales." },
+            { title: "Colocación Precisa", desc: "Cementamos los brackets con precisión milimétrica para garantizar un movimiento dental controlado y eficaz desde el primer día." },
+            { title: "Ajustes Progresivos", desc: "Realizamos revisiones cada 4-6 semanas para ajustar la tensión del arco, asegurando un progreso constante hacia tu sonrisa ideal." },
+            { title: "Retención y Sonrisa", desc: "Al finalizar, retiramos la aparatología y colocamos retenedores fijos o removibles para preservar tu nueva sonrisa de por vida." },
         ],
         imagePrompt: "Teenager smiling with braces, looking happy and confident. Warm lighting, modern style. Subtle purple branding elements.",
         techSpecs: [
@@ -113,7 +113,8 @@ export const servicesData: ServiceData[] = [
             { label: "Precisión", value: "Control radicular milimétrico" },
             { label: "Mantenimiento", value: "Revisiones cada 4-6 semanas" },
         ],
-        image: orthoConvHero
+        image: orthoConvHero,
+        videogram: "/Ortodoncia%20convencional%20Videograma%20Mi%20DEntista.mp4"
     },
     {
         slug: "implantes-dentales-barcelona",

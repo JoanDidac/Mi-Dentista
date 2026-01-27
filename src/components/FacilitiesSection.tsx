@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import facility1 from "../assets/facilities/facility_1.png";
+import facility2 from "../assets/facilities/facility_2.png";
+import facility3 from "../assets/facilities/facility_3.png";
+import facility4 from "../assets/facilities/facility_4.png";
 
 const IMAGES = [
     facility1,
+    facility2,
+    facility3,
     "https://images.unsplash.com/photo-1629909608135-ca29a002ceb6?auto=format&fit=crop&q=80&w=1000",
-    facility1,
-    "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=1000",
-    facility1,
-    "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1000",
-    facility1,
+    facility4,
 ];
 
 const FacilitiesSection = () => {

@@ -49,7 +49,7 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-xl text-white/90 max-w-xl font-light leading-relaxed drop-shadow-sm">
-            Expertos en odontología infantil y familiar en Poble Sec. Cuidamos de tu salud bucal con delicadeza, tecnología avanzada y mucho cariño.
+            Expertos en odontología empática y respetuosa en Poble Sec, Barcelona. Cuidamos de tu salud buco-dental con delicadeza, 20 años de experiencia y mucho cariño.
           </p>
 
           {/* CTAs */}

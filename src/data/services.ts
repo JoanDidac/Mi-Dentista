@@ -39,7 +39,7 @@ export const servicesData: ServiceData[] = [
         icon: Baby,
         title: "Odontopediatría",
         subtitle: "Experiencia y ternura para cuidar lo que más quieres",
-        description: "La odontopediatría es la rama de la odontología dedicada a la salud bucodental de niños y adolescentes. En Mi Dentista, creamos un entorno seguro y divertido donde los más pequeños aprenden a cuidar su sonrisa sin miedos.",
+        description: "Cuidar la sonrisa comienza en los primeros años. Creamos un entorno donde la salud bucodental se aprende jugando, fomentando hábitos positivos desde la infancia. Tu hijo se sentirá seguro y feliz, transformando la visita al dentista en una experiencia de confianza y crecimiento.",
         benefits: [
             "Prevención temprana de problemas dentales",
             "Promoción de hábitos saludables desde la infancia",
@@ -48,10 +48,10 @@ export const servicesData: ServiceData[] = [
             "Protección contra caries infantiles mediante selladores",
         ],
         process: [
-            { title: "Primera Visita", desc: "Evaluación inicial suave en un ambiente de juego." },
-            { title: "Educación", desc: "Enseñamos técnicas de cepillado divertidas." },
-            { title: "Diagnóstico", desc: "Revisión completa para detectar posibles anomalías." },
-            { title: "Tratamiento", desc: "Resolución de problemas con técnicas mínimamente invasivas." },
+            { title: "Primera Cita y Evaluación", desc: "Evaluamos la salud bucal completa y los hábitos de tu hijo en un entorno de juego, detectando cualquier necesidad de forma temprana y relajada." },
+            { title: "Prevención y Educación", desc: "Enseñamos técnicas de higiene divertidas y aplicamos selladores o flúor, protegiendo sus dientes mientras aprenden a cuidar su sonrisa." },
+            { title: "Tratamiento Personalizado", desc: "Diseñamos planes adaptados a su edad, desde limpiezas hasta ortodoncia interceptiva, utilizando tecnología avanzada para intervenciones mínimas." },
+            { title: "Experiencia Positiva", desc: "Creamos un ambiente seguro y feliz para eliminar el miedo al dentista, asegurando que tu hijo crezca con confianza y una salud oral perfecta." },
         ],
         imagePrompt: "A friendly pediatric dentist showing a large toothbrush model to a laughing child in a colorful, warm dental office. Soft purple accent lighting. High quality photography.",
         techSpecs: [
@@ -59,7 +59,8 @@ export const servicesData: ServiceData[] = [
             { label: "Sedación", value: "Óxido Nitroso (Gas de la Risa) disponible" },
             { label: "Tecnología", value: "Cámaras intraorales pediátricas" },
         ],
-        image: pedsHero
+        image: pedsHero,
+        videogram: "/Odontopediatria%20Videogram%20Mi%20Dentista.mp4"
     },
     {
         slug: "ortodoncia-invisible-barcelona",

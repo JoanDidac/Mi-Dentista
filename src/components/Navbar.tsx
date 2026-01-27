@@ -44,7 +44,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
+        <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
           {/* Use a filter to invert the logo color when on transparent dark background for better visibility if needed, 
                  or just display it. Assuming the logo is dark text. width/height adjusted to fit. 
                  If the user provided logo is black text, and we are on transparent (dark) bg, we might need a white version 
@@ -56,7 +56,7 @@ const Navbar = () => {
             alt="Mi Dentista Logo"
             className={cn("h-12 w-auto object-contain", isTransparent && "brightness-0 invert")}
           />
-        </Link>
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">

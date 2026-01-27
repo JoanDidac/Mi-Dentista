@@ -59,8 +59,8 @@ const FacilitiesSection = () => {
         >
             <div className="sticky top-0 h-screen flex flex-col md:flex-row overflow-hidden bg-white">
                 {/* Left Side - Text Content */}
-                <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 md:px-16 lg:px-24 bg-white">
-                    <div className="max-w-xl py-12 md:py-0">
+                <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 md:px-12 lg:px-16 bg-white">
+                    <div className="max-w-3xl py-12 md:py-0">
                         <span className="text-brand-primary font-semibold tracking-widest uppercase text-xs mb-4 block">
                             Instalaciones y Tecnología
                         </span>
@@ -74,23 +74,26 @@ const FacilitiesSection = () => {
                             </span>
                         </h2>
 
-                        <div className="space-y-6 text-gray-600 text-lg md:text-xl font-light leading-relaxed">
+                        <div className="space-y-6 text-gray-600 text-sm md:text-base font-light leading-relaxed">
                             <p>
-                                Nuestras instalaciones han sido diseñadas para que tu experiencia en <strong className="text-brand-primary font-semibold">Mi Dentista</strong> sea lo más cómoda y agradable posible.
+                                En <strong className="text-brand-primary font-semibold">Mi Dentista</strong>, practicamos una <span className="text-brand-secondary font-medium italic">odontología empática y respetuosa</span>. Entendemos que la visita al dentista puede generar ansiedad, y por eso hemos diseñado cada detalle para transformar tu experiencia.
                             </p>
 
                             <p>
-                                Contamos con un espacio <span className="text-brand-secondary font-medium italic">amplio, moderno y cuidadosamente pensado</span> para transmitirte tranquilidad desde el primer momento.
+                                Nos especializamos en ayudar a pacientes con <strong className="text-gray-900 font-medium">fobia dental o malas experiencias previas</strong>. Aquí no encontrarás prisas ni juicios, solo un equipo humano que te acompañará de la mano durante todo el proceso, respetando tus tiempos y escuchando tus necesidades.
                             </p>
 
                             <p>
-                                Ubicados en una zona céntrica, disponemos de <strong className="text-gray-900 font-medium">clínica de última generación</strong> y tecnología vanguardista para tu bienestar.
+                                Nos tomamos el tiempo necesario para explicarte cada paso, asegurándonos de que tus opiniones y experiencias sean siempre parte fundamental de la ecuación de tu tratamiento. Tu <strong className="text-brand-primary font-semibold">serenidad</strong> y <strong className="text-brand-primary font-semibold">confianza</strong> son nuestra prioridad.
                             </p>
                         </div>
 
                         <div className="mt-12">
-                            <button className="group relative overflow-hidden bg-brand-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                                <span className="relative z-10">Explorar Clínica</span>
+                            <button
+                                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                                className="group relative overflow-hidden bg-brand-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+                            >
+                                <span className="relative z-10">Visita la Clínica</span>
                                 <div className="absolute inset-0 bg-brand-secondary translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                             </button>
                         </div>

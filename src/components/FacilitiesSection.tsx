@@ -1,15 +1,27 @@
 import { useEffect, useRef, useState } from "react";
-import facility1 from "../assets/facilities/facility_1.png";
+// Original images
 import facility2 from "../assets/facilities/facility_2.png";
 import facility3 from "../assets/facilities/facility_3.png";
 import facility4 from "../assets/facilities/facility_4.png";
+// New generated images
+import facilityKid from "../assets/facilities/facility_mulato_kid.png";
+import facilityReception from "../assets/facilities/facility_reception_logo.png";
+import facilityKidsCorner from "../assets/facilities/facility_kids_corner.png";
+import facilityDoctors from "../assets/facilities/facility_doctors_ortopantograma.png";
 
 const IMAGES = [
-    facility1,
-    facility2,
-    facility3,
-    "https://images.unsplash.com/photo-1629909608135-ca29a002ceb6?auto=format&fit=crop&q=80&w=1000",
-    facility4,
+    facilityKid,         // 1. New: Warm mulato kid
+    facility2,           // 2. Old 2nd
+    facility3,           // 3. Old 3rd
+    facilityReception,   // 4. New: Reception with logo
+    facility4,           // 5. Old 5th (was facility4 in imports?) Wait, checking original specific facility4... 
+    // Original code had: facility1, facility2, facility3, unsplash, facility4.
+    // Request: keep 2nd, 3rd, and 5th. 
+    // Original 2nd = facility2.
+    // Original 3rd = facility3.
+    // Original 5th = facility4.
+    facilityKidsCorner,  // 6. New: Kid's corner
+    facilityDoctors,     // 7. New: Doctors
 ];
 
 const FacilitiesSection = () => {
@@ -111,6 +123,9 @@ const FacilitiesSection = () => {
                                         src={src}
                                         alt={`Facility ${index + 1}`}
                                         className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+                                        style={{
+                                            objectPosition: index === 3 ? "center 35%" : "center center",
+                                        }}
                                     />
                                     {/* Elegant overlay for depth */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/10 via-transparent to-transparent pointer-events-none" />

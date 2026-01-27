@@ -15,6 +15,7 @@ import implantHero from "../assets/implantes-dentales.png";
 import pedsHero from "../assets/odontopediatria.png";
 import orthoConvHero from "../assets/ortodoncia-convencional.png";
 import endoHero from "../assets/endodoncia-trial.png";
+import endoHeroReal from "../assets/endodoncia-hero.png";
 
 export interface ServiceData {
     slug: string;
@@ -163,7 +164,7 @@ export const servicesData: ServiceData[] = [
             { label: "Visualización", value: "Microscopio Dental" },
             { label: "Precisión", value: "Localizador de Ápices Electrónico" },
         ],
-        image: endoHero
+        image: endoHeroReal
 
     },
     {

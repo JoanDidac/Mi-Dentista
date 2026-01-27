@@ -32,7 +32,10 @@ const ServicePageTemplate = ({ data }: Props) => {
                             {data.subtitle}
                         </p>
                         <div className="flex gap-4 pt-4">
-                            <Button className="h-12 px-8 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-lg shadow-lg hover:shadow-xl transition-all">
+                            <Button
+                                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="h-12 px-8 bg-brand-primary hover:bg-brand-dark text-white rounded-full text-lg shadow-lg hover:shadow-xl transition-all"
+                            >
                                 Pedir Diagnóstico Gratis
                             </Button>
                         </div>
@@ -41,7 +44,7 @@ const ServicePageTemplate = ({ data }: Props) => {
                     <div className="relative">
                         <div className="absolute -inset-4 bg-brand-secondary/20 rounded-full blur-3xl"></div>
                         {/* Note: In a real app we'd use data.imagePrompt to generate or load specific images */}
-                        <div className="bg-white p-2 rounded-3xl shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-500">
+                        <div className="bg-white p-2 rounded-3xl shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-1000 animate-in fade-in slide-in-from-bottom-8">
                             <div className="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden flex items-center justify-center text-gray-400">
                                 <img src={data.image} className="w-full h-full object-cover opacity-90" alt={data.title} />
                             </div>
@@ -87,26 +90,62 @@ const ServicePageTemplate = ({ data }: Props) => {
                 </div>
             </section>
 
-            {/* Process Steps */}
-            <section className="py-20 bg-gray-50">
+            {/* Process Steps - Elite UX Redesign */}
+            <section className="py-24 bg-gradient-to-b from-white to-brand-bg/30">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-gray-900 font-montserrat">Tu tratamiento paso a paso</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 font-montserrat">Tu tratamiento paso a paso</h2>
+                        <p className="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">Transparencia total. Así es como recuperaremos tu sonrisa.</p>
                     </div>
 
-                    <div className="grid md:grid-cols-4 gap-8">
-                        {data.process.map((step, i) => (
-                            <div key={i} className="relative group">
-                                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center border-2 border-brand-primary text-brand-primary font-bold text-xl mb-4 shadow-sm z-10 relative group-hover:bg-brand-primary group-hover:text-white transition-colors">
-                                    {i + 1}
-                                </div>
-                                {i !== data.process.length - 1 && (
-                                    <div className="hidden md:block absolute top-6 left-12 w-full h-0.5 bg-gray-200 -z-0"></div>
-                                )}
-                                <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                                <p className="text-gray-500 text-sm">{step.desc}</p>
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center">
+                        {/* Left: Videogram / Visual */}
+                        <div className="relative sticky top-32 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer aspect-video lg:aspect-[4/3] w-full max-w-xl">
+                            <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/0 transition-all duration-500 z-10 pointer-events-none"></div>
+                            <video
+                                src="/Endodoncia%20Videograma%20Mi%20Dentista%20.mp4"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="w-full h-full object-cover transition-transform duration-700"
+                            />
+
+                            {/* Caption */}
+                            <div className="absolute bottom-5 right-5 z-20 pointer-events-none">
+                                <p className="text-white/80 font-light text-sm flex items-center gap-2 bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10">
+                                    <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.6)]"></span>
+                                    Videograma del Proceso
+                                </p>
                             </div>
-                        ))}
+                        </div>
+
+                        {/* Right: Vertical Timeline */}
+                        <div className="relative space-y-12 pl-4 lg:pl-0 w-full max-w-lg">
+                            {/* Vertical Line Line */}
+                            <div className="absolute left-[27px] lg:left-[27px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-brand-primary/20 via-brand-primary/50 to-brand-primary/20 -z-0"></div>
+
+                            {data.process.map((step, i) => (
+                                <div key={i} className="relative flex gap-8 group">
+                                    {/* Number Circle */}
+                                    <div className="shrink-0">
+                                        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center border-2 border-brand-primary text-brand-primary font-bold text-xl shadow-lg group-hover:bg-brand-primary group-hover:text-white transition-all duration-300 relative z-10">
+                                            {i + 1}
+                                        </div>
+                                    </div>
+
+                                    {/* Content */}
+                                    <div className="pt-2 pb-6 border-b border-gray-100 last:border-0 w-full group-hover:translate-x-2 transition-transform duration-300">
+                                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-primary transition-colors">
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-lg leading-relaxed">
+                                            {step.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

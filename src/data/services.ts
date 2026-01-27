@@ -75,10 +75,10 @@ export const servicesData: ServiceData[] = [
             "Visualización del resultado final antes de empezar",
         ],
         process: [
-            { title: "Escáner 3D", desc: "Digitalizamos tu boca sin pastas molestas." },
-            { title: "Planificación", desc: "Diseñamos tu sonrisa movimiento a movimiento." },
-            { title: "Alineadores", desc: "Recibes tu set de férulas personalizadas." },
-            { title: "Progreso", desc: "Cambias de alineadores cada 1-2 semanas." },
+            { title: "Diagnóstico y Escáner 3D", desc: "Realizamos un escáner intraoral 3D completo y fotos para evaluar tu caso y diseñar tu sonrisa digitalmente con máxima precisión." },
+            { title: "Planificación Digital", desc: "Visualizarás el resultado final antes de empezar gracias a nuestro software avanzado que simula cada movimiento dental de tu tratamiento." },
+            { title: "Tus Alineadores", desc: "Te entregamos tus férulas transparentes a medida, cómodas y removibles, explicándote cómo cambiarlas y mantener una higiene perfecta." },
+            { title: "Retención Invisible", desc: "Al finalizar, aseguramos tu nueva sonrisa con retenedores transparentes y revisiones periódicas para garantizar resultados estables de por vida." },
         ],
         imagePrompt: "Close up of a smiling young woman holding a clear aligner case. Natural lighting, confident smile. Background soft blur of a modern clinic using colors #8C3573.",
         techSpecs: [
@@ -86,7 +86,8 @@ export const servicesData: ServiceData[] = [
             { label: "Material", value: "Polímero termoplástico médico" },
             { label: "Duración Media", value: "12 - 18 meses" },
         ],
-        image: orthoHero
+        image: orthoHero,
+        videogram: "/Mi%20Dentista%20Ortodoncia%20Invisible%20.mp4"
     },
     {
         slug: "ortodoncia-convencional-barcelona",

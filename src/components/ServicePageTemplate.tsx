@@ -98,7 +98,7 @@ const ServicePageTemplate = ({ data }: Props) => {
                         <p className="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">Transparencia total. Así es como recuperaremos tu sonrisa.</p>
                     </div>
 
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center justify-items-center">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start justify-items-center">
                         {/* Left: Videogram / Visual */}
                         <div className="relative sticky top-32 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer aspect-video lg:aspect-[4/3] w-full max-w-xl">
                             <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/0 transition-all duration-500 z-10 pointer-events-none"></div>

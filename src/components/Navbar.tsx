@@ -28,6 +28,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Helper function for smooth scrolling to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Close mobile menu if open
+      setIsOpen(false);
+    }
+  };
+
   // Determine navbar style based on scroll and page
   // On home page: Transparent at top (dark bg underneath implies white text), Solid white when scrolled
   // On other pages: Always solid white (standard behavior)
@@ -77,17 +87,15 @@ const Navbar = () => {
             </div>
           </div>
 
-          <a href="/#historia" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+          <button onClick={() => scrollToSection("historia")} className={cn("transition-colors font-medium cursor-pointer", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
             Nosotros
-          </a>
-          <a href="/#testimonios" className={cn("transition-colors font-medium", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+          </button>
+          <button onClick={() => scrollToSection("testimonios")} className={cn("transition-colors font-medium cursor-pointer", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
             Opiniones
-          </a>
-          <a href="/#contact">
-            <Button className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5", isTransparent ? "bg-white/80 text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary/90 hover:bg-brand-dark text-white")}>
-              Reserva Tu Cita Gratis
-            </Button>
-          </a>
+          </button>
+          <Button onClick={() => scrollToSection("contact")} className={cn("rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 cursor-pointer", isTransparent ? "bg-white/80 text-brand-primary hover:bg-brand-light hover:text-white" : "bg-brand-primary/90 hover:bg-brand-dark text-white")}>
+            Reserva Tu Cita Gratis
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -107,18 +115,15 @@ const Navbar = () => {
 
           <div className="h-px bg-gray-100 my-2"></div>
 
-          <a
-            href="/#historia"
-            className="text-gray-600 hover:text-brand-primary font-medium"
-            onClick={() => setIsOpen(false)}
+          <button
+            onClick={() => scrollToSection("historia")}
+            className="text-gray-600 hover:text-brand-primary font-medium text-left cursor-pointer"
           >
             Nosotros
-          </a>
-          <a href="/#contact" onClick={() => setIsOpen(false)}>
-            <Button className="bg-brand-primary/90 w-full text-white rounded-full mt-4">
-              Reserva Tu Cita Gratis
-            </Button>
-          </a>
+          </button>
+          <Button onClick={() => scrollToSection("contact")} className="bg-brand-primary/90 w-full text-white rounded-full mt-4 cursor-pointer">
+            Reserva Tu Cita Gratis
+          </Button>
         </div>
       )}
     </nav>

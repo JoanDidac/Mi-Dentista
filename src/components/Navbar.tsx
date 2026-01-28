@@ -1,9 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { servicesData } from "@/data/services";
 
 import logoTrial from "@/assets/logo-trial.png";
 
@@ -132,10 +132,16 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 absolute w-full p-4 flex flex-col gap-4 shadow-lg animate-in slide-in-from-top-5 max-h-[80vh] overflow-y-auto top-full">
           <div className="font-bold text-brand-primary mb-2">Tratamientos</div>
-          <Link to="/tratamientos/odontopediatria-barcelona" className="pl-4 text-sm text-gray-600 hover:text-brand-primary" onClick={() => setIsOpen(false)}>Odontopediatría</Link>
-          <Link to="/tratamientos/ortodoncia-invisible-barcelona" className="pl-4 text-sm text-gray-600 hover:text-brand-primary" onClick={() => setIsOpen(false)}>Ortodoncia Invisible</Link>
-          <Link to="/tratamientos/implantes-dentales-barcelona" className="pl-4 text-sm text-gray-600 hover:text-brand-primary" onClick={() => setIsOpen(false)}>Implantes Dentales</Link>
-          {/* Add more links as needed for mobile */}
+          {servicesData.map((service) => (
+            <Link
+              key={service.slug}
+              to={`/tratamientos/${service.slug}`}
+              className="pl-4 text-sm text-gray-600 hover:text-brand-primary"
+              onClick={() => setIsOpen(false)}
+            >
+              {service.title}
+            </Link>
+          ))}
 
           <div className="h-px bg-gray-100 my-2"></div>
 

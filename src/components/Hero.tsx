@@ -34,7 +34,7 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 flex flex-col justify-center items-start pt-20">
-        <div className="pl-8 max-w-4xl space-y-8 animate-in slide-in-from-left-5 duration-1000">
+        <div className="pl-0 md:pl-8 max-w-4xl space-y-8 animate-in slide-in-from-left-5 duration-1000">
 
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-sm font-medium border border-white/20 shadow-sm">

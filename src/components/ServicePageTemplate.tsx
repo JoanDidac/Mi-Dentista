@@ -28,7 +28,7 @@ const ServicePageTemplate = ({ data }: Props) => {
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-montserrat">
                             {data.title}
                         </h1>
-                        <p className="text-xl text-gray-600 font-medium">
+                        <p className="text-xl text-brand-primary/90 font-medium">
                             {data.subtitle}
                         </p>
                         <div className="flex gap-4 pt-4">
@@ -44,9 +44,9 @@ const ServicePageTemplate = ({ data }: Props) => {
                     <div className="relative">
                         <div className="absolute -inset-4 bg-brand-secondary/20 rounded-full blur-3xl"></div>
                         {/* Note: In a real app we'd use data.imagePrompt to generate or load specific images */}
-                        <div className="bg-white p-2 rounded-3xl shadow-xl transform rotate-1 hover:rotate-0 transition-all duration-1000 animate-in fade-in slide-in-from-bottom-8">
+                        <div className="bg-white p-2 rounded-3xl shadow-xl transform md:rotate-1 md:hover:rotate-0 transition-all duration-1000 animate-in fade-in slide-in-from-bottom-8">
                             <div className="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden flex items-center justify-center text-gray-400">
-                                <img src={data.image} className="w-full h-full object-cover opacity-90" alt={data.title} />
+                                <img src={data.image} className="w-full h-full object-cover opacity-90 scale-110 md:scale-100 transition-transform duration-700" alt={data.title} />
                             </div>
                         </div>
                     </div>
@@ -121,9 +121,9 @@ const ServicePageTemplate = ({ data }: Props) => {
                         </div>
 
                         {/* Right: Vertical Timeline */}
-                        <div className="relative space-y-12 pl-4 lg:pl-0 w-full max-w-lg">
+                        <div className="relative space-y-12 pl-0 w-fit mx-auto max-w-lg">
                             {/* Vertical Line Line */}
-                            <div className="absolute left-[27px] lg:left-[27px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-brand-primary/20 via-brand-primary/50 to-brand-primary/20 -z-0"></div>
+                            <div className="absolute left-[27px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-brand-primary/20 via-brand-primary/50 to-brand-primary/20 -z-0"></div>
 
                             {data.process.map((step, i) => (
                                 <div key={i} className="relative flex gap-8 group">

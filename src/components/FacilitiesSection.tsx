@@ -98,7 +98,7 @@ const FacilitiesSection = () => {
                 {/* Right Side - Animated Image Column */}
                 <div className="w-full h-full md:w-1/2 relative overflow-hidden bg-gray-100">
                     <div
-                        className="absolute inset-0 flex flex-col transition-transform duration-150 ease-out [--carousel-start:55dvh] md:[--carousel-start:12vh] [--carousel-travel:250dvh] md:[--carousel-travel:262vh]"
+                        className="absolute inset-0 flex flex-col transition-transform duration-150 ease-out [--carousel-start:55dvh] md:[--carousel-start:12vh] [--carousel-travel:275dvh] md:[--carousel-travel:262vh]"
                         style={{
                             transform: `translateY(calc(var(--carousel-start) - (var(--carousel-travel) * ${progress})))`,
                         }}

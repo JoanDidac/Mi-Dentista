@@ -54,8 +54,8 @@ const FacilitiesSection = () => {
         >
             <div className="sticky top-0 h-[100dvh] flex flex-col md:flex-row overflow-hidden bg-gray-100 md:bg-white">
                 {/* Left Side - Text Content */}
-                <div className="absolute top-0 left-0 w-full z-20 max-h-[55dvh] min-h-[55dvh] overflow-y-auto bg-white/95 backdrop-blur-md shadow-xl rounded-b-[2rem] px-6 py-8 md:static md:w-1/2 md:h-full md:bg-white md:shadow-none md:rounded-none md:overflow-hidden md:flex md:items-center md:justify-center md:px-12 md:py-0">
-                    <div className="max-w-3xl">
+                <div className="absolute top-0 left-0 w-full z-20 max-h-[55dvh] min-h-[55dvh] overflow-y-auto bg-white/95 backdrop-blur-md shadow-xl rounded-b-[2rem] px-6 py-8 md:static md:w-1/2 md:h-full md:bg-white md:shadow-none md:rounded-none md:overflow-visible md:flex md:flex-col md:px-12 md:py-0">
+                    <div className="max-w-3xl md:my-auto">
                         <span className="text-brand-primary font-semibold tracking-widest uppercase text-xs mb-4 block">
                             Instalaciones y Tecnología
                         </span>
@@ -83,7 +83,7 @@ const FacilitiesSection = () => {
                             </p>
                         </div>
 
-                        <div className="mt-8 md:mt-12">
+                        <div className="hidden md:block mt-8 md:mt-12">
                             <button
                                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                                 className="group relative overflow-hidden bg-brand-primary text-white px-8 md:px-10 py-3 md:py-4 rounded-full font-bold uppercase tracking-widest text-xs md:text-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
@@ -96,7 +96,7 @@ const FacilitiesSection = () => {
                 </div>
 
                 {/* Right Side - Animated Image Column */}
-                <div className="w-full h-full md:w-1/2 relative overflow-hidden bg-gray-100">
+                <div className="w-full h-full md:w-1/2 relative overflow-hidden bg-gray-100 md:bg-white">
                     <div
                         className="absolute inset-0 flex flex-col transition-transform duration-150 ease-out [--carousel-start:55dvh] md:[--carousel-start:12vh] [--carousel-travel:275dvh] md:[--carousel-travel:262vh]"
                         style={{
@@ -109,7 +109,7 @@ const FacilitiesSection = () => {
                                 className="w-full h-[45dvh] md:h-[50vh] flex-shrink-0 flex items-center justify-center p-4 md:px-8 md:py-[2.5vh]"
                             >
                                 {/* 3:2 aspect ratio as requested, with max-h and max-w constraints */}
-                                <div className="relative w-full aspect-[3/4] max-h-[42dvh] md:max-h-[40vh] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
+                                <div className="relative w-full aspect-[3/4] max-h-[42dvh] md:max-h-[40vh] rounded-2xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] ring-1 ring-black/5">
                                     <img
                                         src={src}
                                         alt={`Facility ${index + 1}`}

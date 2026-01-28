@@ -43,6 +43,8 @@ const Navbar = () => {
   // On other pages: Always solid white (standard behavior)
   const isTransparent = isHomePage && !isScrolled;
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   return (
     <nav
       className={cn(
@@ -55,12 +57,6 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
-          {/* Use a filter to invert the logo color when on transparent dark background for better visibility if needed, 
-                 or just display it. Assuming the logo is dark text. width/height adjusted to fit. 
-                 If the user provided logo is black text, and we are on transparent (dark) bg, we might need a white version 
-                 or a filter. For this trial, I will try to use a filter invert if transparent, but the user just said 'use the image'. 
-                 I'll add a conditional brightness/invert if it's transparent, assuming the logo is dark. 
-                 Safest bet is just to show the image first as requested. */}
           <img
             src={logoTrial}
             alt="Mi Dentista Logo"
@@ -70,11 +66,21 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <div className="relative group">
-            <button className={cn("transition-colors font-medium flex items-center gap-1", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+          <div
+            className="relative"
+            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseLeave={() => setIsDropdownOpen(false)}
+          >
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className={cn("transition-colors font-medium flex items-center gap-1", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}
+            >
               Tratamientos <span className="text-xs">▼</span>
             </button>
-            <div className="absolute top-full left-0 w-64 bg-white shadow-xl rounded-xl p-4 hidden group-hover:block animate-in fade-in slide-in-from-top-2 border border-brand-light/20">
+            <div className={cn(
+              "absolute top-full left-0 w-64 bg-white shadow-xl rounded-xl p-4 animate-in fade-in slide-in-from-top-2 border border-brand-light/20",
+              isDropdownOpen ? "block" : "hidden"
+            )}>
               <div className="flex flex-col gap-2">
                 <Link to="/tratamientos/odontopediatria-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Odontopediatría</Link>
                 <Link to="/tratamientos/ortodoncia-invisible-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Ortodoncia Invisible</Link>

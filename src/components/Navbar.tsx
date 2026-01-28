@@ -56,7 +56,15 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
+        <Link
+          to="/"
+          className="flex items-center gap-2 transition-opacity hover:opacity-90"
+          onClick={() => {
+            if (window.location.pathname === '/' || window.location.pathname === '/Mi-Dentista/') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        >
           <img
             src={logoTrial}
             alt="Mi Dentista Logo"

@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 import logoTrial from "@/assets/logo-trial.png";
@@ -28,12 +28,21 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navigate = useNavigate();
+
   // Helper function for smooth scrolling to sections
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      // Close mobile menu if open
+    // Check if we are on the home page (root or empty path)
+    if (location.pathname === '/' || location.pathname === '/Mi-Dentista/' || location.pathname === '/Mi-Dentista') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Close mobile menu if open
+        setIsOpen(false);
+      }
+    } else {
+      // If not on home page, navigate to home and pass the sectionId to scroll to
+      navigate('/', { state: { scrollTo: sectionId } });
       setIsOpen(false);
     }
   };

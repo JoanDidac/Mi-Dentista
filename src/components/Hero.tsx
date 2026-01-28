@@ -23,7 +23,7 @@ const Hero = () => {
     <div className="relative h-screen min-h-[600px] w-full overflow-hidden">
       {/* Background Image with Parallax-like feel */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-[60%_center] md:bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         {/* Overlay - Deep Purple Gradient to match reference */}
@@ -44,8 +44,8 @@ const Hero = () => {
 
           {/* Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light text-[#f0ede4] leading-tight font-barlow drop-shadow-md tracking-normal">
-            Tu Sonrisa <br className="hidden md:block" /> y la de tu Familia  <br className="hidden md:block" />
-            <span className="text-[#f0ede4] relative">
+            Tu Sonrisa <br /> <span className="whitespace-nowrap">y la de tu Familia</span> <br />
+            <span className="text-[#f0ede4] relative whitespace-nowrap">
               En Buenas Manos
               {/* Optional underline decoration */}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-light opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">

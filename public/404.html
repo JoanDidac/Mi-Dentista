@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/Mi-Dentista/">
+  <script>
+    // Redirect to index.html with the path preserved
+    const path = window.location.pathname.replace('/Mi-Dentista', '');
+    const redirect = '/Mi-Dentista/' + (path === '/' ? '' : path.slice(1));
+    window.location.href = redirect + window.location.search + window.location.hash;
+  </script>
+  <title>Redirecting...</title>
+</head>
+<body>
+  <p>Redirecting to Mi Dentista...</p>
+</body>
+</html>

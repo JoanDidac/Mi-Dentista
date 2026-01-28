@@ -8,8 +8,10 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 275 100% 98%; /* Lightest Lavender */
-    --foreground: 275 21% 27%; /* Darkest Purple */
+    --background: 275 100% 98%;
+    /* Lightest Lavender */
+    --foreground: 275 21% 27%;
+    /* Darkest Purple */
 
     --card: 0 0% 100%;
     --card-foreground: 275 21% 27%;
@@ -41,29 +43,29 @@ All colors MUST be HSL.
     --ring: 317 45% 38%;
 
     --radius: 0.5rem;
-    
+
     /* Service Category Colors */
     /* Paleta A - Deep Burgundy #691844 */
     --palette-a: 322 63% 32%;
     --palette-a-light: 322 63% 95%;
     --palette-a-foreground: 0 0% 100%;
-    
+
     /* Paleta B - Accent Dark */
     --palette-b: 324 44% 44%;
     --palette-b-light: 324 44% 95%;
     --palette-b-foreground: 0 0% 100%;
-    
+
     /* Paleta C - Deep Burgundy #691844 */
     --palette-c: 322 63% 32%;
     --palette-c-light: 322 63% 95%;
     --palette-c-foreground: 0 0% 100%;
-    
+
     /* Elegant Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(330 35% 63% / 0.95), hsl(324 44% 44% / 0.95));
     --gradient-a: linear-gradient(135deg, hsl(330 35% 63%), hsl(330 35% 70%));
     --gradient-b: linear-gradient(135deg, hsl(324 44% 44%), hsl(324 44% 52%));
     --gradient-c: linear-gradient(135deg, hsl(330 5% 65%), hsl(330 5% 72%));
-    
+
     /* Elegant Shadows */
     --shadow-soft: 0 2px 20px hsl(330 35% 63% / 0.08);
     --shadow-medium: 0 4px 30px hsl(330 35% 63% / 0.12);
@@ -138,19 +140,21 @@ All colors MUST be HSL.
 @layer utilities {
   @keyframes shine-line {
     0% {
-      stroke-dashoffset: 120;
+      stroke-dashoffset: 50;
       opacity: 0;
     }
+
     1% {
       opacity: 1;
     }
+
     100% {
-      stroke-dashoffset: -20;
-      opacity: 1;
+      stroke-dashoffset: -150;
+      opacity: 0;
     }
   }
 
   .animate-shine {
-    animation: shine-line 1s cubic-bezier(0.4, 0, 0.2, 1) 3s forwards;
+    animation: shine-line 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3s forwards;
   }
 }

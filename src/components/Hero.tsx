@@ -52,11 +52,12 @@ const Hero = () => {
                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 <path
                   d="M0 5 Q 50 10 100 5"
-                  stroke="#f6e9ff"
-                  strokeWidth="3"
+                  stroke="white"
+                  strokeWidth="2"
                   fill="none"
                   className="animate-shine opacity-0"
-                  strokeDasharray="20 200"
+                  strokeDasharray="30 200"
+                  style={{ filter: "drop-shadow(0 0 2px #AD5E99) drop-shadow(0 0 6px #8C3573)" }}
                 />
               </svg>
             </span>

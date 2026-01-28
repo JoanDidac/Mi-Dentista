@@ -100,7 +100,7 @@ const ServicePageTemplate = ({ data }: Props) => {
 
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start justify-items-center">
                         {/* Left: Videogram / Visual */}
-                        <div className="relative sticky top-32 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer aspect-video lg:aspect-[4/3] w-full max-w-xl">
+                        <div className="relative sticky top-32 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer aspect-video lg:aspect-[4/3] w-full max-w-xl z-30">
                             <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/0 transition-all duration-500 z-10 pointer-events-none"></div>
                             {/* Conditional Rendering for Video or Image */}
                             {data.videogram?.endsWith('.mp4') ? (
@@ -130,7 +130,7 @@ const ServicePageTemplate = ({ data }: Props) => {
                         </div>
 
                         {/* Right: Vertical Timeline */}
-                        <div className="relative space-y-12 pl-0 w-fit mx-auto max-w-lg">
+                        <div className="relative space-y-12 pl-0 w-fit mx-auto max-w-lg z-10">
                             {/* Vertical Line Line */}
                             <div className="absolute left-[27px] top-4 bottom-4 w-0.5 bg-gradient-to-b from-brand-primary/20 via-brand-primary/50 to-brand-primary/20 -z-0"></div>
 

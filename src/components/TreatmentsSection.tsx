@@ -98,7 +98,7 @@ const TreatmentCard3D = ({
     index: number;
     onClick: () => void;
 }) => {
-    const [transform, setTransform] = useState("");
+    const [transform, setTransform] = useState("rotateX(0deg) rotateY(0deg)");
     const cardRef = useRef<HTMLDivElement>(null);
 
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -115,16 +115,16 @@ const TreatmentCard3D = ({
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -10; // -10 to 10 degrees
-        const rotateY = ((x - centerX) / centerX) * 10; // -10 to 10 degrees
+        const rotateX = ((y - centerY) / centerY) * -7; // Reduced for subtler effect
+        const rotateY = ((x - centerX) / centerX) * 7;
 
         setTransform(
-            `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`
+            `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
         );
     };
 
     const handleMouseLeave = () => {
-        setTransform("");
+        setTransform("rotateX(0deg) rotateY(0deg)");
     };
 
     return (
@@ -133,57 +133,68 @@ const TreatmentCard3D = ({
             onClick={onClick}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer 
-                     transition-all duration-300 ease-out hover:shadow-2xl
+            className="group relative h-[400px] w-full cursor-pointer perspective-[1000px]
                      animate-in fade-in slide-in-from-bottom-4"
             style={{
-                transform: transform,
                 animationDelay: `${index * 150}ms`,
                 animationFillMode: "backwards",
             }}
         >
-            {/* Background Image */}
-            {treatment.image && (
-                <div className="absolute inset-0">
-                    <img
-                        src={treatment.image}
-                        alt={treatment.title}
-                        className="w-full h-full object-cover scale-125 object-center"
-                    />
-                </div>
-            )}
-
-            {/* Background with gradient placeholder */}
+            {/* Rotatable 3D Container */}
             <div
-                className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 group-hover:brightness-110 ${treatment.image ? 'mix-blend-multiply opacity-90' : ''}`}
-                style={{
-                    background: treatment.gradient,
-                }}
+                className="relative w-full h-full transition-transform duration-300 ease-out [transform-style:preserve-3d]"
+                style={{ transform }}
             >
-                {/* Decorative pattern overlay */}
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_120%,_rgba(255,255,255,0.3),transparent_50%)]"></div>
-            </div>
+                {/* Background Layer (Back Face of the "Cube") */}
+                <div
+                    className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-300 [transform:translateZ(0px)]"
+                >
+                    {/* Background Image */}
+                    {treatment.image && (
+                        <div className="absolute inset-0">
+                            <img
+                                src={treatment.image}
+                                alt={treatment.title}
+                                className="w-full h-full object-cover scale-110 object-center transition-transform duration-700 group-hover:scale-125"
+                            />
+                        </div>
+                    )}
 
-            {/* Content Overlay - CENTERED in X and Y */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <div className="transform transition-transform duration-300">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-montserrat drop-shadow-lg">
-                        {treatment.title}
-                    </h3>
-                    <p className="text-white/90 text-sm md:text-base leading-relaxed mb-6 drop-shadow-md">
-                        {treatment.description}
-                    </p>
+                    {/* Gradient Overlay */}
+                    <div
+                        className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 group-hover:brightness-110 ${treatment.image ? 'mix-blend-multiply opacity-90' : ''}`}
+                        style={{
+                            background: treatment.gradient,
+                        }}
+                    >
+                        {/* Decorative pattern */}
+                        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_120%,_rgba(255,255,255,0.3),transparent_50%)]"></div>
+                    </div>
 
-                    {/* Arrow indicator */}
-                    <div className="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all duration-300">
-                        <span className="text-sm uppercase tracking-wide">Más información</span>
-                        <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    {/* Hover light effect on background */}
+                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all duration-500 pointer-events-none"></div>
+                </div>
+
+                {/* Content Layer (Front Face of the "Cube") - Pushed forward less distance to keep it "linked" */}
+                <div
+                    className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center [transform:translateZ(30px)] pointer-events-none"
+                >
+                    <div className="transform transition-transform duration-300">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-montserrat drop-shadow-lg">
+                            {treatment.title}
+                        </h3>
+                        <p className="text-white/90 text-sm md:text-base leading-relaxed mb-6 drop-shadow-md">
+                            {treatment.description}
+                        </p>
+
+                        {/* Arrow indicator */}
+                        <div className="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span className="text-sm uppercase tracking-wide">Más información</span>
+                            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
                     </div>
                 </div>
             </div>
-
-            {/* Hover overlay effect */}
-            <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all duration-500 pointer-events-none"></div>
         </div>
     );
 };

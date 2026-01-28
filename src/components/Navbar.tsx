@@ -56,13 +56,13 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
+        <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-90">
           <img
             src={logoTrial}
             alt="Mi Dentista Logo"
             className={cn("h-12 w-auto object-contain", isTransparent && "brightness-0 invert")}
           />
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">

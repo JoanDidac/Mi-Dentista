@@ -50,6 +50,14 @@ const Hero = () => {
               {/* Optional underline decoration */}
               <svg className="absolute w-full h-3 -bottom-1 left-0 text-brand-light opacity-60" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                <path
+                  d="M0 5 Q 50 10 100 5"
+                  stroke="#f6e9ff"
+                  strokeWidth="3"
+                  fill="none"
+                  className="animate-shine opacity-0"
+                  strokeDasharray="20 200"
+                />
               </svg>
             </span>
           </h1>

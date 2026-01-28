@@ -230,4 +230,32 @@ export const servicesData: ServiceData[] = [
         image: surgeryHeroReal,
         videogram: "cirugia-oral-videograma.mp4"
     },
+    {
+        slug: "blanqueamiento-dental-barcelona",
+        icon: Sparkles,
+        title: "Blanqueamiento Dental",
+        subtitle: "Ilumina tu sonrisa y rejuvenece tu rostro",
+        description: "El blanqueamiento dental es un tratamiento estético no invasivo que aclara el tono de tus dientes, eliminando manchas causadas por café, tabaco o el paso del tiempo. Recupera el brillo natural de tu esmalte de forma segura y eficaz.",
+        benefits: [
+            "Resultados visibles desde la primera sesión",
+            "Tratamiento seguro para el esmalte",
+            "Mejora inmediata de la estética facial",
+            "Elimina manchas difíciles",
+            "Rejuvenece tu apariencia general",
+        ],
+        process: [
+            { title: "Evaluación Previa", desc: "Revisamos tu salud bucal para asegurar que eres candidato ideal y realizamos una limpieza profesional para preparar el esmalte." },
+            { title: "Protección de Encías", desc: "Aplicamos una barrera protectora en tus encías para asegurar que el gel blanqueador actúe únicamente sobre tus dientes." },
+            { title: "Aplicación del Gel", desc: "Aplicamos un gel blanqueador de alta potencia que se activa mediante luz LED fría para acelerar el proceso sin generar sensibilidad." },
+            { title: "Resultado Brillante", desc: "En menos de una hora, disfrutarás de una sonrisa varios tonos más blanca y te daremos las pautas para mantener el resultado." },
+        ],
+        imagePrompt: "Close up of a bright, white smile. High key lighting, clean aesthetic. Sense of freshness and purity. Soft blue or purple tint.",
+        techSpecs: [
+            { label: "Duración", value: "45 - 60 minutos" },
+            { label: "Técnica", value: "Luz LED Fría (Philips Zoom)" },
+            { label: "Durabilidad", value: "1 - 3 años (con mantenimiento)" },
+        ],
+        image: defaultHero, // Placeholder until specific hero is available
+        videogram: "blanqueamiento-videograma.mp4"
+    }
 ];

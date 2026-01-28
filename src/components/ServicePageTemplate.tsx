@@ -102,14 +102,23 @@ const ServicePageTemplate = ({ data }: Props) => {
                         {/* Left: Videogram / Visual */}
                         <div className="relative sticky top-32 rounded-3xl overflow-hidden shadow-2xl group cursor-pointer aspect-video lg:aspect-[4/3] w-full max-w-xl">
                             <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/0 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <video
-                                src={`${import.meta.env.BASE_URL}${data.videogram}`}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className="w-full h-full object-cover transition-transform duration-700"
-                            />
+                            {/* Conditional Rendering for Video or Image */}
+                            {data.videogram?.endsWith('.mp4') ? (
+                                <video
+                                    src={`${import.meta.env.BASE_URL}${data.videogram}`}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="w-full h-full object-cover transition-transform duration-700"
+                                />
+                            ) : (
+                                <img
+                                    src={`${import.meta.env.BASE_URL}${data.videogram}`}
+                                    alt="Videograma del proceso"
+                                    className="w-full h-full object-cover transition-transform duration-700"
+                                />
+                            )}
 
                             {/* Caption */}
                             <div className="absolute bottom-5 right-5 z-20 pointer-events-none">

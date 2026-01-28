@@ -10,16 +10,11 @@ import facilityKidsCorner from "../assets/facilities/facility_kids_corner.png";
 import facilityDoctors from "../assets/facilities/facility_doctors_ortopantograma.png";
 
 const IMAGES = [
-    facilityKid,         // 1. New: Warm mulato kid
+    facilityReception,   // 4. New: Reception with logo (Moved to 1st)
     facility2,           // 2. Old 2nd
     facility3,           // 3. Old 3rd
-    facilityReception,   // 4. New: Reception with logo
-    facility4,           // 5. Old 5th (was facility4 in imports?) Wait, checking original specific facility4... 
-    // Original code had: facility1, facility2, facility3, unsplash, facility4.
-    // Request: keep 2nd, 3rd, and 5th. 
-    // Original 2nd = facility2.
-    // Original 3rd = facility3.
-    // Original 5th = facility4.
+    facilityKid,         // 1. New: Warm mulato kid (Moved to 4th)
+    facility4,           // 5. Old 5th (was facility4 in imports?)
     facilityKidsCorner,  // 6. New: Kid's corner
     facilityDoctors,     // 7. New: Doctors
 ];

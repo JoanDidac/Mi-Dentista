@@ -59,8 +59,9 @@ const Navbar = () => {
         <Link
           to="/"
           className="flex items-center gap-2 transition-opacity hover:opacity-90"
-          onClick={() => {
+          onClick={(e) => {
             if (window.location.pathname === '/' || window.location.pathname === '/Mi-Dentista/') {
+              e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           }}

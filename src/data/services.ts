@@ -60,7 +60,7 @@ export const servicesData: ServiceData[] = [
             { label: "Tecnología", value: "Cámaras intraorales pediátricas" },
         ],
         image: pedsHero,
-        videogram: "/Odontopediatria%20Videogram%20Mi%20Dentista.mp4"
+        videogram: "Odontopediatria%20Videogram%20Mi%20Dentista.mp4"
     },
     {
         slug: "ortodoncia-invisible-barcelona",
@@ -88,7 +88,7 @@ export const servicesData: ServiceData[] = [
             { label: "Duración Media", value: "12 - 18 meses" },
         ],
         image: orthoHero,
-        videogram: "/Mi%20Dentista%20Ortodoncia%20Invisible%20.mp4"
+        videogram: "Mi%20Dentista%20Ortodoncia%20Invisible%20.mp4"
     },
     {
         slug: "ortodoncia-convencional-barcelona",
@@ -116,7 +116,7 @@ export const servicesData: ServiceData[] = [
             { label: "Mantenimiento", value: "Revisiones cada 4-6 semanas" },
         ],
         image: orthoConvHero,
-        videogram: "/Ortodoncia%20convencional%20Videograma%20Mi%20DEntista.mp4"
+        videogram: "Ortodoncia%20convencional%20Videograma%20Mi%20DEntista.mp4"
     },
     {
         slug: "implantes-dentales-barcelona",
@@ -144,7 +144,7 @@ export const servicesData: ServiceData[] = [
             { label: "Técnica", value: "Cirugía Guiada por Ordenador" },
         ],
         image: implantHero,
-        videogram: "/Implantes%20videograma%20Mi%20Dentista.mp4"
+        videogram: "Implantes%20videograma%20Mi%20Dentista.mp4"
     },
     {
         slug: "endodoncia-barcelona",
@@ -172,7 +172,7 @@ export const servicesData: ServiceData[] = [
             { label: "Precisión", value: "Localizador de Ápices Electrónico" },
         ],
         image: endoHeroReal,
-        videogram: "/Endodoncia%20Videograma%20Mi%20Dentista%20.mp4"
+        videogram: "Endodoncia%20Videograma%20Mi%20Dentista%20.mp4"
 
     },
     {
@@ -200,7 +200,7 @@ export const servicesData: ServiceData[] = [
             { label: "Seguimiento", value: "Protocolo EMS" },
         ],
         image: perioHeroReal,
-        videogram: "/Periodoncia%20videograma%20Mi%20DEntista.mp4"
+        videogram: "Periodoncia%20videograma%20Mi%20DEntista.mp4"
     },
     {
         slug: "cirugia-oral-barcelona",
@@ -228,6 +228,6 @@ export const servicesData: ServiceData[] = [
             { label: "Confort", value: "Sedación Consciente" },
         ],
         image: surgeryHeroReal,
-        videogram: "/Cirugia%20Oral%20Videograma%20Mi%20Dentista.mp4"
+        videogram: "Cirugia%20Oral%20Videograma%20Mi%20Dentista.mp4"
     },
 ];

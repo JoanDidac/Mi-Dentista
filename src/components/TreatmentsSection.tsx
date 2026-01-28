@@ -1,12 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useState, useRef, MouseEvent } from "react";
+import odontopediatriaImage from "../assets/odontopediatria.png";
+import ortodonciaInvisibleImage from "../assets/orthodoncia-invisible.png";
+import esteticaDentalImage from "../assets/estetica-dental-soft.png";
 
 interface TreatmentCard {
     slug: string;
     title: string;
     description: string;
     gradient: string;
+    image?: string;
 }
 
 const TreatmentsSection = () => {
@@ -17,19 +21,22 @@ const TreatmentsSection = () => {
             slug: "odontopediatria-barcelona",
             title: "Odontopediatría",
             description: "Cuidado dental especializado para los más pequeños en un ambiente divertido y seguro.",
-            gradient: "linear-gradient(135deg, rgba(140, 53, 115, 0.85) 0%, rgba(101, 21, 61, 0.9) 100%)",
+            gradient: "linear-gradient(135deg, rgba(140, 53, 115, 0.92) 0%, rgba(101, 21, 61, 0.95) 100%)",
+            image: odontopediatriaImage,
         },
         {
             slug: "ortodoncia-invisible-barcelona",
             title: "Ortodoncia invisible",
             description: "Alinea tus dientes y consigue tu sonrisa soñada de forma discreta.",
-            gradient: "linear-gradient(135deg, rgba(173, 94, 153, 0.85) 0%, rgba(140, 53, 115, 0.9) 100%)",
+            gradient: "linear-gradient(135deg, rgba(173, 94, 153, 0.92) 0%, rgba(140, 53, 115, 0.95) 100%)",
+            image: ortodonciaInvisibleImage,
         },
         {
             slug: "implantes-dentales-barcelona",
             title: "Estética dental",
             description: "Dientes perfectos, más blancos y totalmente personalizados.",
             gradient: "linear-gradient(135deg, rgba(101, 21, 61, 0.85) 0%, rgba(140, 53, 115, 0.9) 100%)",
+            image: esteticaDentalImage,
         },
     ];
 
@@ -135,9 +142,20 @@ const TreatmentCard3D = ({
                 animationFillMode: "backwards",
             }}
         >
+            {/* Background Image */}
+            {treatment.image && (
+                <div className="absolute inset-0">
+                    <img
+                        src={treatment.image}
+                        alt={treatment.title}
+                        className="w-full h-full object-cover scale-125 object-center"
+                    />
+                </div>
+            )}
+
             {/* Background with gradient placeholder */}
             <div
-                className="absolute inset-0 bg-gradient-to-br transition-all duration-500 group-hover:brightness-110"
+                className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 group-hover:brightness-110 ${treatment.image ? 'mix-blend-multiply opacity-90' : ''}`}
                 style={{
                     background: treatment.gradient,
                 }}

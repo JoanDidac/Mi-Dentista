@@ -140,15 +140,15 @@ const LegacySection = () => {
 
                             <div className="space-y-4 text-gray-700 leading-relaxed">
                                 <p className="text-lg">
-                                    <strong className="text-[#691844]">Mi Dentista</strong> es más que una clínica dental—es un legado de confianza, experiencia y dedicación que abarca dos generaciones.
+                                    <strong className="text-[#691844]">Mi Dentista</strong> es más que una clínica dental, es un legado de confianza, experiencia y dedicación que abarca dos generaciones y más de 20 años de experiencia profesional.
                                 </p>
 
                                 <p>
-                                    Fundada hace años por el <strong>Dr. [Nombre del Padre]</strong>, nuestra clínica se construyó sobre pilares sólidos: profesionalismo impecable, atención personalizada y un compromiso inquebrantable con la salud bucodental de cada paciente.
+                                    Fundada en 2006 por el <strong>Dr Ghazi Al Daifi</strong>, nuestra clínica se construyó sobre pilares sólidos: profesionalismo impecable, atención personalizada y un compromiso inquebrantable con la salud bucodental de cada paciente.
                                 </p>
 
                                 <p>
-                                    Hoy, su hija, la <strong>Dra. [Nombre de la Hija]</strong>, continúa ese legado con la misma pasión y dedicación. Habiendo aprendido no solo las técnicas más avanzadas de odontología moderna, sino también los valores de cercanía, escucha activa y cuidado humano que su padre le transmitió, la Dra. [Nombre] ha llevado la clínica a nuevos niveles de excelencia.
+                                    Hoy, su hija, la <strong>Dra. Fatima Al Daifi</strong>, continúa ese legado con la misma pasión y dedicación. Habiendo aprendido no solo las técnicas más avanzadas de odontología moderna, sino también los valores de cercanía, escucha activa y cuidado humano que su padre le transmitió, la Dra. Fatima ha llevado la clínica a nuevos niveles de excelencia.
                                 </p>
 
                                 <p>

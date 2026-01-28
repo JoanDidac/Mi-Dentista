@@ -54,7 +54,7 @@ const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button className="h-14 px-8 bg-white/90 backdrop-blur-sm text-brand-primary hover:bg-brand-primary hover:text-white hover:shadow-[0_8px_25px_-5px_#AD5E99] rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1">
+            <Button className="h-14 px-8 bg-white/90 backdrop-blur-sm text-brand-primary border border-brand-primary/60 hover:border-brand-primary hover:bg-brand-primary hover:text-white hover:shadow-[0_8px_25px_-5px_#AD5E99] rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1">
               Reserva Tu Cita Gratis
             </Button>
             <Button

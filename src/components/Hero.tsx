@@ -12,6 +12,13 @@ const Hero = () => {
     }
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative h-screen min-h-[600px] w-full overflow-hidden">
       {/* Background Image with Parallax-like feel */}
@@ -54,10 +61,14 @@ const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button className="h-14 px-8 bg-white/90 backdrop-blur-sm text-brand-primary border border-brand-primary/60 hover:border-brand-primary hover:bg-brand-primary hover:text-white hover:shadow-[0_8px_25px_-5px_#AD5E99] rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1">
+            <Button
+              onClick={scrollToContact}
+              className="h-14 px-8 bg-white/90 backdrop-blur-sm text-brand-primary border border-brand-primary/60 hover:border-brand-primary hover:bg-brand-primary hover:text-white hover:shadow-[0_8px_25px_-5px_#AD5E99] rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1"
+            >
               Reserva Tu Cita Gratis
             </Button>
             <Button
+              onClick={() => scrollToSection('historia')}
               variant="outline"
               className="h-14 px-8 bg-[#B784A7]/20 border-[#B784A7]/40 text-white hover:text-white hover:bg-[#8C3573]/80 backdrop-blur-sm rounded-full text-lg group"
             >

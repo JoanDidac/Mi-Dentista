@@ -14,6 +14,7 @@ import { MessageCircle, MapPin, Clock, Check } from "lucide-react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
 import QRCode from "react-qr-code";
+import { getBrowserMetadata } from "@/utils/analytics";
 
 const ContactLocationSection = () => {
     const [formData, setFormData] = useState({
@@ -30,7 +31,10 @@ const ContactLocationSection = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const success = await submitFormToSheet(formData);
+        const metadata = getBrowserMetadata();
+        // Ensure phone number has +34 prefix for E.164 compliance
+        const formattedPhone = formData.phone.startsWith('+') ? formData.phone : `+34${formData.phone}`;
+        const success = await submitFormToSheet({ ...formData, phone: formattedPhone, metadata });
 
         if (success) {
             toast.success("¡Solicitud recibida!", {

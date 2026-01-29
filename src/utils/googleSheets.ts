@@ -10,6 +10,7 @@ export interface ContactFormData {
     treatment?: string;
     reason?: string;
     privacy: boolean;
+    metadata?: any; // For enriched data (source, device, etc.)
     [key: string]: any; // Allow other fields
 }
 

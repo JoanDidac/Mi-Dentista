@@ -12,6 +12,7 @@ import { useState } from "react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
 import { Check } from "lucide-react";
+import { getBrowserMetadata } from "@/utils/analytics";
 
 const ContactSection = () => {
     const [formData, setFormData] = useState({
@@ -28,7 +29,10 @@ const ContactSection = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const success = await submitFormToSheet(formData);
+        const metadata = getBrowserMetadata();
+        // Ensure phone number has +34 prefix for E.164 compliance
+        const formattedPhone = formData.phone.startsWith('+') ? formData.phone : `+34${formData.phone}`;
+        const success = await submitFormToSheet({ ...formData, phone: formattedPhone, metadata });
 
         if (success) {
             toast.success("¡Mensaje enviado!", {

@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import logoTrial from "@/assets/logo-trial.png";
+import QRCode from "react-qr-code";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -64,7 +65,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-4 gap-8 mb-10">
-          <div className="col-span-1 md:col-span-2 space-y-4">
+          <div className="col-span-1 space-y-4">
             <div className="flex items-center gap-2">
               <img
                 src={logoTrial}
@@ -72,7 +73,7 @@ const Footer = () => {
                 className="h-16 w-auto brightness-0 invert"
               />
             </div>
-            <p className="text-white/80 max-w-sm text-sm leading-relaxed">
+            <p className="text-white/80 text-sm leading-relaxed">
               Cuidando sonrisas en Barcelona con tecnología avanzada y un trato cercano. Especialistas en hacer que los niños amen ir al dentista.
             </p>
             <div className="flex gap-3">
@@ -128,6 +129,20 @@ const Footer = () => {
                 <span>Cerrado</span>
               </li>
             </ul>
+          </div>
+
+          <div className="flex flex-col items-start md:items-center">
+            <h4 className="font-bold text-sm mb-4 font-montserrat tracking-tight">Contacto Rápido</h4>
+            <div className="bg-transparent p-0 rounded-none">
+              <QRCode
+                value="https://wa.me/34692248625"
+                size={100}
+                level="M"
+                bgColor="transparent"
+                fgColor="#FFFFFF"
+              />
+            </div>
+            <span className="text-[10px] uppercase font-bold text-white/80 tracking-wider mt-3 text-center max-w-[120px]">Escanea para chatear vía WhatsApp</span>
           </div>
         </div>
 

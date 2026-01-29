@@ -13,6 +13,7 @@ import { useState } from "react";
 import { MessageCircle, MapPin, Clock, Check } from "lucide-react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
+import QRCode from "react-qr-code";
 
 const ContactLocationSection = () => {
     const [formData, setFormData] = useState({
@@ -75,10 +76,32 @@ const ContactLocationSection = () => {
                                 un mensaje de WhatsApp haciendo clic en el botón.
                             </p>
 
-                            <Button className="bg-[#8C3573] hover:bg-[#722a5d] text-white px-8 h-14 rounded-xl flex items-center gap-3 font-bold uppercase tracking-wide group transition-all">
-                                CONTACTA POR WHATSAPP
-                                <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
-                            </Button>
+                            <div className="flex flex-col sm:flex-row items-center gap-6">
+                                <a
+                                    href="https://wa.me/34692248625"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block"
+                                >
+                                    <Button className="bg-[#8C3573] hover:bg-[#722a5d] text-white px-8 h-14 rounded-xl flex items-center gap-3 font-bold uppercase tracking-wide group transition-all">
+                                        CONTACTA POR WHATSAPP
+                                        <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
+                                    </Button>
+                                </a>
+
+                                {/* QR Code for Desktop */}
+                                <div className="hidden md:flex flex-col items-center gap-2 bg-white p-2 rounded-xl shadow-sm border border-gray-100">
+                                    <div className="bg-white p-1 rounded-lg">
+                                        <QRCode
+                                            value="https://wa.me/34692248625"
+                                            size={80}
+                                            level="M"
+                                            fgColor="#8C3573"
+                                        />
+                                    </div>
+                                    <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Escanea para chatear</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">

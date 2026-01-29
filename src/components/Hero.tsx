@@ -3,6 +3,8 @@ import { ArrowRight, Star } from "lucide-react";
 import heroImage from "../assets/hero-image.png";
 import avatar1 from "../assets/avatar_face_1.png";
 import avatar2 from "../assets/avatar_face_2.png";
+import { motion } from "framer-motion";
+import QRCode from "react-qr-code";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -112,10 +114,152 @@ const Hero = () => {
         onClick={scrollToContact}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow hidden md:block cursor-pointer hover:opacity-80 transition-opacity"
       >
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-white rounded-full animate-scroll-down"></div>
-        </div>
+        <motion.div
+          className="w-12 h-12 flex justify-center items-center"
+          initial="initial"
+          animate="animate"
+          whileHover="hover"
+        >
+          {/* Friendly Wisdom Tooth SVG - Animated */}
+          <motion.svg
+            viewBox="0 0 64 64"
+            className="w-full h-full drop-shadow-md"
+            xmlns="http://www.w3.org/2000/svg"
+            variants={{
+              hover: { scale: 1.15 }
+            }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <g fill="none" fillRule="evenodd">
+              {/* Twinkling Stars */}
+              <motion.polygon
+                fill="#FF78C7"
+                points="17.561 10.341 13.629 11.493 14.78 7.561 13.629 3.629 17.561 4.78 21.493 3.629 20.341 7.561 21.493 11.493"
+                transform="rotate(-45 17.56 7.56)"
+                animate={{ opacity: [1, 0.5, 1], scale: [1, 0.9, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.polygon
+                fill="#FF78C7"
+                points="17.78 55.67 15.107 56.453 15.89 53.78 15.107 51.107 17.78 51.89 20.453 51.107 19.67 53.78 20.453 56.453"
+                transform="rotate(-45 17.78 53.78)"
+                animate={{ opacity: [0.5, 1, 0.5], scale: [0.9, 1.1, 0.9] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              />
+
+              {/* Tooth Body - Nods on Hover */}
+              <motion.path
+                fill="#B4DFFB"
+                d="M26.0714286,14 C21.8109462,14 19,18.8928881 19,24.9285714 C19,30.9642548 21.8109462,50 26.0714286,50 C28.5568423,50 28.8391605,34.1920244 32.1785714,34.177711 C36.1608395,34.1920244 35.8003005,50 38.2857143,50 C42.5461966,50 45.3571429,30.9642548 45.3571429,24.9285714 C45.3571429,18.8928881 42.5461966,14 38.2857143,14 C36.25,14 34.2142857,15.9285714 32.1785714,15.9285714 30.1428571,15.9285714 28.1071428,14 26.0714286,14 Z"
+                variants={{
+                  hover: {
+                    rotate: [0, -5, 5, 0],
+                    fill: "#FFFFFF"
+                  }
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                style={{ originX: "50%", originY: "50%" }}
+              />
+
+              <motion.polygon
+                fill="#FF78C7"
+                points="36.78 23.67 34.107 24.453 34.89 21.78 34.107 19.107 36.78 19.89 39.453 19.107 38.67 21.78 39.453 24.453"
+                transform="rotate(-45 36.78 21.78)"
+                animate={{ opacity: [1, 0.6, 1], scale: [1, 1.2, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+
+              {/* Rings Group */}
+              {/* Rings Group */}
+              <motion.g>
+                {/* Ring 1 - Orbit Flow */}
+                <motion.path
+                  stroke="#FF78C7"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  d="M17.4701388,29.01117 C9.93126448,29.8980783 4.92849706,31.4581568 4.92849706,33.2346166 C4.92849706,35.9960404 17.0168088,38.2346166 31.9284971,38.2346166 C46.8401853,38.2346166 58.9284971,35.9960404 58.9284971,33.2346166 C58.9284971,31.8411183 55.8501866,30.5807641 50.8841565,29.6740337"
+                  transform="rotate(-30 31.928 33.623)"
+                  initial={{ strokeDasharray: "none", strokeDashoffset: 0 }}
+                  variants={{
+                    hover: {
+                      strokeDasharray: "10 10",
+                      strokeDashoffset: -40,
+                      transition: {
+                        strokeDasharray: { duration: 0 },
+                        strokeDashoffset: { duration: 1, ease: "linear", repeat: Infinity }
+                      }
+                    }
+                  }}
+                />
+                {/* Ring 2 - Orbit Flow with delay */}
+                <motion.path
+                  stroke="#D650C7"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  d="M13.3558551,29.1929448 C8.13881926,30.1045985 4.8826859,31.3969451 4.8826859,32.830127 C4.8826859,35.5915508 16.9709977,37.830127 31.8826859,37.830127 L31.8826859,37.830127 C46.7943741,37.830127 58.8826859,35.5915508 58.8826859,32.830127 C58.8826859,31.0833094 54.0454791,29.5457122 46.7162979,28.6516378"
+                  transform="rotate(30 31.883 33.24)"
+                  initial={{ strokeDasharray: "none", strokeDashoffset: 0 }}
+                  variants={{
+                    hover: {
+                      strokeDasharray: "10 10",
+                      strokeDashoffset: -40,
+                      transition: {
+                        strokeDasharray: { duration: 0 },
+                        strokeDashoffset: { duration: 1, ease: "linear", repeat: Infinity }
+                      }
+                    }
+                  }}
+                />
+              </motion.g>
+            </g>
+          </motion.svg>
+        </motion.div>
       </div>
+
+      {/* Hero QR Code Widget (Desktop Only) */}
+      <motion.div
+        className="absolute bottom-8 right-4 hidden md:flex flex-col items-center gap-3 z-20 cursor-pointer group"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: [1, 1.05, 1] // Bouncing scale effect
+        }}
+        transition={{
+          opacity: { duration: 1, delay: 1 },
+          y: { duration: 1, delay: 1 },
+          scale: {
+            duration: 0.6,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatDelay: 5 // Repeats every 5 seconds + duration
+          }
+        }}
+      >
+        <a
+          href="https://wa.me/34692248625"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center gap-2 transition-transform duration-300 group-hover:scale-110"
+        >
+          {/* Glassmorphism container for QR */}
+          {/* User asked for transparent bg, but pure transparent might be hard to scan if bg has noise.
+              However, inverted QR (white on dark) works well.
+              Ref: "transparent background with white qr code" */}
+          <div className="p-1 backdrop-blur-[2px] rounded-lg opacity-40 group-hover:opacity-100 transition-opacity duration-300">
+            <QRCode
+              value="https://wa.me/34692248625"
+              size={70}
+              level="M"
+              fgColor="#FFFFFF"
+              bgColor="transparent"
+            />
+          </div>
+          <div className="text-white text-[10px] font-light tracking-widest uppercase drop-shadow-md text-center opacity-90">
+            Contacta por Whatsapp!
+          </div>
+        </a>
+      </motion.div>
     </div>
   );
 };

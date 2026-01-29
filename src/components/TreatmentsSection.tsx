@@ -45,7 +45,7 @@ const TreatmentsSection = () => {
     };
 
     return (
-        <section className="w-full bg-gradient-to-b from-white via-brand-bg/30 to-white py-16 md:py-24">
+        <section id="tratamientos" className="w-full bg-gradient-to-b from-white via-brand-bg/30 to-white py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-8">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">

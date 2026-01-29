@@ -19,6 +19,7 @@ export default {
         montserrat: ["Montserrat", "sans-serif"],
         unbounded: ["Unbounded", "sans-serif"],
         barlow: ["Barlow", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

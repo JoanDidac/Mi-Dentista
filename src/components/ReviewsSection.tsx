@@ -58,7 +58,7 @@ const ReviewsSection = () => {
                         <div className="inline-block px-4 py-1 rounded-full bg-brand-secondary/30 backdrop-blur-md border border-brand-secondary/50 text-[10px] font-bold tracking-widest text-brand-white mb-4">
                             {featuredReview.treatment || "TESTIMONIO DESTACADO"}
                         </div>
-                        <blockquote className="text-xl md:text-3xl font-semibold leading-tight mb-6 font-montserrat italic">
+                        <blockquote className="text-xl md:text-3xl font-extralight leading-tight mb-6 font-poppins italic">
                             "{featuredReview.text}"
                         </blockquote>
                         <p className="text-lg font-medium text-brand-white/90">

@@ -3,9 +3,25 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import logoTrial from "@/assets/logo-trial.png";
 import QRCode from "react-qr-code";
+import { toast } from "sonner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const scrollToSection = (sectionId: string) => {
+    if (location.pathname === '/' || location.pathname === '/Mi-Dentista/' || location.pathname === '/Mi-Dentista') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      navigate('/', { state: { scrollTo: sectionId } });
+    }
+  };
+
   const { scrollYProgress } = useScroll({
     target: footerRef,
     offset: ["start end", "end end"]
@@ -90,23 +106,30 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-sm mb-4 font-montserrat tracking-tight">Enlaces</h4>
             <ul className="space-y-2.5 text-white/70 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2 group">
+              <li><a href="#" onClick={(e) => {
+                e.preventDefault();
+                if (location.pathname === '/' || location.pathname === '/Mi-Dentista/' || location.pathname === '/Mi-Dentista') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  navigate('/');
+                }
+              }} className="hover:text-white transition-colors flex items-center gap-2 group">
                 <span className="w-1 h-1 rounded-full bg-brand-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Inicio
               </a></li>
-              <li><a href="#servicios" className="hover:text-white transition-colors flex items-center gap-2 group">
+              <li><a href="#tratamientos" onClick={(e) => { e.preventDefault(); scrollToSection('tratamientos'); }} className="hover:text-white transition-colors flex items-center gap-2 group">
                 <span className="w-1 h-1 rounded-full bg-brand-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Tratamientos
               </a></li>
-              <li><a href="#historia" className="hover:text-white transition-colors flex items-center gap-2 group">
+              <li><a href="#nosotros" onClick={(e) => { e.preventDefault(); scrollToSection('historia'); }} className="hover:text-white transition-colors flex items-center gap-2 group">
                 <span className="w-1 h-1 rounded-full bg-brand-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Nosotros
               </a></li>
-              <li><a href="#testimonios" className="hover:text-white transition-colors flex items-center gap-2 group">
+              <li><a href="#testimonios" onClick={(e) => { e.preventDefault(); scrollToSection('testimonios'); }} className="hover:text-white transition-colors flex items-center gap-2 group">
                 <span className="w-1 h-1 rounded-full bg-brand-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Opiniones
               </a></li>
-              <li><a href="#contacto" className="hover:text-white transition-colors flex items-center gap-2 group">
+              <li><a href="#contacto" onClick={(e) => { e.preventDefault(); scrollToSection('contacto-footer'); }} className="hover:text-white transition-colors flex items-center gap-2 group">
                 <span className="w-1 h-1 rounded-full bg-brand-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Contacto
               </a></li>
@@ -149,9 +172,9 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/50">
           <p>&copy; {new Date().getFullYear()} Mi Dentista Barcelona. Todos los derechos reservados.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
-            <a href="#" className="hover:text-white transition-colors">Aviso Legal</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); toast.info("Página de Privacidad en construcción"); }} className="hover:text-white transition-colors">Privacidad</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); toast.info("Página de Cookies en construcción"); }} className="hover:text-white transition-colors">Cookies</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); toast.info("Aviso Legal en construcción"); }} className="hover:text-white transition-colors">Aviso Legal</a>
           </div>
         </div>
       </div>

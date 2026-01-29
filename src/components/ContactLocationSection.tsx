@@ -60,7 +60,7 @@ const ContactLocationSection = () => {
     };
 
     return (
-        <section className="w-full bg-white py-16 md:py-24 overflow-hidden">
+        <section id="contacto-footer" className="w-full bg-white py-16 md:py-24 overflow-hidden">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
                     {/* Left Column: Info Content */}

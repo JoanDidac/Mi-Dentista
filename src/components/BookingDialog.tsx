@@ -57,10 +57,13 @@ const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       // Convert date/time objects to strings for the sheet
+      // Ensure phone number has +34 prefix for E.164 compliance
+      const formattedPhone = values.phone.startsWith('+') ? values.phone : `+34${values.phone}`;
+
       const payload = {
         name: values.name,
         email: values.email,
-        phone: values.phone,
+        phone: formattedPhone,
         service: values.service,
         date: values.date.toLocaleDateString(),
         time: values.time,

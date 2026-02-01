@@ -17,10 +17,12 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Map to standard format
+        // Ensure phone number has +34 prefix for E.164 compliance
+        const formattedPhone = formData.phone.startsWith('+') ? formData.phone : `+34${formData.phone}`;
+
         const payload = {
             name: formData.name,
-            phone: formData.phone,
+            phone: formattedPhone,
             email: "Not provided", // Contact.tsx doesn't have email field in UI currently
             treatment: formData.service,
             privacy: true

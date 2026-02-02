@@ -22,7 +22,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative h-screen min-h-[600px] w-full overflow-hidden">
+    <div className="relative min-h-[100dvh] w-full overflow-hidden">
       {/* Background Image with Parallax-like feel */}
       <div
         className="absolute inset-0 bg-cover bg-[60%_center] md:bg-center bg-no-repeat"
@@ -35,12 +35,12 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative h-full container mx-auto px-4 flex flex-col justify-center items-start pt-20">
-        <div className="pl-0 md:pl-8 max-w-4xl space-y-8 animate-in slide-in-from-left-5 duration-1000">
+      <div className="relative h-full min-h-[100dvh] container mx-auto px-4 flex flex-col justify-center items-start pt-28 pb-12 sm:pt-20">
+        <div className="pl-0 md:pl-8 max-w-4xl space-y-6 sm:space-y-8 animate-in slide-in-from-left-5 duration-1000">
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-white text-sm font-medium border border-white/20 shadow-sm">
-            <Star className="w-4 h-4 fill-white text-white" />
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-white text-xs sm:text-sm font-medium border border-white/20 shadow-sm">
+            <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-white text-white" />
             <span>Primera Visita Gratis</span>
           </div>
 
@@ -71,7 +71,7 @@ const Hero = () => {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-2 sm:pt-4">
             <Button
               onClick={scrollToContact}
               className="h-14 px-8 bg-white/90 backdrop-blur-sm text-brand-primary border border-brand-primary/60 hover:border-brand-primary hover:bg-brand-primary hover:text-white hover:shadow-[0_8px_25px_-5px_#AD5E99] rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1"
@@ -89,7 +89,7 @@ const Hero = () => {
           </div>
 
           {/* Social Proof */}
-          <div className="pt-8 flex items-center gap-4 text-white/80">
+          <div className="pt-4 sm:pt-8 flex items-center gap-4 text-white/80">
             <div className="flex -space-x-3">
               <img src={avatar1} alt="Patient 1" className="w-10 h-10 rounded-full border-2 border-brand-primary object-cover" />
               <img src={avatar2} alt="Patient 2" className="w-10 h-10 rounded-full border-2 border-brand-primary object-cover" />

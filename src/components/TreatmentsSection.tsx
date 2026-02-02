@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { useState, useRef, MouseEvent } from "react";
+import { MouseEvent } from "react";
+import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
 import odontopediatriaImage from "../assets/odontopediatria.png";
 import ortodonciaInvisibleImage from "../assets/orthodoncia-invisible.png";
 import esteticaDentalImage from "../assets/estetica-dental-soft.png";
@@ -11,6 +12,7 @@ interface TreatmentCard {
     description: string;
     gradient: string;
     image?: string;
+    imageClass?: string;
 }
 
 const TreatmentsSection = () => {
@@ -23,6 +25,7 @@ const TreatmentsSection = () => {
             description: "Cuidado dental especializado para los más pequeños en un ambiente divertido y seguro.",
             gradient: "linear-gradient(135deg, rgba(140, 53, 115, 0.92) 0%, rgba(101, 21, 61, 0.95) 100%)",
             image: odontopediatriaImage,
+            imageClass: "scale-125 object-center group-hover:scale-135",
         },
         {
             slug: "ortodoncia-invisible-barcelona",
@@ -88,7 +91,6 @@ const TreatmentsSection = () => {
     );
 };
 
-// Separate component for 3D tilt effect
 const TreatmentCard3D = ({
     treatment,
     index,
@@ -98,54 +100,61 @@ const TreatmentCard3D = ({
     index: number;
     onClick: () => void;
 }) => {
-    const [transform, setTransform] = useState("rotateX(0deg) rotateY(0deg)");
-    const cardRef = useRef<HTMLDivElement>(null);
+    // Motion values for mouse position relative to card center
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    // Spring configuration for smooth "heavy" feel (damping absorbs jitter)
+    const springConfig = { damping: 20, stiffness: 100, mass: 0.5 };
+
+    // Derived rotations with spring physics
+    const rotateX = useSpring(useTransform(y, [-200, 200], [10, -10]), springConfig);
+    const rotateY = useSpring(useTransform(x, [-200, 200], [-10, 10]), springConfig);
+
+    // Additional parallax/transform values
+    // Scale up slightly on hover (driven by hover state mostly, but we can spring it too if needed)
+    // For now, keeping scale on CSS hover is fine, but tilt is physics-based.
 
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-        // Only apply 3D effect on desktop (check if window width >= md breakpoint)
-        if (window.innerWidth < 768) return;
-
-        const card = cardRef.current;
-        if (!card) return;
-
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
+        const rect = e.currentTarget.getBoundingClientRect();
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = ((y - centerY) / centerY) * -7; // Reduced for subtler effect
-        const rotateY = ((x - centerX) / centerX) * 7;
+        // Calculate distance from center
+        const mouseX = e.clientX - rect.left - centerX;
+        const mouseY = e.clientY - rect.top - centerY;
 
-        setTransform(
-            `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
-        );
+        x.set(mouseX);
+        y.set(mouseY);
     };
 
     const handleMouseLeave = () => {
-        setTransform("rotateX(0deg) rotateY(0deg)");
+        x.set(0);
+        y.set(0);
     };
 
     return (
-        <div
-            ref={cardRef}
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.15, duration: 0.5 }}
+            className="group relative h-[400px] w-full cursor-pointer perspective-[1000px] touch-none"
             onClick={onClick}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="group relative h-[400px] w-full cursor-pointer perspective-[1000px]
-                     animate-in fade-in slide-in-from-bottom-4"
             style={{
-                animationDelay: `${index * 150}ms`,
-                animationFillMode: "backwards",
+                perspective: 1000
             }}
         >
             {/* Rotatable 3D Container */}
-            <div
-                className="relative w-full h-full transition-transform duration-300 ease-out [transform-style:preserve-3d]"
-                style={{ transform }}
+            <motion.div
+                className="relative w-full h-full transition-shadow duration-300 ease-out [transform-style:preserve-3d]"
+                style={{
+                    rotateX,
+                    rotateY,
+                }}
             >
-                {/* Background Layer (Back Face of the "Cube") */}
+                {/* Background Layer (Back Face) */}
                 <div
                     className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-300 [transform:translateZ(0px)]"
                 >
@@ -155,7 +164,7 @@ const TreatmentCard3D = ({
                             <img
                                 src={treatment.image}
                                 alt={treatment.title}
-                                className="w-full h-full object-cover scale-110 object-center transition-transform duration-700 group-hover:scale-125"
+                                className={`w-full h-full object-cover transition-transform duration-700 ${treatment.imageClass || "scale-110 object-center group-hover:scale-125"}`}
                             />
                         </div>
                     )}
@@ -175,9 +184,11 @@ const TreatmentCard3D = ({
                     <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-all duration-500 pointer-events-none"></div>
                 </div>
 
-                {/* Content Layer (Front Face of the "Cube") - Pushed forward less distance to keep it "linked" */}
+                {/* Content Layer (Front Face) - Floating "Cube" Face
+                    translateZ(50px) pulls it closer to camera.
+                */}
                 <div
-                    className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center [transform:translateZ(30px)] pointer-events-none"
+                    className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center [transform:translateZ(60px)] pointer-events-none"
                 >
                     <div className="transform transition-transform duration-300">
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-montserrat drop-shadow-lg">
@@ -194,8 +205,8 @@ const TreatmentCard3D = ({
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };
 

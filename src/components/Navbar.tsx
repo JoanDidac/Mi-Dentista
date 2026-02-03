@@ -67,7 +67,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 transition-opacity hover:opacity-90"
+          className="flex items-center gap-2 transition-opacity hover:opacity-90 translate-y-[2px] md:translate-y-0"
           onClick={(e) => {
             if (location.pathname === '/') {
               e.preventDefault();

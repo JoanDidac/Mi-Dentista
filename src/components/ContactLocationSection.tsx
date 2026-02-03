@@ -76,7 +76,7 @@ const ContactLocationSection = () => {
                             </h2>
                             <p className="text-gray-600 text-lg leading-relaxed max-w-xl">
                                 Puedes contactar con nuestro equipo rellenando el formulario,
-                                llamando al <span className="font-bold text-brand-primary">93 441 36 64</span> o escribiendo
+                                llamando al <span className="font-bold text-brand-primary whitespace-nowrap">93 441 36 64</span> o escribiendo
                                 un mensaje de WhatsApp haciendo clic en el botón.
                             </p>
 

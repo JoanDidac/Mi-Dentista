@@ -52,7 +52,7 @@ const FacilitiesSection = () => {
             className="relative bg-white z-10" // z-10 to avoid overlap from previous sections
             style={{ height: "400dvh" }}
         >
-            <div className="sticky top-0 h-[100dvh] flex flex-col md:flex-row overflow-hidden bg-gray-100 md:bg-white">
+            <div className="sticky -top-[35dvh] h-[135dvh] md:top-0 md:h-[100dvh] flex flex-col md:flex-row overflow-hidden bg-gray-100 md:bg-white">
                 {/* Left Side - Text Content */}
                 <div className="absolute top-0 left-0 w-full z-20 max-h-[55dvh] min-h-[55dvh] overflow-y-auto bg-white/95 backdrop-blur-md shadow-xl rounded-b-[2rem] px-6 py-8 md:static md:w-1/2 md:h-full md:bg-white md:shadow-none md:rounded-none md:overflow-visible md:flex md:flex-col md:px-12 md:py-0">
                     <div className="max-w-3xl md:my-auto">
@@ -98,7 +98,7 @@ const FacilitiesSection = () => {
                 {/* Right Side - Animated Image Column */}
                 <div className="w-full h-full md:w-1/2 relative overflow-hidden bg-gray-100 md:bg-white">
                     <div
-                        className="absolute inset-0 flex flex-col transition-transform duration-150 ease-out [--carousel-start:55dvh] md:[--carousel-start:12vh] [--carousel-travel:275dvh] md:[--carousel-travel:262vh]"
+                        className="absolute inset-0 flex flex-col transition-transform duration-150 ease-out [--carousel-start:55dvh] md:[--carousel-start:12vh] [--carousel-travel:255dvh] md:[--carousel-travel:262vh]"
                         style={{
                             transform: `translateY(calc(var(--carousel-start) - (var(--carousel-travel) * ${progress})))`,
                         }}

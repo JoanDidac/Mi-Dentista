@@ -13,13 +13,33 @@ const ReviewsSection = () => {
     const [shuffledReviews, setShuffledReviews] = useState<Review[]>([]);
 
     useEffect(() => {
-        // Fisher-Yates shuffle
-        const array = [...reviewsData];
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+        // Separate reviews by source
+        const googleReviews = reviewsData.filter(r => r.source !== 'doctoralia');
+        const doctoraliaReviews = reviewsData.filter(r => r.source === 'doctoralia');
+
+        // Shuffle each array independently
+        const shuffleArray = (array: Review[]) => {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        };
+
+        const shuffledGoogle = shuffleArray(googleReviews);
+        const shuffledDoctoralia = shuffleArray(doctoraliaReviews);
+
+        // Intercalate: Google - Doctoralia - Google - Doctoralia
+        const intercalated: Review[] = [];
+        const maxLength = Math.max(shuffledGoogle.length, shuffledDoctoralia.length);
+
+        for (let i = 0; i < maxLength; i++) {
+            if (i < shuffledGoogle.length) intercalated.push(shuffledGoogle[i]);
+            if (i < shuffledDoctoralia.length) intercalated.push(shuffledDoctoralia[i]);
         }
-        setShuffledReviews(array);
+
+        setShuffledReviews(intercalated);
     }, []);
 
     const [autoplayOptions] = useState({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true });
@@ -187,7 +207,19 @@ const ReviewsSection = () => {
                                                     <p className="text-[10px] text-gray-500 font-medium">{review.time}</p>
                                                 </div>
                                             </div>
-                                            <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-3 w-auto grayscale opacity-30" />
+                                            {review.source === 'doctoralia' ? (
+                                                <img
+                                                    src="https://prowly-prod.s3.eu-west-1.amazonaws.com/uploads/5726/assets/785978/-68b4501c42f9bb7edf4a9048ccca5cda.png"
+                                                    alt="Doctoralia"
+                                                    className="h-5 w-auto object-contain"
+                                                />
+                                            ) : (
+                                                <img
+                                                    src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+                                                    alt="Google"
+                                                    className="h-5 w-auto object-contain"
+                                                />
+                                            )}
                                         </div>
 
                                         <div className="flex gap-0.5 mb-3">

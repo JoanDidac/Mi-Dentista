@@ -70,41 +70,56 @@ const ContactLocationSection = () => {
                     {/* Left Column: Info Content */}
                     <div className="space-y-12">
                         <div className="space-y-6">
-                            <h2 className="text-4xl md:text-5xl font-bold font-montserrat text-brand-dark leading-tight">
-                                Contacta con nuestro <br />
-                                equipo y vuelve a sonreír
+                            <h2 className="text-3xl md:text-5xl font-bold font-montserrat text-brand-dark leading-tight tracking-tight text-center md:text-left">
+                                Habla con nuestro <br />
+                                equipo y vuelve a <br />
+                                <span className="relative inline-block">
+                                    Sonreír.
+                                    <svg className="absolute w-full h-3 -bottom-2 left-0 text-brand-secondary/40" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                        <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
+                                        <path
+                                            d="M0 5 Q 50 10 100 5"
+                                            stroke="#8C3573"
+                                            strokeWidth="2"
+                                            fill="none"
+                                            className="animate-shine opacity-0"
+                                            strokeDasharray="30 200"
+                                            style={{ filter: "drop-shadow(0 0 2px #AD5E99)" }}
+                                        />
+                                    </svg>
+                                </span>
                             </h2>
-                            <p className="text-gray-600 text-lg leading-relaxed max-w-xl">
+                            <p className="text-gray-600 text-lg leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0">
                                 Puedes contactar con nuestro equipo rellenando el formulario,
                                 llamando al <span className="font-bold text-brand-primary whitespace-nowrap">93 441 36 64</span> o escribiendo
                                 un mensaje de WhatsApp haciendo clic en el botón.
                             </p>
+                        </div>
 
-                            <div className="flex flex-col sm:flex-row items-center gap-6">
-                                <a
-                                    href="https://wa.me/34692248625"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-block"
-                                >
-                                    <Button className="bg-[#8C3573] hover:bg-[#722a5d] text-white px-8 h-14 rounded-xl flex items-center gap-3 font-bold uppercase tracking-wide group transition-all">
-                                        CONTACTA POR WHATSAPP
-                                        <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
-                                    </Button>
-                                </a>
+                        <div className="flex flex-col sm:flex-row items-center gap-6">
+                            <a
+                                href="https://wa.me/34692248625"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block"
+                            >
+                                <Button className="bg-[#8C3573] hover:bg-[#722a5d] text-white px-8 h-14 rounded-xl flex items-center gap-3 font-bold uppercase tracking-wide group transition-all">
+                                    CONTACTA POR WHATSAPP
+                                    <MessageCircle className="w-5 h-5 fill-white group-hover:scale-110 transition-transform" />
+                                </Button>
+                            </a>
 
-                                {/* QR Code for Desktop */}
-                                <div className="hidden md:flex flex-col items-center gap-2 bg-white p-2 rounded-xl shadow-sm border border-gray-100">
-                                    <div className="bg-white p-1 rounded-lg">
-                                        <QRCode
-                                            value="https://wa.me/34692248625"
-                                            size={80}
-                                            level="M"
-                                            fgColor="#8C3573"
-                                        />
-                                    </div>
-                                    <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Escanea para chatear</span>
+                            {/* QR Code for Desktop */}
+                            <div className="hidden md:flex flex-col items-center gap-2 bg-white p-2 rounded-xl shadow-sm border border-gray-100">
+                                <div className="bg-white p-1 rounded-lg">
+                                    <QRCode
+                                        value="https://wa.me/34692248625"
+                                        size={80}
+                                        level="M"
+                                        fgColor="#8C3573"
+                                    />
                                 </div>
+                                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Escanea para chatear</span>
                             </div>
                         </div>
 

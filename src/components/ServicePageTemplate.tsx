@@ -25,10 +25,10 @@ const ServicePageTemplate = ({ data }: Props) => {
                             <span>Tratamiento Especializado</span>
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-montserrat">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-tight font-montserrat">
                             {data.title}
                         </h1>
-                        <p className="text-xl text-brand-primary/90 font-medium">
+                        <p className="text-xl text-brand-darkest/80">
                             {data.subtitle}
                         </p>
                         <div className="flex gap-4 pt-4">

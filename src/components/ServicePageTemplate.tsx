@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Contact from "./Contact";
 import heroImage from "../assets/hero-image.png"; // Fallback/Default
+import dentalPattern from "../assets/dental-pattern.svg";
 
 interface Props {
     data: ServiceData;
@@ -18,6 +19,16 @@ const ServicePageTemplate = ({ data }: Props) => {
 
             {/* Hero Section */}
             <div className="pt-24 pb-12 md:pt-32 md:pb-20 bg-brand-bg relative overflow-hidden">
+                {/* Background Pattern */}
+                <div
+                    className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none"
+                    style={{
+                        backgroundImage: `url(${dentalPattern})`,
+                        backgroundSize: '200px 200px',
+                        backgroundRepeat: 'repeat'
+                    }}
+                ></div>
+
                 <div className="container mx-auto px-4 grid md:grid-cols-[0.8fr_1.2fr] gap-6 items-center relative z-10">
                     <div className="space-y-6">
                         <div className="inline-flex items-center gap-2 bg-white/50 px-3 py-1 rounded-full text-brand-primary text-sm font-medium border border-brand-light">

@@ -8,57 +8,78 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
 import { submitFormToSheet } from "../utils/googleSheets";
 import { toast } from "sonner";
 import { Check } from "lucide-react";
 import { getBrowserMetadata } from "@/utils/analytics";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { contactFormSchema } from "@/schemas/contactFormSchema";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
 
 const ContactSection = () => {
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-        treatment: "",
-        reason: "",
-        privacy: false,
+    const form = useForm<z.infer<typeof contactFormSchema>>({
+        resolver: zodResolver(contactFormSchema),
+        defaultValues: {
+            name: "",
+            phone: "",
+            email: "",
+            treatment: "",
+            reason: "",
+            privacy: false,
+            trap: "",
+        },
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+    const isSubmitting = form.formState.isSubmitting;
 
-        const metadata = getBrowserMetadata();
-        // Ensure phone number has +34 prefix for E.164 compliance
-        const formattedPhone = formData.phone.startsWith('+') ? formData.phone : `+34${formData.phone}`;
-        const success = await submitFormToSheet({ ...formData, phone: formattedPhone, metadata });
+    const onSubmit = async (values: z.infer<typeof contactFormSchema>) => {
+        try {
+            // Honeypot check
+            if (values.trap) {
+                console.log("Spam detected");
+                return; // Silent fail
+            }
 
-        if (success) {
-            toast.success("¡Mensaje enviado!", {
-                description: "Gracias por contactarnos. Te responderemos en breve.",
-                duration: 5000,
-                className: "bg-white text-brand-primary border-brand-primary/20",
-                icon: <Check className="text-[#84cc16] w-5 h-5" />,
+            const metadata = getBrowserMetadata();
+            // Ensure phone number has +34 prefix for E.164 compliance
+            const formattedPhone = values.phone.startsWith('+') ? values.phone : `+34${values.phone}`;
+
+            const success = await submitFormToSheet({
+                name: values.name,
+                email: values.email,
+                phone: formattedPhone,
+                treatment: values.treatment,
+                reason: values.reason,
+                privacy: values.privacy,
+                metadata
             });
-            setFormData({
-                name: "",
-                phone: "",
-                email: "",
-                treatment: "",
-                reason: "",
-                privacy: false,
-            });
-        } else {
+
+            if (success) {
+                toast.success("¡Mensaje enviado!", {
+                    description: "Gracias por contactarnos. Te responderemos en breve.",
+                    duration: 5000,
+                    className: "bg-white text-brand-primary border-brand-primary/20",
+                    icon: <Check className="text-[#84cc16] w-5 h-5" />,
+                });
+                form.reset();
+            } else {
+                throw new Error("Submission failed");
+            }
+        } catch (error) {
+            console.error(error);
             toast.error("Algo salió mal", {
                 description: "No pudimos enviar tu mensaje. Por favor intenta más tarde.",
             });
         }
-        setIsSubmitting(false);
-    };
-
-    const handleChange = (field: string, value: string | boolean) => {
-        setFormData((prev) => ({ ...prev, [field]: value }));
     };
 
     return (
@@ -92,117 +113,163 @@ const ContactSection = () => {
 
                     {/* Right Column: Form */}
                     <div className="bg-white/10 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/20 shadow-2xl">
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <label htmlFor="name" className="text-white font-medium text-sm">
-                                        Nombre completo *
-                                    </label>
-                                    <Input
-                                        id="name"
-                                        required
-                                        placeholder=""
-                                        className="bg-white border-white/30 h-10 md:h-12"
-                                        value={formData.name}
-                                        onChange={(e) => handleChange("name", e.target.value)}
+                        <Form {...form}>
+                            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-white font-medium text-sm">Nombre completo *</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder=""
+                                                        className="bg-white border-white/30 h-10 md:h-12"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="phone"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-white font-medium text-sm">Teléfono *</FormLabel>
+                                                <div className="relative">
+                                                    <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-1 border-r border-gray-300 pr-2 mr-2 pointer-events-none z-10">
+                                                        <span className="text-lg">🇪🇸</span>
+                                                    </div>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder=""
+                                                            className="bg-white border-white/30 h-10 md:h-12 pl-16 text-black placeholder:text-gray-500"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                </div>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
                                     />
                                 </div>
-                                {/* Phone with partial flag placeholder simulation */}
-                                <div className="space-y-2">
-                                    <label htmlFor="phone" className="text-white font-medium text-sm">
-                                        Teléfono *
-                                    </label>
-                                    <div className="relative">
-                                        <div className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center gap-1 border-r border-gray-300 pr-2 mr-2">
-                                            <span className="text-lg">🇪🇸</span>
-                                        </div>
-                                        <Input
-                                            id="phone"
-                                            required
-                                            placeholder=""
-                                            className="bg-white border-white/30 h-10 md:h-12 pl-16 text-black placeholder:text-gray-500"
-                                            value={formData.phone}
-                                            onChange={(e) => handleChange("phone", e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="text-white font-medium text-sm">
-                                    Correo *
-                                </label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    required
-                                    placeholder=""
-                                    className="bg-white border-white/30 h-10 md:h-12 text-black placeholder:text-gray-500"
-                                    value={formData.email}
-                                    onChange={(e) => handleChange("email", e.target.value)}
+                                <FormField
+                                    control={form.control}
+                                    name="email"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className="text-white font-medium text-sm">Correo *</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    type="email"
+                                                    placeholder=""
+                                                    className="bg-white border-white/30 h-10 md:h-12 text-black placeholder:text-gray-500"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
                                 />
-                            </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="space-y-2">
-                                    <label className="text-white font-medium text-sm">
-                                        ¿En qué tratamiento estás interesado/a?
-                                    </label>
-                                    <Select
-                                        onValueChange={(val) => handleChange("treatment", val)}
-                                    >
-                                        <SelectTrigger className="bg-white/20 border-white/30 text-white h-12">
-                                            <SelectValue placeholder="Seleccionar tratamiento" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="revisión">Primera Visita (Gratis)</SelectItem>
-                                            <SelectItem value="odontopediatria">Odontopediatría</SelectItem>
-                                            <SelectItem value="ortodoncia">Ortodoncia Invisible</SelectItem>
-                                            <SelectItem value="estetica">Estética Dental</SelectItem>
-                                            <SelectItem value="implantes">Implantes Dentales</SelectItem>
-                                            <SelectItem value="otro">Otro</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="treatment"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-white font-medium text-sm">¿En qué tratamiento estás interesado/a?</FormLabel>
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <FormControl>
+                                                        <SelectTrigger className="bg-white/20 border-white/30 text-white h-12">
+                                                            <SelectValue placeholder="Seleccionar tratamiento" />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent>
+                                                        <SelectItem value="revisión">Primera Visita (Gratis)</SelectItem>
+                                                        <SelectItem value="odontopediatria">Odontopediatría</SelectItem>
+                                                        <SelectItem value="ortodoncia">Ortodoncia Invisible</SelectItem>
+                                                        <SelectItem value="estetica">Estética Dental</SelectItem>
+                                                        <SelectItem value="implantes">Implantes Dentales</SelectItem>
+                                                        <SelectItem value="otro">Otro</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
 
-                                <div className="space-y-2">
-                                    <label htmlFor="reason" className="text-white font-medium text-sm">
-                                        ¿Cuál es el motivo de tu consulta?
-                                    </label>
-                                    <Input
-                                        id="reason"
-                                        placeholder=""
-                                        className="bg-white border-white/30 h-10 md:h-12 text-black placeholder:text-gray-500"
-                                        value={formData.reason}
-                                        onChange={(e) => handleChange("reason", e.target.value)}
+                                    <FormField
+                                        control={form.control}
+                                        name="reason"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="text-white font-medium text-sm">¿Cuál es el motivo de tu consulta?</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder=""
+                                                        className="bg-white border-white/30 h-10 md:h-12 text-black placeholder:text-gray-500"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
                                     />
                                 </div>
-                            </div>
 
-                            <div className="flex items-start gap-3 pt-2">
-                                <Checkbox
-                                    id="privacy"
-                                    className="mt-1 bg-white border-white text-brand-primary"
-                                    checked={formData.privacy}
-                                    onCheckedChange={(checked) => handleChange("privacy", checked === true)}
+                                <FormField
+                                    control={form.control}
+                                    name="privacy"
+                                    render={({ field }) => (
+                                        <FormItem className="flex items-start gap-3 pt-2 space-y-0">
+                                            <FormControl>
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    onCheckedChange={field.onChange}
+                                                    className="mt-1 bg-white border-white text-brand-primary"
+                                                />
+                                            </FormControl>
+                                            <div className="space-y-1 leading-none">
+                                                <FormLabel className="text-xs text-white/80 leading-tight">
+                                                    Acepto la Política de Privacidad y todo lo que se dispone en ella.
+                                                </FormLabel>
+                                                <p className="opacity-70 text-[10px] text-white/80">
+                                                    Responsable: Mi Dentista. Finalidad: Dar respuesta a las consultas/gestión de citas...
+                                                </p>
+                                                <FormMessage />
+                                            </div>
+                                        </FormItem>
+                                    )}
                                 />
-                                <label htmlFor="privacy" className="text-xs text-white/80 leading-tight">
-                                    Acepto la Política de Privacidad y todo lo que se dispone en ella.
-                                    <br />
-                                    <span className="opacity-70 text-[10px]">
-                                        Responsable: Mi Dentista. Finalidad: Dar respuesta a las consultas/gestión de citas...
-                                    </span>
-                                </label>
-                            </div>
 
-                            <Button
-                                type="submit"
-                                className="w-full md:w-auto px-8 h-12 bg-white text-brand-primary hover:bg-white/90 font-bold text-lg rounded-lg shadow-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
-                                disabled={!formData.privacy || isSubmitting}
-                            >
-                                {isSubmitting ? "Enviando..." : "Pide Cita"}
-                            </Button>
-                        </form>
+                                {/* Honeypot Field - Hidden from users */}
+                                <FormField
+                                    control={form.control}
+                                    name="trap"
+                                    render={({ field }) => (
+                                        <FormItem className="hidden">
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <Button
+                                    type="submit"
+                                    className="w-full md:w-auto px-8 h-12 bg-white text-brand-primary hover:bg-white/90 font-bold text-lg rounded-lg shadow-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={!form.formState.isValid || isSubmitting}
+                                >
+                                    {isSubmitting ? "Enviando..." : "Pide Cita"}
+                                </Button>
+                            </form>
+                        </Form>
                     </div>
                 </div>
             </div>

@@ -39,23 +39,21 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
-const formSchema = z.object({
-  name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
-  email: z.string().email("Email inválido"),
-  phone: z.string().min(9, "El teléfono debe tener al menos 9 dígitos"),
-  date: z.date({ required_error: "Selecciona una fecha" }),
-  time: z.string({ required_error: "Selecciona una hora" }),
-  service: z.string({ required_error: "Selecciona un servicio" }),
-  comments: z.string().optional(),
-});
+import { bookingFormSchema } from "@/schemas/contactFormSchema";
 
 const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof bookingFormSchema>>({
+    resolver: zodResolver(bookingFormSchema),
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof bookingFormSchema>) => {
     try {
+      // Honeypot check
+      if (values.trap) {
+        console.log("Spam detected");
+        return; // Silent fail
+      }
+
       // Convert date/time objects to strings for the sheet
       // Ensure phone number has +34 prefix for E.164 compliance
       const formattedPhone = values.phone.startsWith('+') ? values.phone : `+34${values.phone}`;
@@ -282,6 +280,19 @@ const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
                     />
                   </FormControl>
                   <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Honeypot Field - Hidden from users */}
+            <FormField
+              control={form.control}
+              name="trap"
+              render={({ field }) => (
+                <FormItem className="hidden">
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
                 </FormItem>
               )}
             />

@@ -114,7 +114,7 @@ const Hero = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow hidden md:block cursor-pointer hover:opacity-80 transition-opacity"
       >
         <motion.div
-          className="w-12 h-12 flex justify-center items-center"
+          className="w-14 h-14 flex justify-center items-center"
           initial="initial"
           animate="animate"
           whileHover="hover"

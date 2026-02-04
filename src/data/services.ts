@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import defaultHero from "../assets/hero-image.png";
+import teethWhiteningHero from "../assets/blanqueamiento-hero.png";
 import orthoHero from "../assets/orthodoncia-invisible.png";
 import implantHero from "../assets/implantes-dentales.png";
 import pedsHero from "../assets/odontopediatria.png";
@@ -255,7 +256,7 @@ export const servicesData: ServiceData[] = [
             { label: "Técnica", value: "Luz LED Fría (Philips Zoom)" },
             { label: "Durabilidad", value: "1 - 3 años (con mantenimiento)" },
         ],
-        image: defaultHero, // Placeholder until specific hero is available
+        image: teethWhiteningHero,
         videogram: "blanqueamiento-videograma.mp4"
     }
 ];

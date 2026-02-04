@@ -100,13 +100,15 @@ const Navbar = () => {
               isDropdownOpen ? "block" : "hidden"
             )}>
               <div className="flex flex-col gap-2">
-                <Link to="/tratamientos/odontopediatria-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Odontopediatría</Link>
-                <Link to="/tratamientos/ortodoncia-invisible-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Ortodoncia Invisible</Link>
-                <Link to="/tratamientos/implantes-dentales-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Implantes Dentales</Link>
-                <Link to="/tratamientos/ortodoncia-convencional-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Ortodoncia Convencional</Link>
-                <Link to="/tratamientos/endodoncia-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Endodoncia</Link>
-                <Link to="/tratamientos/periodoncia-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Periodoncia</Link>
-                <Link to="/tratamientos/cirugia-oral-barcelona" className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors">Cirugía Oral</Link>
+                {servicesData.map((service) => (
+                  <Link
+                    key={service.slug}
+                    to={`/tratamientos/${service.slug}`}
+                    className="text-sm text-gray-600 hover:text-brand-primary hover:bg-brand-bg/50 p-2 rounded-lg transition-colors"
+                  >
+                    {service.title}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

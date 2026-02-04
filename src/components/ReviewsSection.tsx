@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Star, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import logoTrial from "@/assets/logo-trial.png";
+import googleStats from "@/data/google-stats.json";
 import { reviewsData, type Review } from "@/data/reviews-data";
 
 const ReviewsSection = () => {
@@ -174,11 +175,19 @@ const ReviewsSection = () => {
                                         <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                                     ))}
                                 </div>
-                                <p className="text-[10px] text-white/70 font-medium">69 reseñas Google</p>
+                                <p className="text-[10px] text-white/70 font-medium">
+                                    {/* Total = Reviews in DB (Doctoralia) + Dynamic Google Reviews Count */}
+                                    {reviewsData.filter(r => r.source === 'doctoralia').length + googleStats.totalReviews} reseñas en total
+                                </p>
                             </div>
-                            <button className="ml-2 px-3 py-1.5 bg-brand-secondary/80 hover:bg-brand-secondary text-white text-[10px] font-bold rounded-lg transition-colors">
+                            <a
+                                href="https://www.google.com/search?sca_esv=9cf1df91a9197cf6&authuser=0&hl=es&sxsrf=ANbL-n5NUsRoa2E_SCHHpjDwgRO3KH-k9A:1770117293388&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOeiQXXFrGgGU0g4g9yVAjbsdw77Ya87C5iQUM9SaV8NsQ5XTFs-zh3C9WRGotSj1EeAyAyLYvGeLHMtgt3F7bxZ6fLVp&q=Mi+Dentista+Rese%C3%B1as&sa=X&ved=2ahUKEwijxO7jmL2SAxWkUaQEHUfaGagQ0bkNegQIKhAH&biw=1444&bih=808&dpr=1.8&aic=0"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="ml-2 px-3 py-1.5 bg-brand-secondary/80 hover:bg-brand-secondary text-white text-[10px] font-bold rounded-lg transition-colors"
+                            >
                                 Escribe una reseña
-                            </button>
+                            </a>
                         </div>
                     </div>
 

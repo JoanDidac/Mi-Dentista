@@ -88,6 +88,7 @@ const Hero = () => {
           </div>
 
           {/* Social Proof */}
+          {/* Social Proof */}
           <div className="pt-4 sm:pt-8 flex items-center gap-4 text-white/80">
             <div className="flex -space-x-3">
               <img src={avatar1} alt="Patient 1" className="w-10 h-10 rounded-full border-2 border-brand-primary object-cover" />

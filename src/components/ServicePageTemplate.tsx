@@ -22,7 +22,7 @@ const ServicePageTemplate = ({ data }: Props) => {
             <div className="pt-24 pb-12 md:pt-32 md:pb-20 bg-brand-bg relative overflow-hidden">
                 {/* Background Pattern */}
                 <div
-                    className="absolute inset-0 z-0 opacity-[0.20] pointer-events-none"
+                    className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none"
                     style={{
                         backgroundImage: `url(${dentalPattern})`,
                         backgroundRepeat: 'repeat',

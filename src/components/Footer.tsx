@@ -139,17 +139,20 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-sm mb-4 font-montserrat tracking-tight">Horario</h4>
             <ul className="space-y-2.5 text-white/70 text-sm">
-              <li className="flex justify-between border-b border-white/10 pb-1.5">
-                <span className="font-medium">Lun - Vie</span>
-                <span className="text-white">9:00 - 20:00</span>
+              <li className="flex flex-col border-b border-white/10 pb-3">
+                <span className="font-bold text-brand-light mb-1 block">Lunes - Jueves</span>
+                <div className="flex justify-between items-center text-white/90">
+                  <span>10:00 - 14:00</span>
+                  <span>15:30 - 20:00</span>
+                </div>
               </li>
-              <li className="flex justify-between border-b border-white/10 pb-1.5">
-                <span className="font-medium">Sábados</span>
-                <span className="text-white">10:00 - 14:00</span>
+              <li className="flex flex-col border-b border-white/10 pb-3">
+                <span className="font-bold text-brand-light mb-1 block">Viernes</span>
+                <span className="text-white/90">10:00 - 14:00</span>
               </li>
-              <li className="flex justify-between text-white/40">
-                <span className="font-medium">Domingos</span>
-                <span>Cerrado</span>
+              <li className="flex flex-col pt-1">
+                <span className="font-bold text-white/40 mb-1 block">Fin de Semana</span>
+                <span className="text-white/40">Cerrado</span>
               </li>
             </ul>
           </div>

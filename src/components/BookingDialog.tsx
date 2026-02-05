@@ -92,11 +92,30 @@ const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (o
     }
   };
 
+  // Extended hours for Mon-Thu, reduced for Fri
   const timeSlots = [
-    "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-    "12:00", "12:30", "16:00", "16:30", "17:00", "17:30",
-    "18:00", "18:30", "19:00", "19:30", "20:00"
+    "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
+    "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"
   ];
+
+  // Watch selected date to filter slots
+  const selectedDate = form.watch("date");
+
+  const getAvailableTimeSlots = () => {
+    if (!selectedDate) return timeSlots;
+
+    const day = selectedDate.getDay();
+    // 5 is Friday
+    if (day === 5) {
+      // Filter out afternoon slots (anything 14:00 or later)
+      return timeSlots.filter(time => {
+        const hour = parseInt(time.split(':')[0]);
+        return hour < 14;
+      });
+    }
+    return timeSlots;
+  };
+
 
   const services = [
     "Estética Dental",

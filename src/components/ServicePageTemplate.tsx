@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Contact from "./Contact";
 import heroImage from "../assets/hero-image.png"; // Fallback/Default
-import dentalPattern from "../assets/dental-pattern.svg";
+import dentalPattern from "../assets/dental-pattern.svg?url";
 
 interface Props {
     data: ServiceData;

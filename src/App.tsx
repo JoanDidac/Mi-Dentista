@@ -15,10 +15,9 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/Mi-Dentista">
+      <BrowserRouter basename="/">
         <FloatingWhatsApp />
         <Routes>
-          <Route path="/" element={<Index />} />
           <Route path="/" element={<Index />} />
           <Route path="/tratamientos/:slug" element={<ServiceDynamic />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

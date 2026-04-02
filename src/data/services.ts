@@ -29,9 +29,10 @@ export interface ServiceData {
     benefits: string[];
     process: { title: string; desc: string }[];
     imagePrompt: string;
-    techSpecs: { label: string; value: string }[];
+    benefitsCard: { label: string; value: string }[];
     image: string;
     videogram?: string;
+    uses3DScanner?: boolean;
 }
 
 export const servicesData: ServiceData[] = [
@@ -49,19 +50,20 @@ export const servicesData: ServiceData[] = [
             "Protección contra caries infantiles mediante selladores",
         ],
         process: [
-            { title: "Primera Cita y Evaluación", desc: "Evaluamos la salud bucal completa y los hábitos de tu hijo en un entorno de juego, detectando cualquier necesidad de forma temprana y relajada." },
+            { title: "Escáner 3D Cero Miedos", desc: "No usamos pastas que provocan arcadas. Tomamos medidas de sus dientes con una cámara 3D especial en apenas 60 segundos, haciéndolo súper fácil y divertido para tu peque." },
             { title: "Prevención y Educación", desc: "Enseñamos técnicas de higiene divertidas y aplicamos selladores o flúor, protegiendo sus dientes mientras aprenden a cuidar su sonrisa." },
             { title: "Tratamiento Personalizado", desc: "Diseñamos planes adaptados a su edad, desde limpiezas hasta ortodoncia interceptiva, utilizando tecnología avanzada para intervenciones mínimas." },
             { title: "Experiencia Positiva", desc: "Creamos un ambiente seguro y feliz para eliminar el miedo al dentista, asegurando que tu hijo crezca con confianza y una salud oral perfecta." },
         ],
         imagePrompt: "A friendly pediatric dentist showing a large toothbrush model to a laughing child in a colorful, warm dental office. Soft purple accent lighting. High quality photography.",
-        techSpecs: [
-            { label: "Edad Recomendada", value: "Desde el primer diente" },
-            { label: "Sedación", value: "Óxido Nitroso (Gas de la Risa) disponible" },
-            { label: "Tecnología", value: "Cámaras intraorales pediátricas" },
+        benefitsCard: [
+            { label: "Trato Especializado", value: "Adaptamos el vocabulario y el entorno para que los niños se diviertan y aprendan." },
+            { label: "Cero Miedos", value: "Técnicas de distracción y sedación consciente para superar cualquier fobia dental." },
+            { label: "Prevención a Largo Plazo", value: "No solo curamos, educamos para asegurar bocas sanas en el futuro." },
         ],
         image: pedsHero,
-        videogram: "odontopediatria-videograma.mp4"
+        videogram: "odontopediatria-videograma.mp4",
+        uses3DScanner: true
     },
     {
         slug: "ortodoncia-invisible-barcelona",
@@ -77,19 +79,20 @@ export const servicesData: ServiceData[] = [
             "Visualización del resultado final antes de empezar",
         ],
         process: [
-            { title: "Diagnóstico y Escáner 3D", desc: "Realizamos un escáner intraoral 3D completo y fotos para evaluar tu caso y diseñar tu sonrisa digitalmente con máxima precisión." },
+            { title: "Escáner 3D Sin Pastas", desc: "Olvídate de los incómodos moldes de pasta. Realizamos un escáner intraoral 3D ultra rápido para diseñar digitalmente tu sonrisa con precisión milimétrica." },
             { title: "Planificación Digital", desc: "Visualizarás el resultado final antes de empezar gracias a nuestro software avanzado que simula cada movimiento dental de tu tratamiento." },
             { title: "Tus Alineadores", desc: "Te entregamos tus férulas transparentes a medida, cómodas y removibles, explicándote cómo cambiarlas y mantener una higiene perfecta." },
             { title: "Retención Invisible", desc: "Al finalizar, aseguramos tu nueva sonrisa con retenedores transparentes y revisiones periódicas para garantizar resultados estables de por vida." },
         ],
         imagePrompt: "Close up of a smiling young woman holding a clear aligner case. Natural lighting, confident smile. Background soft blur of a modern clinic using colors #8C3573.",
-        techSpecs: [
-            { label: "Tecnología", value: "Escáner Intraoral 3D iTero" },
-            { label: "Material", value: "Polímero termoplástico médico" },
-            { label: "Duración Media", value: "12 - 18 meses" },
+        benefitsCard: [
+            { label: "100% Estético", value: "Férulas transparentes que nadie notará mientras mejoran tu sonrisa." },
+            { label: "Máxima Comodidad", value: "Sin alambres que rocen, extraíbles para comer y cepillarte sin restricciones." },
+            { label: "Precisión Digital", value: "Previsualiza tu sonrisa final antes de empezar gracias a nuestra tecnología 3D." },
         ],
         image: orthoHero,
-        videogram: "ortodoncia-invisible-videograma.mp4"
+        videogram: "ortodoncia-invisible-videograma.mp4",
+        uses3DScanner: true
     },
     {
         slug: "ortodoncia-convencional-barcelona",
@@ -111,10 +114,10 @@ export const servicesData: ServiceData[] = [
             { title: "Retención y Sonrisa", desc: "Al finalizar, retiramos la aparatología y colocamos retenedores fijos o removibles para preservar tu nueva sonrisa de por vida." },
         ],
         imagePrompt: "Teenager smiling with braces, looking happy and confident. Warm lighting, modern style. Subtle purple branding elements.",
-        techSpecs: [
-            { label: "Tipos", value: "Metálicos, Zafiro (Estéticos)" },
-            { label: "Precisión", value: "Control radicular milimétrico" },
-            { label: "Mantenimiento", value: "Revisiones cada 4-6 semanas" },
+        benefitsCard: [
+            { label: "Eficacia Comprobada", value: "Resultados garantizados incluso en los casos de maloclusión más complejos." },
+            { label: "Control Total", value: "Movimientos dentales predecibles y supervisados paso a paso." },
+            { label: "Resistencia", value: "Materiales robustos diseñados para soportar el ritmo de tu día a día." },
         ],
         image: orthoConvHero,
         videogram: "ortodoncia-convencional-videograma.mp4"
@@ -133,19 +136,20 @@ export const servicesData: ServiceData[] = [
             "Mejora la autoestima y la fonética",
         ],
         process: [
-            { title: "Diagnóstico 3D", desc: "Valoramos tu caso con tecnología digital de última generación para planificar el tratamiento más adecuado y seguro." },
-            { title: "Colocación", desc: "Utilizamos implantes de titanio o zirconio según tu necesidad, aplicando técnicas avanzadas como la carga inmediata." },
+            { title: "Escáner 3D Profundo", desc: "Digitalizamos tu anatomía gingival hasta 22mm de profundidad sin usar moldes. Calculamos la posición óptima del implante con nuestra IA de precisión." },
+            { title: "Colocación", desc: "Utilizamos implantes de titanio o zirconio según tu necesidad, aplicando técnicas quirúrgicas avanzadas guiadas por ordenador." },
             { title: "Integración", desc: "Respetamos los tiempos biológicos de cicatrización para asegurar una base sólida, biocompatible y duradera." },
             { title: "Diente Final", desc: "Diseñamos tu nueva sonrisa con una estética natural y funcionalidad perfecta, indistinguible de tus dientes reales." },
         ],
         imagePrompt: "Macro shot of a high-quality dental implant model on a clean reflective surface. Professional, medical, sterile but warm lighting. Purple accent.",
-        techSpecs: [
-            { label: "Material", value: "Titanio Grado 5 / Zirconio" },
-            { label: "Garantía", value: "De por vida (Implant System)" },
-            { label: "Técnica", value: "Cirugía Guiada por Ordenador" },
+        benefitsCard: [
+            { label: "Tranquilidad y Cero Dolor", value: "Cirugía guiada mínimamente invasiva con opciones de sedación consciente." },
+            { label: "Sensación Natural", value: "Mastica, habla y sonríe exactamente como lo harías con tus dientes reales." },
+            { label: "Inversión para Toda la Vida", value: "Materiales de máxima calidad con alta tasa de éxito a largo plazo." },
         ],
         image: implantHero,
-        videogram: "implantes-videograma.mp4"
+        videogram: "implantes-videograma.mp4",
+        uses3DScanner: true
     },
     {
         slug: "endodoncia-barcelona",
@@ -167,10 +171,10 @@ export const servicesData: ServiceData[] = [
             { title: "Restauración", desc: "Recuperamos la funcionalidad y estética natural mediante una reconstrucción o corona que se integra perfectamente en tu boca." },
         ],
         imagePrompt: "Digital illustration or close-up photo representing dental precision. Microscope view concept. Clean, technological feel with purple tones.",
-        techSpecs: [
-            { label: "Instrumentación", value: "Limas Rotatorias NiTi" },
-            { label: "Visualización", value: "Microscopio Dental" },
-            { label: "Precisión", value: "Localizador de Ápices Electrónico" },
+        benefitsCard: [
+            { label: "Adiós al Dolor de Raíz", value: "Alivio inmediato de la molestia aguda de forma rápida y efectiva." },
+            { label: "Salvamos tu Diente", value: "Evitamos la extracción, preservando tu estructura dental natural." },
+            { label: "Microscopía Avanzada", value: "Precisión absoluta para asegurar que la infección no regrese." },
         ],
         image: endoHeroReal,
         videogram: "endodoncia-videograma.mp4"
@@ -190,18 +194,19 @@ export const servicesData: ServiceData[] = [
             "Relación directa con la salud cardiovascular",
         ],
         process: [
-            { title: "Sondaje", desc: "Medición de las bolsas periodontales." },
-            { title: "Raspado", desc: "Limpieza profunda bajo la encía." },
+            { title: "Mapeo Periodontal 3D", desc: "Utilizamos el escáner intraoral para obtener una imagen topográfica milimétrica de tus encías de forma totalmente indolora y sin contacto directo molesto." },
+            { title: "Raspado", desc: "Limpieza profunda y selectiva bajo la encía." },
             { title: "Mantenimiento", desc: "Revisiones periódicas para controlar bacterias." },
         ],
         imagePrompt: "Healthy smile close up showing pink gums and white teeth. Bright, clean, healthy aesthetic.",
-        techSpecs: [
-            { label: "Diagnóstico", value: "Sondaje Digital" },
-            { label: "Tratamiento", value: "Ultrasonidos y Air-Flow" },
-            { label: "Seguimiento", value: "Protocolo EMS" },
+        benefitsCard: [
+            { label: "Encías Fuertes, Cero Sangrado", value: "Tratamientos indoloros que restauran la salud y frescura de tus encías." },
+            { label: "Protección Total", value: "Prevenimos la movilidad y la pérdida de piezas dentales." },
+            { label: "Tratamiento Integral", value: "Mejoramos tu estética dental y tu salud general al mismo tiempo." },
         ],
         image: perioHeroReal,
-        videogram: "periodoncia-videograma.mp4"
+        videogram: "periodoncia-videograma.mp4",
+        uses3DScanner: true
     },
     {
         slug: "cirugia-oral-barcelona",
@@ -223,10 +228,10 @@ export const servicesData: ServiceData[] = [
             { title: "Cura y Seguimiento", desc: "Aseguramos una recuperación rápida con instrucciones detalladas, medicación específica y revisiones de control postoperatorias." },
         ],
         imagePrompt: "Modern dental surgical suite. Clean, sterile, reassuring atmosphere. Not scary. Professional equipment in background.",
-        techSpecs: [
-            { label: "Seguridad", value: "Quirófano esterilizado" },
-            { label: "Diagnóstico", value: "CBCT 3D" },
-            { label: "Confort", value: "Sedación Consciente" },
+        benefitsCard: [
+            { label: "Manos Expertas", value: "La Dra. Fátima y su equipo aseguran intervenciones seguras y resolutivas." },
+            { label: "Máxima Comodidad", value: "Ambiente relajado, protocolos analgésicos y opciones de sedación." },
+            { label: "Recuperación Rápida", value: "Técnicas modernas diseñadas para minimizar la inflamación postoperatoria." },
         ],
         image: surgeryHeroReal,
         videogram: "cirugia-oral-videograma.mp4"
@@ -251,10 +256,10 @@ export const servicesData: ServiceData[] = [
             { title: "Resultado Brillante", desc: "En menos de una hora, disfrutarás de una sonrisa varios tonos más blanca y te daremos las pautas para mantener el resultado." },
         ],
         imagePrompt: "Close up of a bright, white smile. High key lighting, clean aesthetic. Sense of freshness and purity. Soft blue or purple tint.",
-        techSpecs: [
-            { label: "Duración", value: "45 - 60 minutos" },
-            { label: "Técnica", value: "Luz LED Fría (Philips Zoom)" },
-            { label: "Durabilidad", value: "1 - 3 años (con mantenimiento)" },
+        benefitsCard: [
+            { label: "Resultados Inmediatos", value: "Sonrisa varios tonos más clara desde la primera sesión." },
+            { label: "Esmalte Protegido", value: "Geles de alta calidad que cuidan tu esmalte y previenen la sensibilidad aguda." },
+            { label: "Rejuvenecimiento Facial", value: "Una sonrisa luminosa mejora y rejuvenece tu apariencia al instante." },
         ],
         image: teethWhiteningHero,
         videogram: "blanqueamiento-videograma.mp4"

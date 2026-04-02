@@ -28,9 +28,9 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         {/* Overlay - Deep Purple Gradient to match reference */}
-        <div className="absolute inset-0 bg-[#65153d]/80 mix-blend-multiply md:bg-[#65153d]/70"></div>
+        <div className="absolute inset-0 bg-[#65153d]/60 mix-blend-multiply md:bg-[#65153d]/45"></div>
         {/* Additional gradient for text readability at the bottom - seamlessly transitioning to #8C3573 */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#8C3573] via-transparent to-transparent opacity-90"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#8C3573] via-transparent to-transparent opacity-100"></div>
       </div>
 
       {/* Content */}
@@ -65,7 +65,7 @@ const Hero = () => {
           </h1>
 
           {/* Description */}
-          <p className="text-xl text-white/90 max-w-xl font-light leading-relaxed drop-shadow-sm">
+          <p className="text-lg text-white/90 max-w-xl font-light leading-relaxed drop-shadow-sm">
             Expertos en odontología empática y respetuosa en Poble Sec, Barcelona. Cuidamos de tu salud buco-dental con delicadeza, 20 años de experiencia y mucho cariño.
           </p>
 

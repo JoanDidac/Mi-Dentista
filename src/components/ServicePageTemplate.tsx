@@ -5,6 +5,7 @@ import { ServiceData } from "../data/services";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Contact from "./Contact";
+import { TechScannerBanner } from "./TechScannerBanner";
 import heroImage from "../assets/hero-image.png"; // Fallback/Default
 import dentalPattern from "../assets/dental-pattern.png";
 // import { DentalPattern } from "./DentalPattern"; // Removed
@@ -84,23 +85,36 @@ const ServicePageTemplate = ({ data }: Props) => {
                         </div>
                     </div>
 
-                    {/* Tech Specs Card */}
+                    {/* Beneficios Reales Card */}
                     <div className="bg-brand-darkest text-white p-8 rounded-3xl h-fit shadow-2xl">
                         <div className="flex items-center gap-3 mb-6">
-                            <Microscope className="w-6 h-6 text-brand-light" />
-                            <h3 className="text-xl font-bold">Ficha Técnica</h3>
+                            <ShieldCheck className="w-6 h-6 text-brand-light" />
+                            <h3 className="text-xl font-bold">Por qué elegirnos</h3>
                         </div>
                         <div className="space-y-6">
-                            {data.techSpecs.map((spec, i) => (
+                            {data.benefitsCard?.map((benefit, i) => (
                                 <div key={i} className="border-b border-white/10 pb-4 last:border-0">
-                                    <p className="text-brand-light text-sm mb-1">{spec.label}</p>
-                                    <p className="font-semibold text-lg">{spec.value}</p>
+                                    <p className="font-semibold text-lg flex items-center gap-2">
+                                        <span className="text-[#AD5E99]">✦</span> {benefit.label}
+                                    </p>
+                                    <p className="text-brand-light/90 text-sm mt-1 leading-relaxed">
+                                        {benefit.value}
+                                    </p>
                                 </div>
                             ))}
                         </div>
+
+                        <Button
+                            onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="w-full mt-8 h-12 bg-brand-primary border border-brand-primary/60 hover:bg-[#8C3573] hover:shadow-[0_8px_25px_-5px_#AD5E99] text-white rounded-full font-semibold shadow-xl transition-all hover:-translate-y-1"
+                        >
+                            Visita de Valoración Gratis
+                        </Button>
                     </div>
                 </div>
             </section>
+
+            {data.uses3DScanner && <TechScannerBanner />}
 
             {/* Process Steps - Elite UX Redesign */}
             <section className="py-24 bg-gradient-to-b from-white to-brand-bg/30">

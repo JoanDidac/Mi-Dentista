@@ -51,14 +51,14 @@ const TreatmentsSection = () => {
         <section id="tratamientos" className="w-full bg-gradient-to-b from-white via-brand-bg/30 to-white py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-8">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-                    <p className="text-brand-primary font-semibold tracking-wide uppercase text-sm mb-3">
+                <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
+                    <p className="text-brand-primary font-semibold tracking-wide uppercase text-xs mb-2">
                         Somos expertos en implantología oral avanzada en Barcelona
                     </p>
-                    <h2 className="text-3xl md:text-5xl font-bold text-brand-darker mb-6 font-montserrat">
+                    <h2 className="text-2xl md:text-4xl font-bold text-brand-darker mb-4 font-montserrat">
                         Tratamientos dentales personalizados
                     </h2>
-                    <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                         En Mi Dentista, tu salud bucodental es nuestra prioridad. Somos expertos en cirugía oral avanzada
                         y trabajamos para ofrecerte soluciones definitivas y efectivas. Nuestro equipo de odontólogos experimentados
                         analizarán tu caso para ofrecerte el tratamiento que mejor se adapte a tus necesidades presentes y futuras.
@@ -66,7 +66,7 @@ const TreatmentsSection = () => {
                 </div>
 
                 {/* Treatment Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div className="max-w-[1075px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
                     {featuredTreatments.map((treatment, index) => (
                         <TreatmentCard3D
                             key={treatment.slug}
@@ -138,7 +138,7 @@ const TreatmentCard3D = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.15, duration: 0.5 }}
-            className="group relative h-[400px] w-full cursor-pointer perspective-[1000px] touch-none"
+            className="group relative h-[340px] w-full cursor-pointer perspective-[1000px] touch-none"
             onClick={onClick}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -171,7 +171,7 @@ const TreatmentCard3D = ({
 
                     {/* Gradient Overlay */}
                     <div
-                        className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 group-hover:brightness-110 ${treatment.image ? 'mix-blend-multiply opacity-90' : ''}`}
+                        className={`absolute inset-0 bg-gradient-to-br transition-all duration-500 group-hover:brightness-110 ${treatment.image ? 'mix-blend-multiply opacity-60' : ''}`}
                         style={{
                             background: treatment.gradient,
                         }}
@@ -188,20 +188,20 @@ const TreatmentCard3D = ({
                     translateZ(50px) pulls it closer to camera.
                 */}
                 <div
-                    className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center [transform:translateZ(60px)] pointer-events-none"
+                    className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center [transform:translateZ(60px)] pointer-events-none"
                 >
                     <div className="transform transition-transform duration-300">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-montserrat drop-shadow-lg">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 font-montserrat drop-shadow-lg">
                             {treatment.title}
                         </h3>
-                        <p className="text-white/90 text-sm md:text-base leading-relaxed mb-6 drop-shadow-md">
+                        <p className="text-white/90 text-xs md:text-sm leading-relaxed mb-4 drop-shadow-md">
                             {treatment.description}
                         </p>
 
                         {/* Arrow indicator */}
                         <div className="inline-flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all duration-300">
-                            <span className="text-sm uppercase tracking-wide">Más información</span>
-                            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" />
+                            <span className="text-xs uppercase tracking-wide">Más información</span>
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
                         </div>
                     </div>
                 </div>

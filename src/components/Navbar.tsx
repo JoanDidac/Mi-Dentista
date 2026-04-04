@@ -89,12 +89,12 @@ const Navbar = () => {
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
-            <button
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            <Link
+              to="/tratamientos"
               className={cn("transition-colors text-sm font-medium flex items-center gap-1", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}
             >
               Tratamientos <span className="text-xs">▼</span>
-            </button>
+            </Link>
             <div className={cn(
               "absolute top-full left-0 w-64 bg-white shadow-xl rounded-xl p-4 animate-in fade-in slide-in-from-top-2 border border-brand-light/20",
               isDropdownOpen ? "block" : "hidden"
@@ -141,7 +141,10 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 absolute w-full p-4 flex flex-col gap-4 shadow-lg animate-in slide-in-from-top-5 max-h-[80vh] overflow-y-auto top-full">
-          <div className="font-bold text-brand-primary mb-2">Tratamientos</div>
+          <div className="font-bold text-brand-primary mb-2 flex justify-between items-center px-4">
+            <span>Tratamientos</span>
+            <Link to="/tratamientos" className="text-xs font-semibold bg-brand-light/20 text-brand-primary px-3 py-1 rounded-full hover:bg-brand-light/40" onClick={() => setIsOpen(false)}>Ver Todos</Link>
+          </div>
           {servicesData.map((service) => (
             <Link
               key={service.slug}

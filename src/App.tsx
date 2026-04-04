@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import NotFound from "./pages/NotFound";
 import ServiceDynamic from "./pages/ServiceDynamic";
+import Tratamientos from "./pages/Tratamientos";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
         <FloatingWhatsApp />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/tratamientos" element={<Tratamientos />} />
           <Route path="/tratamientos/:slug" element={<ServiceDynamic />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

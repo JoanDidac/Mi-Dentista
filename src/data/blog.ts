@@ -3,28 +3,28 @@ import perioHero from "../assets/periodoncia-hero.png";
 import implantHero from "../assets/implantes-dentales.png";
 
 export interface BlogPostData {
-    slug: string;
-    title: string;
-    excerpt: string;
-    date: string;
-    author: string;
-    category: string;
-    readTime: string;
-    image: string;
-    content: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  category: string;
+  readTime: string;
+  image: string;
+  content: string;
 }
 
 export const blogPosts: BlogPostData[] = [
-    {
-        slug: "dolor-muela-masticar-urgencia",
-        title: "Me duele una muela al masticar: causas y tratamiento en Barcelona",
-        excerpt: "Descubre por qué tienes dolor de muela fuerte al comer y cuándo necesitas visitar a un dentista de urgencia en Barcelona. Diagnóstico digital y sin dolor.",
-        date: "15 de Marzo, 2026",
-        author: "Dra. Fátima",
-        category: "Problemas Dentales",
-        readTime: "4 min",
-        image: endoHero,
-        content: `
+  {
+    slug: "dolor-muela-masticar-urgencia",
+    title: "Me duele una muela al masticar: causas y tratamiento en Barcelona",
+    excerpt: "Descubre por qué tienes dolor de muela fuerte al comer y cuándo necesitas visitar a un dentista de urgencia en Barcelona. Diagnóstico digital y sin dolor.",
+    date: "15 de Marzo, 2026",
+    author: "Fatima Al Daifi",
+    category: "Problemas Dentales",
+    readTime: "4 min",
+    image: endoHero,
+    content: `
       <p class="mb-4">Si te preguntas <strong>"¿por qué me duele una muela al masticar?"</strong>, debes saber que es un síntoma claro de que algo no va bien en tu salud bucodental. Ignorar el dolor al masticar o la sensibilidad al frío en los dientes puede llevar a problemas más severos como una infección dental severa o la pérdida de la pieza.</p>
       
       <h2 class="text-2xl font-bold mt-8 mb-4 text-brand-darkest">Causas principales del dolor de muela fuerte</h2>
@@ -45,17 +45,17 @@ export const blogPosts: BlogPostData[] = [
 
       <p>En Mi Dentista, tu <strong>dentista de confianza Barcelona</strong> y dentista familiar Barcelona, te ofrecemos atención personalizada dental y soluciones definitivas, asegurando que cada intervención sea 100% sin miedo y con los mejores especialistas en odontología del área metropolitana.</p>
     `
-    },
-    {
-        slug: "encias-sangran-cepillarse-causas",
-        title: "Encías que sangran al cepillarse: ¿por qué ocurre y solución?",
-        excerpt: "El sangrado de encías nunca es normal. Aprende sobre la limpieza dental profesional y cómo tratar la enfermedad periodontal en nuestra clínica de Barcelona.",
-        date: "28 de Febrero, 2026",
-        author: "Dra. Ángeles",
-        category: "Salud Bucal",
-        readTime: "5 min",
-        image: perioHero,
-        content: `
+  },
+  {
+    slug: "encias-sangran-cepillarse-causas",
+    title: "Encías que sangran al cepillarse: ¿por qué ocurre y solución?",
+    excerpt: "El sangrado de encías nunca es normal. Aprende sobre la limpieza dental profesional y cómo tratar la enfermedad periodontal en nuestra clínica de Barcelona.",
+    date: "28 de Febrero, 2026",
+    author: "Fatima Al Daifi",
+    category: "Salud Bucal",
+    readTime: "5 min",
+    image: perioHero,
+    content: `
       <p class="mb-4">Si escupes sangre al lavarte los dientes y notas las <strong>encías inflamadas</strong>, tu cuerpo te está avisando. El sangrado al cepillarse es el síntoma principal de la gingivitis y, si no se trata a tiempo, puede derivar en la temida enfermedad periodontal (o piorrea tratamiento).</p>
 
       <h2 class="text-2xl font-bold mt-8 mb-4 text-brand-darkest">¿Por qué sangran mis encías?</h2>
@@ -73,17 +73,17 @@ export const blogPosts: BlogPostData[] = [
 
       <p>Es el momento de actuar. Solicita tu <strong>primera visita dental</strong> y un diagnóstico completo para proteger tus dientes originales para siempre.</p>
     `
-    },
-    {
-        slug: "precio-implantes-dentales-barcelona-2026",
-        title: "Precio implantes dentales Barcelona 2026: Financiamiento y guía",
-        excerpt: "Todo lo que necesitas saber sobre cuánto cuesta un implante dental, la carga inmediata y cómo recuperar los dientes fijos en un día en el centro de Barcelona.",
-        date: "10 de Abril, 2026",
-        author: "Dra. Fátima",
-        category: "Implantología",
-        readTime: "6 min",
-        image: implantHero,
-        content: `
+  },
+  {
+    slug: "precio-implantes-dentales-barcelona-2026",
+    title: "Precio implantes dentales Barcelona 2026: Financiamiento y guía",
+    excerpt: "Todo lo que necesitas saber sobre cuánto cuesta un implante dental, la carga inmediata y cómo recuperar los dientes fijos en un día en el centro de Barcelona.",
+    date: "10 de Abril, 2026",
+    author: "Fatima Al Daifi",
+    category: "Implantología",
+    readTime: "6 min",
+    image: implantHero,
+    content: `
       <p class="mb-4">La <strong>falta de dientes solución</strong> más efectiva y definitiva a largo plazo es, sin duda, la implantología. Sin embargo, muchos pacientes que buscan una <em>clínica odontológica Barcelona</em> tienen tres grandes dudas antes de dar el paso: el <strong>precio implantes dentales</strong>, el miedo al dolor ("<em>duele ponerse implantes</em>"), y la duración del proceso ("<em>cuánto dura un implante dental</em>").</p>
 
       <h2 class="text-2xl font-bold mt-8 mb-4 text-brand-darkest">Dientes fijos en un día: Implantes sin dolor</h2>
@@ -104,5 +104,5 @@ export const blogPosts: BlogPostData[] = [
 
       <p>Nos encontrarás justo donde lo necesitas, si buscas un <em>dentista en Barcelona centro</em> o un simpático odontólogo cerca tuyo, somos el futuro de la <strong>clínica dental moderna Barcelona</strong> y te estamos esperando. Recupera la capacidad de masticar con fuerza y sonreír sin taparte la boca.</p>
     `
-    }
+  }
 ];

@@ -119,6 +119,9 @@ const Navbar = () => {
           <button onClick={() => scrollToSection("testimonios")} className={cn("transition-colors text-sm font-medium cursor-pointer", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
             Opiniones
           </button>
+          <Link to="/blog" className={cn("transition-colors text-sm font-medium cursor-pointer", isTransparent ? "text-white/90 hover:text-white" : "text-gray-600 hover:text-brand-primary")}>
+            Blog
+          </Link>
           <button
             onClick={() => scrollToSection("contact")}
             className={cn(
@@ -160,10 +163,17 @@ const Navbar = () => {
 
           <button
             onClick={() => scrollToSection("historia")}
-            className="text-gray-600 hover:text-brand-primary font-medium text-left cursor-pointer"
+            className="text-gray-600 hover:text-brand-primary font-medium text-left cursor-pointer px-4"
           >
             Nosotros
           </button>
+          <Link
+            to="/blog"
+            onClick={() => setIsOpen(false)}
+            className="text-gray-600 hover:text-brand-primary font-medium text-left cursor-pointer px-4"
+          >
+            Blog
+          </Link>
           <button
             onClick={() => scrollToSection("contact")}
             className="w-full mt-4 text-sm font-semibold text-white bg-brand-primary hover:bg-brand-dark rounded-full py-3 transition-all duration-300 tracking-wide cursor-pointer ring-2 ring-brand-primary/20 hover:ring-brand-primary/40"

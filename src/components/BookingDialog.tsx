@@ -1,331 +1,37 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { Calendar as CalendarIcon, Clock, Check } from "lucide-react";
-import { format } from "date-fns";
-import { es } from "date-fns/locale";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
 } from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
-
-import { bookingFormSchema } from "@/schemas/contactFormSchema";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 const BookingDialog = ({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void }) => {
-  const form = useForm<z.infer<typeof bookingFormSchema>>({
-    resolver: zodResolver(bookingFormSchema),
-  });
-
-  const onSubmit = async (values: z.infer<typeof bookingFormSchema>) => {
-    try {
-      // Honeypot check
-      if (values.trap) {
-        console.log("Spam detected");
-        return; // Silent fail
-      }
-
-      // Convert date/time objects to strings for the sheet
-      // Ensure phone number has +34 prefix for E.164 compliance
-      const formattedPhone = values.phone.startsWith('+') ? values.phone : `+34${values.phone}`;
-
-      const payload = {
-        name: values.name,
-        email: values.email,
-        phone: formattedPhone,
-        service: values.service,
-        date: values.date.toLocaleDateString(),
-        time: values.time,
-        comments: values.comments,
-        privacy: true // Implied by submission here
-      };
-
-      // Submit to Google Sheets
-      const { submitFormToSheet } = await import("../utils/googleSheets");
-      const success = await submitFormToSheet(payload);
-
-      if (!success) throw new Error("Failed to submit to sheet");
-
-
-
-      toast.success("¡Solicitud enviada!", {
-        description: "Te contactaremos pronto para confirmar tu cita.",
-        className: "bg-white text-brand-primary border-brand-primary/20",
-        icon: <Check className="text-[#84cc16] w-5 h-5" />,
-      });
-      form.reset();
-      onOpenChange(false);
-    } catch (error) {
-      console.error('Error submitting booking:', error);
-      toast.error("Error al enviar la solicitud", {
-        description: "Por favor, inténtalo de nuevo o contáctanos directamente.",
-      });
-    }
-  };
-
-  // Extended hours for Mon-Thu, reduced for Fri
-  const timeSlots = [
-    "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
-    "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"
-  ];
-
-  // Watch selected date to filter slots
-  const selectedDate = form.watch("date");
-
-  const getAvailableTimeSlots = () => {
-    if (!selectedDate) return timeSlots;
-
-    const day = selectedDate.getDay();
-    // 5 is Friday
-    if (day === 5) {
-      // Filter out afternoon slots (anything 14:00 or later)
-      return timeSlots.filter(time => {
-        const hour = parseInt(time.split(':')[0]);
-        return hour < 14;
-      });
-    }
-    return timeSlots;
-  };
-
-
-  const services = [
-    "Estética Dental",
-    "Ortodoncia",
-    "Periodoncia",
-    "Endodoncia",
-    "Odontología General",
-    "Odontopediatría",
-    "Implantes Dentales",
-    "Cirugía Oral",
-    "Medicina Estética Facial",
-    "Estética Facial Avanzada",
-    "Otro",
-  ];
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-2xl">Solicitar Cita</DialogTitle>
-          <DialogDescription>
-            Completa el formulario y nos pondremos en contacto contigo para confirmar tu cita.
-          </DialogDescription>
-        </DialogHeader>
+      <DialogContent className="max-w-[1000px] w-[95vw] sm:w-[90vw] h-[90vh] sm:h-[85vh] p-0 flex flex-col overflow-hidden bg-white/95 backdrop-blur-sm shadow-2xl border-none">
 
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nombre completo</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Juan García" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+        {/* Simple header loader logic */}
+        {isLoading && (
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-white">
+            <Loader2 className="w-10 h-10 animate-spin text-brand-primary mb-4" />
+            <p className="text-gray-500 font-medium font-montserrat animate-pulse">Cargando portal de citas...</p>
+          </div>
+        )}
 
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Teléfono</FormLabel>
-                    <FormControl>
-                      <Input placeholder="612 345 678" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
+        <div className="relative w-full h-full flex-grow">
+          {/* Subtle pattern background for iframe container edge-cases */}
+          <div className="absolute inset-0 bg-brand-light/5 pointer-events-none"></div>
 
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="tu@email.com" type="email" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="service"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Servicio</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Selecciona un servicio" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {services.map((service) => (
-                        <SelectItem key={service} value={service}>
-                          {service}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <FormField
-                control={form.control}
-                name="date"
-                render={({ field }) => (
-                  <FormItem className="flex flex-col">
-                    <FormLabel>Fecha preferida</FormLabel>
-                    <Popover>
-                      <PopoverTrigger asChild>
-                        <FormControl>
-                          <Button
-                            variant="outline"
-                            className={cn(
-                              "pl-3 text-left font-normal",
-                              !field.value && "text-muted-foreground"
-                            )}
-                          >
-                            {field.value ? (
-                              format(field.value, "PPP", { locale: es })
-                            ) : (
-                              <span>Seleccionar fecha</span>
-                            )}
-                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                          </Button>
-                        </FormControl>
-                      </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0" align="start">
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                          disabled={(date) =>
-                            date < new Date() || date.getDay() === 0 || date.getDay() === 6
-                          }
-                          initialFocus
-                          className="pointer-events-auto"
-                        />
-                      </PopoverContent>
-                    </Popover>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="time"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Hora preferida</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Seleccionar hora" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {timeSlots.map((time) => (
-                          <SelectItem key={time} value={time}>
-                            <div className="flex items-center gap-2">
-                              <Clock className="h-4 w-4" />
-                              {time}
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-
-            <FormField
-              control={form.control}
-              name="comments"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Comentarios adicionales (opcional)</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="¿Algo que debamos saber?"
-                      className="resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Honeypot Field - Hidden from users */}
-            <FormField
-              control={form.control}
-              name="trap"
-              render={({ field }) => (
-                <FormItem className="hidden">
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-
-            <div className="flex gap-3 pt-4">
-              <Button type="submit" className="flex-1">
-                Solicitar Cita
-              </Button>
-              <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-                Cancelar
-              </Button>
-            </div>
-          </form>
-        </Form>
+          <iframe
+            src="https://portal.clinicaenlanube.com/clinicas/99/cita_peticiones/widget"
+            className="w-full h-full relative z-20 border-0"
+            title="Reserva tu cita en Mi Dentista"
+            onLoad={() => setIsLoading(false)}
+            allow="geolocation; microphone; camera"
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );

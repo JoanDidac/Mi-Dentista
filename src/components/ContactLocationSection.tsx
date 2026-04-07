@@ -111,9 +111,11 @@ const ContactLocationSection = () => {
                                 </span>
                             </h2>
                             <p className="text-gray-600 text-lg leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0">
-                                Puedes contactar con nuestro equipo rellenando el formulario,
+                                Si tienes dudas generales acerca de algún tratamiento, puedes contactar con nuestro equipo rellenando el formulario,
                                 llamando al <span className="font-bold text-brand-primary whitespace-nowrap">93 441 36 64</span> o escribiendo
-                                un mensaje de WhatsApp haciendo clic en el botón.
+                                por WhatsApp haciendo clic en el botón.
+                                <br /><br />
+                                <strong className="text-[#8C3573]">¿Ya lo tienes claro y quieres agendar?</strong> Haz clic en cualquiera de los botones de "Reserva tu Cita" para abrir nuestra agenda online y elegir ahora mismo el día que mejor te venga.
                             </p>
                         </div>
 
@@ -332,7 +334,7 @@ const ContactLocationSection = () => {
                                     className="px-10 h-14 bg-white text-[#8C3573] hover:bg-white/90 font-bold text-base rounded-lg shadow-lg uppercase tracking-wider transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                                     disabled={!form.formState.isValid || isSubmitting}
                                 >
-                                    {isSubmitting ? "Enviando..." : "Pide Cita"}
+                                    {isSubmitting ? "Enviando..." : "Enviar Consulta"}
                                 </Button>
                             </form>
                         </Form>

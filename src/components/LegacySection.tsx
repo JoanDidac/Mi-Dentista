@@ -7,6 +7,7 @@ import angelesFatiLogo from "../assets/angeles-fati-logo.png";
 import equipo1Image from "../assets/equipo-1.jpg";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import BookingDialog from "@/components/BookingDialog";
 
 const AutoCarousel = ({ images, objectPosition }: { images: string[], objectPosition: string }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,6 +50,7 @@ const AutoCarousel = ({ images, objectPosition }: { images: string[], objectPosi
 };
 
 const LegacySection = () => {
+    const [bookingOpen, setBookingOpen] = useState(false);
     const [scrollY, setScrollY] = useState(0);
     const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -225,10 +227,7 @@ const LegacySection = () => {
                             <div className="mt-10">
                                 <Button
                                     className="h-14 px-8 bg-brand-primary border border-brand-primary/60 hover:bg-[#8C3573] hover:shadow-[0_8px_25px_-5px_#AD5E99] text-white rounded-full text-lg font-semibold shadow-xl transition-all hover:-translate-y-1"
-                                    onClick={() => {
-                                        const el = document.getElementById('contact');
-                                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                                    }}
+                                    onClick={() => setBookingOpen(true)}
                                 >
                                     Reserva Tu Cita De Valoración
                                 </Button>
@@ -289,6 +288,8 @@ const LegacySection = () => {
                     </div>
                 </div>
             </div>
+
+            <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </section>
     );
 };

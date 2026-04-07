@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { servicesData } from "@/data/services";
+import BookingDialog from "@/components/BookingDialog";
 
 import logoTrial from "@/assets/logo-trial.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
   const location = useLocation();
 
   // Check if we are on the home page
@@ -123,7 +125,7 @@ const Navbar = () => {
             Blog
           </Link>
           <button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => setBookingOpen(true)}
             className={cn(
               "text-sm font-semibold rounded-full px-5 py-2 transition-all duration-300 cursor-pointer tracking-wide",
               isTransparent
@@ -175,13 +177,18 @@ const Navbar = () => {
             Blog
           </Link>
           <button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => {
+              setIsOpen(false);
+              setBookingOpen(true);
+            }}
             className="w-full mt-4 text-sm font-semibold text-white bg-brand-primary hover:bg-brand-dark rounded-full py-3 transition-all duration-300 tracking-wide cursor-pointer ring-2 ring-brand-primary/20 hover:ring-brand-primary/40"
           >
             Reserva Tu Cita →
           </button>
         </div>
       )}
+
+      <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
     </nav>
   );
 };

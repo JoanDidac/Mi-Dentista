@@ -148,7 +148,7 @@ const Footer = () => {
               </li>
               <li className="flex flex-col border-b border-white/10 pb-3">
                 <span className="font-bold text-brand-light mb-1 block">Viernes</span>
-                <span className="text-white/90">10:00 - 14:00</span>
+                <span className="text-white/90">11:30 - 15:50</span>
               </li>
               <li className="flex flex-col pt-1">
                 <span className="font-bold text-white/40 mb-1 block">Fin de Semana</span>

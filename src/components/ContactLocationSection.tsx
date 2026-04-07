@@ -168,7 +168,7 @@ const ContactLocationSection = () => {
                                 </h3>
                                 <p className="text-gray-600 font-medium leading-relaxed text-sm tracking-tight">
                                     <span className="whitespace-nowrap"><span className="font-bold text-brand-primary">Lunes a Jueves:</span> 10:00–14:00, 15:30–20:00</span><br />
-                                    <span className="font-bold text-brand-primary">Viernes:</span> 10:00–14:00<br />
+                                    <span className="font-bold text-brand-primary">Viernes:</span> 11:30–15:50<br />
                                     <span className="font-bold text-gray-400">Fines de semana:</span> <span className="text-gray-400">Cerrado</span>
                                 </p>
                             </div>

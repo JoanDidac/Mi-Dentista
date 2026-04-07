@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import founderImage from "../assets/founder_new.jpg";
+import founderImage from "../assets/Ghazi&FatimaWeb.jpg";
 import teamImage from "../assets/equipo-team.jpg";
 import fatiSmileImage from "../assets/fati-smile.jpg";
 import fati3Image from "../assets/fati-3.jpg";
@@ -210,15 +210,15 @@ const LegacySection = () => {
 
                             <div className="space-y-4 text-gray-700 leading-relaxed">
                                 <p>
-                                    En la consulta encontrarás a la <strong>Dra. Fatima Al Daifi</strong>, especialista en cirugía y tratamientos complejos, liderando el equipo para asegurar que tu diagnóstico sea preciso y ejecutar los tratamientos con absoluta maestría.
+                                    <strong>Fátima</strong> es odontóloga con vocación heredada y una sólida formación junto a referentes en estética dental, cirugía, endodoncia y técnicas mínimamente invasivas. Especialista en el manejo de pacientes con fobia dental, destaca por crear experiencias clínicas cuidadas, serenas y de máxima confianza. Su enfoque combina precisión, sensibilidad y cercanía, ofreciendo una odontología de alta calidad centrada en cada paciente.
                                 </p>
 
                                 <p>
-                                    Junto a ella están <strong>Ahlam</strong> y <strong>Melany</strong>. Ahlam es nuestra aliada del detalle, transformando sonrisas de la forma más cercana y amena. Melany tiene por especialidad la dulzura, logrando que tanto los más pequeños como los pacientes más nerviosos se sientan valientes y 100% seguros en el sillón dental.
+                                    Junto a ella, <strong>Ahlam</strong> y <strong>Melany</strong> forman un equipo que comparte la misma filosofía de excelencia y cuidado humano.
                                 </p>
 
                                 <p>
-                                    Juntas, formamos un equipo sincronizado y altamente resolutivo. Nuestro mayor orgullo no es solo la calidad técnica, sino construir una calidez tan familiar que <strong className="text-[#8C3573]">ir al dentista se convierta en una experiencia que quieras repetir.</strong>
+                                    <strong>Ahlam</strong> destaca por su atención al detalle, pulcritud y trato amable, aportando serenidad y profesionalidad en cada procedimiento. <strong>Melany</strong> aporta dulzura y un acompañamiento cercano, siendo meticulosa y exigente para cuidar cada detalle y garantizar resultados de la más alta calidad.
                                 </p>
                             </div>
 

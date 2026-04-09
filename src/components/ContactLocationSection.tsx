@@ -344,14 +344,12 @@ const ContactLocationSection = () => {
                 {/* Map Section */}
                 <div id="map-location" className="mt-20 rounded-[40px] overflow-hidden shadow-xl border border-gray-100 h-[400px] relative">
                     <iframe
-                        src="https://maps.google.com/maps?q=Carrer+de+Blai+45+08004+Barcelona&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        src="https://storage.googleapis.com/maps-solutions-21ik4jj4j3/address-selection/dpgo/address-selection.html"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
-                        allowFullScreen
                         loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Ubicación Mi Dentista"
+                        title="Selección de dirección"
                     ></iframe>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 
 // This URL will be replaced by the user after they deploy their Apps Script
 // See GOOGLE_SHEETS_SETUP.md for instructions
-export const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9sc4LrRzaLkjl83paRNowRE49MDwE0cAkb9BnjGum6hY0HBB8xVWvzrhfUT-r84nExQ/exec";
+export const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfCsOuURcuqnb1rvbbUNX2M9I4vW1R1wRKzlhLqqoRuwHbbIBxQ-F-XEvyytRe_Z8q4Q/exec";
 
 export interface ContactFormData {
     name: string;

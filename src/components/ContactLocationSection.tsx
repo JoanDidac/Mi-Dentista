@@ -344,14 +344,14 @@ const ContactLocationSection = () => {
                 {/* Map Section */}
                 <div id="map-location" className="mt-20 rounded-[40px] overflow-hidden shadow-xl border border-gray-100 h-[450px] relative">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.499034!2d2.1627916!3d41.3732001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a26620f3e1b7%3A0xaba67498c8c6d3df!2sMi%20Dentista!5e0!3m2!1ses!2ses!4v1712693000000!5m2!1ses!2ses"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.2127267499703!2d2.1601618274718!3d41.37326457129524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a26712db8707%3A0xabbb1c6c2f96779b!2sMi%20Dentista!5e0!3m2!1ses!2ses!4v1712711613045!5m2!1ses!2ses"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        title="Mi Dentista Poble Sec"
+                        title="Ubicación oficial Mi Dentista"
                     ></iframe>
                 </div>
             </div>

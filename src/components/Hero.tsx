@@ -70,7 +70,7 @@ const Hero = () => {
 
           {/* Description */}
           <p className="text-lg text-white/90 max-w-xl font-light leading-relaxed drop-shadow-sm">
-            Expertos en odontología empática y respetuosa en Poble Sec, Barcelona. Cuidamos de tu salud buco-dental con delicadeza, 20 años de experiencia y mucho cariño.
+            Expertos en odontología empática y respetuosa en Poble Sec, Barcelona. Cuidamos de tu salud bucodental con delicadeza, 20 años de experiencia y mucho cariño.
           </p>
 
           {/* CTAs */}

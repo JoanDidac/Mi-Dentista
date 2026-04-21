@@ -24,8 +24,11 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
+import { useState } from "react";
+import BookingDialog from "@/components/BookingDialog";
 
 const ContactSection = () => {
+    const [bookingOpen, setBookingOpen] = useState(false);
     const form = useForm<z.infer<typeof contactFormSchema>>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
@@ -83,7 +86,7 @@ const ContactSection = () => {
     };
 
     return (
-        <section id="contact" className="w-full bg-gradient-to-br from-[#8C3573] to-[#65153d] py-16 md:py-24">
+        <section id="contacto" className="w-full bg-gradient-to-br from-[#8C3573] to-[#65153d] py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left Column: Text Content */}
@@ -183,7 +186,7 @@ const ContactSection = () => {
                                         name="treatment"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel className="text-white font-medium text-sm">¿En qué tratamiento estás interesado/a?</FormLabel>
+                                                <FormLabel className="text-white font-medium text-sm">¿Qué tratamiento te interesa?</FormLabel>
                                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                                     <FormControl>
                                                         <SelectTrigger className="bg-white/20 border-white/30 text-white h-12">
@@ -223,11 +226,45 @@ const ContactSection = () => {
                                     />
                                 </div>
 
+                                {/* Honeypot Field - Hidden from users */}
+                                <FormField
+                                    control={form.control}
+                                    name="trap"
+                                    render={({ field }) => (
+                                        <FormItem className="hidden">
+                                            <FormControl>
+                                                <Input {...field} />
+                                            </FormControl>
+                                        </FormItem>
+                                    )}
+                                />
+
+                                <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
+                                    <Button
+                                        type="submit"
+                                        className="w-full sm:flex-1 px-8 h-12 bg-white/20 text-white hover:bg-white/30 border border-white/50 font-bold text-base rounded-lg shadow-sm uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                                        disabled={!form.formState.isValid || isSubmitting}
+                                    >
+                                        {isSubmitting ? "Enviando..." : "Enviar Consulta"}
+                                    </Button>
+                                    <span className="text-white/80 font-bold text-sm uppercase">o</span>
+                                    <Button
+                                        type="button"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setBookingOpen(true);
+                                        }}
+                                        className="w-full sm:flex-1 px-8 h-12 bg-white text-brand-primary hover:bg-white/90 font-bold text-base rounded-lg shadow-lg uppercase tracking-wide transition-all"
+                                    >
+                                        Reserva tu Cita
+                                    </Button>
+                                </div>
+
                                 <FormField
                                     control={form.control}
                                     name="privacy"
                                     render={({ field }) => (
-                                        <FormItem className="flex items-start gap-3 pt-2 space-y-0">
+                                        <FormItem className="flex items-start gap-3 pt-6 space-y-0">
                                             <FormControl>
                                                 <Checkbox
                                                     checked={field.value}
@@ -247,32 +284,12 @@ const ContactSection = () => {
                                         </FormItem>
                                     )}
                                 />
-
-                                {/* Honeypot Field - Hidden from users */}
-                                <FormField
-                                    control={form.control}
-                                    name="trap"
-                                    render={({ field }) => (
-                                        <FormItem className="hidden">
-                                            <FormControl>
-                                                <Input {...field} />
-                                            </FormControl>
-                                        </FormItem>
-                                    )}
-                                />
-
-                                <Button
-                                    type="submit"
-                                    className="w-full md:w-auto px-8 h-12 bg-white text-brand-primary hover:bg-white/90 font-bold text-lg rounded-lg shadow-lg uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
-                                    disabled={!form.formState.isValid || isSubmitting}
-                                >
-                                    {isSubmitting ? "Enviando..." : "Pide Cita"}
-                                </Button>
                             </form>
                         </Form>
                     </div>
                 </div>
             </div>
+            <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </section>
     );
 };

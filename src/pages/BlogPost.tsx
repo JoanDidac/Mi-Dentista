@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -6,10 +6,13 @@ import Contact from "../components/Contact";
 import { Button } from "@/components/ui/button";
 import { blogPosts } from "../data/blog";
 import { ArrowLeft, Clock, CalendarDays, UserRound, ArrowRight } from "lucide-react";
+import BookingDialog from "@/components/BookingDialog";
+import dentalPattern from "../assets/dental-pattern.png";
 
 const BlogPost = () => {
     const { slug } = useParams();
     const post = blogPosts.find((p) => p.slug === slug);
+    const [bookingOpen, setBookingOpen] = useState(false);
 
     useEffect(() => {
         if (post) {
@@ -31,21 +34,35 @@ const BlogPost = () => {
             <Navbar />
 
             {/* Post Header */}
-            <section className="pt-32 pb-12 md:pt-40 md:pb-16 bg-brand-bg relative">
-                <div className="container mx-auto px-4 relative z-10 max-w-4xl">
-                    <Link to="/blog" className="inline-flex items-center text-sm font-medium text-brand-primary hover:text-brand-dark mb-8 transition-colors">
-                        <ArrowLeft className="w-4 h-4 mr-2" /> Volver al índice educativo
-                    </Link>
-                    <div className="inline-flex items-center gap-2 bg-white/80 px-3 py-1 rounded-full text-brand-primary text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
-                        {post.category}
+            <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-bg relative overflow-hidden">
+                {/* Background Pattern */}
+                <div
+                    className="absolute inset-0 z-0 opacity-[0.10] pointer-events-none"
+                    style={{
+                        backgroundImage: `url(${dentalPattern})`,
+                        backgroundRepeat: 'repeat',
+                        backgroundSize: '300px'
+                    }}
+                />
+                <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+                    <div className="mb-8">
+                        <Link to="/blog" className="inline-flex items-center text-sm font-medium text-brand-primary hover:text-brand-dark transition-colors bg-white/50 px-4 py-2 rounded-full border border-brand-light/30 shadow-sm backdrop-blur-sm">
+                            <ArrowLeft className="w-4 h-4 mr-2" /> Volver al índice educativo
+                        </Link>
                     </div>
-                    <h1 className="text-3xl md:text-5xl font-bold text-gray-900 font-montserrat leading-tight mb-6">
+
+                    <div className="inline-flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full text-brand-primary text-sm font-semibold border border-brand-light/30 mb-6 shadow-sm">
+                        <span className="uppercase tracking-wider text-xs">{post.category}</span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 font-montserrat leading-tight mb-8">
                         {post.title}
                     </h1>
-                    <div className="flex flex-wrap items-center gap-6 text-gray-600 text-sm font-medium">
-                        <div className="flex items-center gap-2"><UserRound className="w-4 h-4" /> {post.author}</div>
-                        <div className="flex items-center gap-2"><CalendarDays className="w-4 h-4" /> {post.date}</div>
-                        <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> {post.readTime}</div>
+
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-gray-700 text-sm font-medium bg-white/50 backdrop-blur-sm drop-shadow-sm py-3 px-6 rounded-full w-fit mx-auto border border-white/60 shadow-inner">
+                        <div className="flex items-center gap-2"><UserRound className="w-4 h-4 text-brand-primary" /> {post.author}</div>
+                        <div className="flex items-center gap-2"><CalendarDays className="w-4 h-4 text-brand-primary" /> {post.date}</div>
+                        <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-brand-primary" /> {post.readTime}</div>
                     </div>
                 </div>
             </section>
@@ -94,7 +111,7 @@ const BlogPost = () => {
                             </div>
 
                             <Button
-                                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+                                onClick={() => setBookingOpen(true)}
                                 className="w-full mt-4 h-12 bg-brand-primary hover:bg-brand-dark text-white rounded-full font-bold shadow-lg transition-transform hover:-translate-y-1"
                             >
                                 Reservar Cita Ahora <ArrowRight className="w-4 h-4 ml-2" />
@@ -106,6 +123,7 @@ const BlogPost = () => {
             </section>
 
             <Contact />
+            <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
             <Footer />
         </div>
     );

@@ -242,9 +242,14 @@ const ReviewsSection = () => {
                                             "{review.text}"
                                         </p>
 
-                                        <button className="mt-auto text-brand-primary text-[10px] font-bold hover:underline">
+                                        <a
+                                            href={review.source === 'doctoralia' ? "https://www.doctoralia.es/" : "https://www.google.com/search?q=Mi+Dentista+Carrer+de+Blai+45+Barcelona+Reseñas"}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="mt-auto text-brand-primary text-[10px] font-bold hover:underline"
+                                        >
                                             VER RESEÑA
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             ))}

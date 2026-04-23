@@ -1,6 +1,7 @@
 
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TreatmentsSection from "@/components/TreatmentsSection";
@@ -29,8 +30,50 @@ const Index = () => {
     }
   }, [location]);
 
+  const schema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": ["Dentist", "MedicalOrganization", "LocalBusiness"],
+    "name": "Mi Dentista Barcelona",
+    "image": "https://www.midentistabarcelona.com/og-image.png",
+    "url": "https://www.midentistabarcelona.com/",
+    "telephone": "+34934415849",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrer Blai 45",
+      "addressLocality": "Barcelona",
+      "postalCode": "08004",
+      "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.3739,
+      "longitude": 2.1643
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "10:00",
+        "closes": "14:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "16:00",
+        "closes": "20:00"
+      }
+    ],
+    "priceRange": "$$"
+  });
+
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Mi Dentista - Clínica Dental en Barcelona | Salud y Estética Dental"
+        description="Tu clínica dental de confianza en Barcelona desde 2008. Especialistas en estética dental, ortodoncia, implantes y medicina estética facial."
+        path="/"
+        schema={schema}
+      />
       <Navbar />
       <Hero />
       <ContactSection />

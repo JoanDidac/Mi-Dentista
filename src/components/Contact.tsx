@@ -103,7 +103,7 @@ const Contact = () => {
                                     <h4 className="font-bold text-gray-900">WhatsApp Directo</h4>
                                     <p className="text-gray-500 text-sm mb-2">Respuesta rápida y cercana.</p>
                                     <a
-                                        href="https://wa.me/34665487739"
+                                        href="https://wa.me/34692248625"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >

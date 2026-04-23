@@ -7,20 +7,20 @@ import { Button } from "@/components/ui/button";
 import { servicesData } from "../data/services";
 import { ArrowRight, Sparkles, HeartPulse, Tag } from "lucide-react";
 import dentalPattern from "../assets/dental-pattern.png";
+import { SEO } from "../components/SEO";
 
 const Tratamientos = () => {
-    // Dynamic SEO Metadata
     useEffect(() => {
-        document.title = "Tratamientos Dentales en Barcelona | Especialistas Sin Dolor | Mi Dentista";
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute("content", "Descubre nuestros tratamientos dentales en Barcelona. Desde odontopediatría hasta ortodoncia invisible e implantes. Ambiente familiar y máxima calidad.");
-        }
         window.scrollTo(0, 0);
     }, []);
 
     return (
         <div className="min-h-screen bg-white">
+            <SEO
+                title="Tratamientos Dentales en Barcelona | Especialistas Sin Dolor | Mi Dentista"
+                description="Descubre nuestros tratamientos dentales en Barcelona. Desde odontopediatría hasta ortodoncia invisible e implantes. Ambiente familiar y máxima calidad."
+                path="/tratamientos"
+            />
             <Navbar />
 
             {/* Warm Hero Section */}

@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Contact from "./Contact";
 import { TechScannerBanner } from "./TechScannerBanner";
+import { SEO } from "./SEO";
 import heroImage from "../assets/hero-image.png"; // Fallback/Default
 import dentalPattern from "../assets/dental-pattern.png";
 // import { DentalPattern } from "./DentalPattern"; // Removed
@@ -17,6 +18,11 @@ interface Props {
 const ServicePageTemplate = ({ data }: Props) => {
     return (
         <div className="min-h-screen bg-white">
+            <SEO
+                title={`${data.title} en Barcelona | Mi Dentista`}
+                description={data.subtitle || data.description.substring(0, 150)}
+                path={`/tratamientos/${data.slug}`}
+            />
             <Navbar />
 
             {/* Hero Section */}

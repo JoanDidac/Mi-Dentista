@@ -6,6 +6,7 @@ import Contact from "../components/Contact";
 import { blogPosts } from "../data/blog";
 import { ArrowRight, BookOpen, MessageCircleQuestion } from "lucide-react";
 import dentalPattern from "../assets/dental-pattern.png";
+import { SEO } from "../components/SEO";
 import {
     Accordion,
     AccordionContent,
@@ -15,16 +16,56 @@ import {
 
 const Blog = () => {
     useEffect(() => {
-        document.title = "Blog de Odontología y Casos Clínicos en Barcelona | Mi Dentista";
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute("content", "Descubre consejos de salud dental, precios de implantes y guías para solucionar dolores de muelas. Información verificada por expertos odontólogos en Barcelona.");
-        }
         window.scrollTo(0, 0);
     }, []);
 
+    const schema = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cuándo ir al dentista de urgencia?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Debes acudir a nuestra clínica dental si experimentas dolor agudo, hinchazón facial de aparición rápida, pérdida de un diente, sangrado abundante continuo o dolor al masticar."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cuánto dura un implante dental?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En condiciones óptimas, un implante dental de titanio o zirconio puede durar toda la vida con la higiene correcta, mientras la corona puede durar 15-20 años."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Duele ponerse implantes dentales?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Colocar implantes sin dolor es nuestra prioridad utilizando anestesia local o sedación consciente."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Cómo mejorar la sonrisa drásticamente?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Recurrimos al blanqueamiento dental, ortodoncia invisible y carillas de porcelana para transformar la estética de tu sonrisa."
+                }
+            }
+        ]
+    });
+
     return (
         <div className="min-h-screen bg-white">
+            <SEO
+                title="Blog de Odontología y Casos Clínicos en Barcelona | Mi Dentista"
+                description="Descubre consejos de salud dental, precios de implantes y guías para solucionar dolores de muelas. Información verificada por expertos odontólogos en Barcelona."
+                path="/blog"
+                schema={schema}
+            />
             <Navbar />
 
             {/* Hero Section */}

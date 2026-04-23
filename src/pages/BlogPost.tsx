@@ -8,6 +8,7 @@ import { blogPosts } from "../data/blog";
 import { ArrowLeft, Clock, CalendarDays, UserRound, ArrowRight } from "lucide-react";
 import BookingDialog from "@/components/BookingDialog";
 import dentalPattern from "../assets/dental-pattern.png";
+import { SEO } from "../components/SEO";
 
 const BlogPost = () => {
     const { slug } = useParams();
@@ -15,13 +16,6 @@ const BlogPost = () => {
     const [bookingOpen, setBookingOpen] = useState(false);
 
     useEffect(() => {
-        if (post) {
-            document.title = `${post.title} | Mi Dentista Barcelona`;
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) {
-                metaDesc.setAttribute("content", post.excerpt);
-            }
-        }
         window.scrollTo(0, 0);
     }, [post]);
 
@@ -29,8 +23,35 @@ const BlogPost = () => {
         return <Navigate to="/blog" replace />;
     }
 
+    const schema = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "image": `https://www.midentistabarcelona.com${post.image}`,
+        "description": post.excerpt,
+        "author": {
+            "@type": "Person",
+            "name": post.author
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Mi Dentista Barcelona",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.midentistabarcelona.com/favicon-midentista-oficial.png"
+            }
+        }
+    });
+
     return (
         <div className="min-h-screen bg-white">
+            <SEO
+                title={`${post.title} | Mi Dentista Barcelona`}
+                description={post.excerpt}
+                path={`/blog/${post.slug}`}
+                schema={schema}
+                type="article"
+            />
             <Navbar />
 
             {/* Post Header */}

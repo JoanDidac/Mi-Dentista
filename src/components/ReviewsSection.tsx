@@ -169,24 +169,27 @@ const ReviewsSection = () => {
                             <div className="bg-white p-1.5 rounded-lg">
                                 <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4 w-auto" />
                             </div>
-                            <div>
-                                <div className="flex gap-0.5 mb-0.5">
-                                    {[1, 2, 3, 4, 5].map((s) => (
-                                        <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                                    ))}
+                            <div className="flex items-center gap-2">
+                                <span className="text-white font-bold text-lg">{googleStats.averageRating}</span>
+                                <div>
+                                    <div className="flex gap-0.5 mb-0.5">
+                                        {[1, 2, 3, 4, 5].map((s) => (
+                                            <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                                        ))}
+                                    </div>
+                                    <p className="text-[10px] text-white/70 font-medium whitespace-nowrap">
+                                        {/* Total = Reviews in DB (Doctoralia) + Dynamic Google Reviews Count */}
+                                        {reviewsData.filter(r => r.source === 'doctoralia').length + googleStats.totalReviews} reseñas en total
+                                    </p>
                                 </div>
-                                <p className="text-[10px] text-white/70 font-medium">
-                                    {/* Total = Reviews in DB (Doctoralia) + Dynamic Google Reviews Count */}
-                                    {reviewsData.filter(r => r.source === 'doctoralia').length + googleStats.totalReviews} reseñas en total
-                                </p>
                             </div>
                             <a
-                                href="https://www.google.com/search?sca_esv=9cf1df91a9197cf6&authuser=0&hl=es&sxsrf=ANbL-n5NUsRoa2E_SCHHpjDwgRO3KH-k9A:1770117293388&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOeiQXXFrGgGU0g4g9yVAjbsdw77Ya87C5iQUM9SaV8NsQ5XTFs-zh3C9WRGotSj1EeAyAyLYvGeLHMtgt3F7bxZ6fLVp&q=Mi+Dentista+Rese%C3%B1as&sa=X&ved=2ahUKEwijxO7jmL2SAxWkUaQEHUfaGagQ0bkNegQIKhAH&biw=1444&bih=808&dpr=1.8&aic=0"
+                                href="https://www.google.com/search?sca_esv=1cd8785de84224e8&rlz=1C5CHFA_enES1019ES1021&sxsrf=ANbL-n5sGz3W_tZD--GwubHlBqUPFIt4vA:1776980582306&q=Mi+Dentista+Rese%C3%B1as&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDI2NzE1NDUzNTI0NDQwMDW1NN3AyPiKUcQ3U8ElNa8ks7gkUSEotTj18MbE4kWsWIUBYOxg_UkAAAA&rldimm=12374515652111005595&tbm=lcl&hl=es-ES&sa=X&ved=2ahUKEwjxgIbD-ISUAxUaVqQEHelXL8IQ9fQKegQIYRAG&biw=1455&bih=808&dpr=1.8#lkt=LocalPoiReviews"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="ml-2 px-3 py-1.5 bg-brand-secondary/80 hover:bg-brand-secondary text-white text-[10px] font-bold rounded-lg transition-colors"
+                                className="ml-2 px-3 py-1.5 bg-brand-secondary/80 hover:bg-brand-secondary text-white text-[10px] font-bold rounded-lg transition-colors whitespace-nowrap"
                             >
-                                Escribe una reseña
+                                Ver en Google
                             </a>
                         </div>
                     </div>
@@ -243,7 +246,7 @@ const ReviewsSection = () => {
                                         </p>
 
                                         <a
-                                            href={review.source === 'doctoralia' ? "https://www.doctoralia.es/" : "https://www.google.com/search?q=Mi+Dentista+Carrer+de+Blai+45+Barcelona+Reseñas"}
+                                            href={review.source === 'doctoralia' ? "https://www.doctoralia.es/" : "https://www.google.com/search?sca_esv=1cd8785de84224e8&rlz=1C5CHFA_enES1019ES1021&sxsrf=ANbL-n5sGz3W_tZD--GwubHlBqUPFIt4vA:1776980582306&q=Mi+Dentista+Rese%C3%B1as&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDI2NzE1NDUzNTI0NDQwMDW1NN3AyPiKUcQ3U8ElNa8ks7gkUSEotTj18MbE4kWsWIUBYOxg_UkAAAA&rldimm=12374515652111005595&tbm=lcl&hl=es-ES&sa=X&ved=2ahUKEwjxgIbD-ISUAxUaVqQEHelXL8IQ9fQKegQIYRAG&biw=1455&bih=808&dpr=1.8#lkt=LocalPoiReviews"}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="mt-auto text-brand-primary text-[10px] font-bold hover:underline"

@@ -4,7 +4,7 @@ import { useRef } from "react";
 import logoTrial from "@/assets/logo-trial.png";
 import QRCode from "react-qr-code";
 import { toast } from "sonner";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -92,6 +92,11 @@ const Footer = () => {
             <p className="text-white/80 text-sm leading-relaxed">
               Cuidando sonrisas en Barcelona con tecnología avanzada y un trato cercano. Especialistas en hacer que los niños amen ir al dentista.
             </p>
+            <div className="inline-block bg-white/10 px-3 py-1 rounded-sm border border-white/5">
+              <p className="text-white/90 text-xs font-semibold tracking-wide uppercase">
+                Nº Colegiado Oficial: <span className="text-brand-light">7516</span>
+              </p>
+            </div>
             <div className="flex gap-3">
               {/* Social icons - scaled down */}
               <a href="#" className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
@@ -133,6 +138,10 @@ const Footer = () => {
                 <span className="w-1 h-1 rounded-full bg-brand-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
                 Contacto
               </a></li>
+              <li><Link to="/fobia-dental" onClick={() => window.scrollTo(0, 0)} className="hover:text-white transition-colors flex items-center gap-2 group">
+                <span className="w-1 h-1 rounded-full bg-light opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                Plan Fobia Dental
+              </Link></li>
             </ul>
           </div>
 

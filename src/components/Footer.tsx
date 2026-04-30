@@ -33,7 +33,7 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative bg-gradient-to-br from-[#65153d] to-[#8C3573] text-white pt-14 pb-7 overflow-hidden"
+      className="relative bg-gradient-to-br from-[#65153d] to-[#8C3573] text-white pt-14 pb-28 md:pb-7 overflow-hidden"
     >
       {/* Premium Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

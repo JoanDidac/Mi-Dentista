@@ -159,9 +159,10 @@ const ContactLocationSection = () => {
                                         e.preventDefault();
                                         document.getElementById('map-location')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                     }}
-                                    className="text-gray-600 font-medium hover:text-brand-primary hover:scale-105 hover:uppercase transition-all duration-300 cursor-pointer block origin-left"
+                                    className="text-gray-600 font-medium hover:text-brand-primary transition-all duration-300 cursor-pointer block origin-left group"
                                 >
-                                    C/Blai Nº 45 08004 Poble Sec, Barcelona
+                                    <span className="group-hover:scale-105 group-hover:uppercase inline-block transition-transform duration-300">C/Blai Nº 45 08004 Poble Sec, Barcelona</span>
+                                    <span className="block text-sm mt-1 text-gray-500 font-normal">A 400 m de la parada de metro Poble Sec L3 salida Parlament</span>
                                 </a>
                             </div>
                             <div className="space-y-3">

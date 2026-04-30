@@ -23,8 +23,8 @@ All colors MUST be HSL.
     --primary: 317 45% 38%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary: #AD5E99 */
-    --secondary: 315 33% 52%;
+    /* Secondary: slightly darkened for WCAG AA compliance */
+    --secondary: 315 33% 45%;
     --secondary-foreground: 0 0% 100%;
 
     /* Muted: very light lavender */

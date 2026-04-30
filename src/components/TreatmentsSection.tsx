@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import { useMotionValue, useSpring, useTransform, motion } from "framer-motion";
 import odontopediatriaImage from "../assets/odontopediatria.png";
 import ortodonciaInvisibleImage from "../assets/orthodoncia-invisible.png";
 import esteticaDentalImage from "../assets/estetica-dental-soft.png";
+import BookingDialog from "@/components/BookingDialog";
 
 interface TreatmentCard {
     slug: string;
@@ -17,6 +18,7 @@ interface TreatmentCard {
 
 const TreatmentsSection = () => {
     const navigate = useNavigate();
+    const [bookingOpen, setBookingOpen] = useState(false);
 
     const featuredTreatments: TreatmentCard[] = [
         {
@@ -81,12 +83,13 @@ const TreatmentsSection = () => {
                 <div className="text-center mt-12">
                     <p className="text-gray-600 text-sm">
                         ¿Necesitas ayuda para elegir el mejor tratamiento?{" "}
-                        <a href="#contact" className="text-brand-primary font-semibold hover:underline">
+                        <button onClick={() => setBookingOpen(true)} className="text-brand-primary font-semibold hover:underline cursor-pointer">
                             Solicita tu consulta gratuita
-                        </a>
+                        </button>
                     </p>
                 </div>
             </div>
+            <BookingDialog open={bookingOpen} onOpenChange={setBookingOpen} />
         </section>
     );
 };
